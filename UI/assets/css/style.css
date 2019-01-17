@@ -165,6 +165,15 @@ header .auth-button {
   display: table;
 }
 
+.landing-page h2 {
+  font-family: Catamaran;
+  font-size: 5vw;
+  font-weight: 900;
+  line-height: 70px;
+  color: #111;
+  text-align: center;
+}
+
 .auth-big-button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -176,7 +185,7 @@ header .auth-button {
   font-family: Catamaran;
   font-size: 18px;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   cursor: pointer;
   transform: translate(-50%, -50%);
