@@ -1,0 +1,342 @@
+/* 
+/**Stylesheet RESET code
+*html5doctor.com Reset Stylesheet
+*v1.6.1
+*Last Updated: 2010-09-17
+*Author: Richard Clark - http://richclarkdesign.com 
+*Twitter: @rich_clark
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/**My code */
+
+* {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+
+header .header-logo {
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #111;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 20px;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+header nav ul {
+  display: block; /*used to make centering possible*/
+  margin: auto;
+  width: fit-content;
+}
+
+header nav ul li {
+  
+  text-align: center;
+  list-style: none;
+  padding: 0 16px;
+  margin: 15px auto;
+}
+
+header nav ul li a {
+  font-family: Catamaran;
+  font-size: 16px;
+  color: #111;
+  text-transform: uppercase;
+}
+
+header .auth-button {
+  display: none;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #111;
+  font-size: 24px;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/**styling for larger screens using media query */
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 40px;
+  }
+
+  .header-logo {
+    margin-top: 0;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .header-logo:hover,
+  .nav-links:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
+}
+
+
+/**LANDING PAGE*/
+
+.landing-page {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-image: url('../img/election-landing.jpg');
+  background-color: #447f70;
+  background-blend-mode: screen;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
+}
+
+.landing-page h2 {
+  font-family: Catamaran;
+  font-size: 5vw;
+  font-weight: 900;
+  line-height: 70px;
+  color: #111;
+  text-align: center;
+}
+
+.auth-big-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 18px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/**Button animation from w3schools
+.auth-big-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.auth-big-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.auth-big-button:hover span {
+  padding-right: 25px;
+}
+
+.auth-big-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/**Button Animation ended*/
+
+/**form styling */
+.sign-up-form {
+  display: none;
+}
+
+@media screen and (min-width: 1366px) {
+  .sign-up-form {
+    display: block;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 10px 30px 50px 55px;
+    width: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin: -120px 50px 50px 900px;
+  }
+  
+  input[type=text], input[type=password], select, textarea {
+    width: 80%;
+    padding: 10px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 13px;
+    font-family: Ubuntu;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: block;
+    text-align: left;
+  }
+  
+  input[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 10px 8px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  .auth-big-button {
+    display: none;
+  }
+
+  .landing-page h2 {
+    text-align: left;
+  }
+  
+}
