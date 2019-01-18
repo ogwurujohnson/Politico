@@ -7,6 +7,8 @@
 *Twitter: @rich_clark
 */
 
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -108,20 +110,20 @@ input, select {
   text-decoration: none;
 }
 
-header {
+.navbar {
   background-color: #fff;
-  width: 100%;
-  height:100px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
 }
 
 header .header-logo {
   font-family: Catamaran;
-  font-size: 24px;
-  font-weight: 900;
+  font-size: 15px;
   color: #111;
   text-transform: uppercase;
-  display: block;
-  margin: auto;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 20px;
   text-align: center;
   padding: 20px 0px;
 }
@@ -133,10 +135,11 @@ header nav ul {
 }
 
 header nav ul li {
-  display: inline-block;
-  float: left;
+  
+  text-align: center;
   list-style: none;
   padding: 0 16px;
+  margin: 15px auto;
 }
 
 header nav ul li a {
@@ -148,6 +151,64 @@ header nav ul li a {
 
 header .auth-button {
   display: none;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #111;
+  font-size: 24px;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/**styling for larger screens using media query */
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 40px;
+  }
+
+  .header-logo {
+    margin-top: 0;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .header-logo:hover,
+  .nav-links:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
 }
 
 
@@ -171,7 +232,7 @@ header .auth-button {
   font-weight: 900;
   line-height: 70px;
   color: #111;
-  text-align: center;
+  text-align: left;
 }
 
 .auth-big-button {
