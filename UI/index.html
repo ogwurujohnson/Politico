@@ -15,14 +15,17 @@
 
 <body>
 	<header>
-		<a href="index.html" class="header-logo">Politico</a>
-		<nav>
-			<ul>
-				<li><a href="#">Parties</a></li>
-				<li><a href="#">Candidates</a></li>
-				<li><a href="#">Offices</a></li>
-				<a href="#" class="auth-button">Sign in</a>
-				<a href="#" class="auth-button">Sign up</a>
+		<nav class="navbar">
+			<span class="navbar-toggle" id="toggle">
+					<i class="fa fa-bars"></i>
+			</span>
+			<a href="index.html" class="header-logo">Politico</a>
+			<ul class="main-nav" id="menu">
+				<li><a href="#" class="nav-links">Parties</a></li>
+				<li><a href="#" class="nav-links">Candidates</a></li>
+				<li><a href="#" class="nav-links">Offices</a></li>
+				<li><a href="#" class="nav-links">Sign up</a></li>
+				<li><a href="#" class="nav-links">Sign in</a></li>
 			</ul>
 			
 		</nav>
@@ -33,13 +36,24 @@
 				<h2>In our age there is no such thing as <br>'keeping out of politics.'<br> - George Orwell
 					</h2>
 			</div>
-			<div class="sign-up-form"></div>
+			<div class="sign-up-form">
+				<form>
+					<label for="username">Username</label>
+					<input type="text" placeholder="Enter username">
+					<label for="username">Email</label>
+					<input type="text" placeholder="Enter username">
+					<label for="username">Username</label>
+					<input type="text" placeholder="Enter username">
+				</form>
+			</div>
 			<button class="auth-big-button"><span>Get Started</span></button>
 		</section>
 	</main>
 	<footer>
 
 	</footer>
+
+	<script src="assets/js/script.js"></script>
 </body>
 
 </html>
