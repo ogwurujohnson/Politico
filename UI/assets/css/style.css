@@ -254,7 +254,7 @@ header .auth-button {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-/**Button animation from w3schools*/
+/**Button animation from w3schools
 .auth-big-button span {
   cursor: pointer;
   display: inline-block;
@@ -279,7 +279,6 @@ header .auth-button {
   opacity: 1;
   right: 0;
 }
-
 /**Button Animation ended*/
 
 /**form styling */
