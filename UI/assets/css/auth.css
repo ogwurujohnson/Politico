@@ -7,15 +7,18 @@ body {
   background-color: #F0F4F3;
 }
 
+main {
+  width: 100%;
+  display: table;
+}
+
 .sign-up-form {
   display: block;
   border-radius: 5px;
   background-color: transparent;
-  padding: 10px 30px 50px 55px;
-  width: 300px;
+  padding: 10px 50px 50px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-  margin: auto 500px;
 }
 
 input[type=text], input[type=password], select, textarea {
