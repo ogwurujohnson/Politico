@@ -218,7 +218,7 @@ header .auth-button {
   width: 100%;
   height: calc(100vh - 100px);
   background-image: url('../img/election-landing.jpg');
-  background-color: #447f70;
+  /*background-color: #447f70;*/
   background-blend-mode: screen;
   background-repeat: no-repeat;
   background-position: center;
