@@ -197,6 +197,8 @@ header .header-logo {
   margin-left: 20px;
   text-align: center;
   padding: 20px 0px;
+  width: 60%;
+  margin: auto;
 }
 
 header nav ul {
@@ -268,8 +270,11 @@ header .auth-button {
     margin-left: 40px;
   }
 
-  .header-logo {
+  header .header-logo {
     margin-top: 0;
+    width: 30%;
+    margin-left: 0px;
+    margin-bottom: 1px;
   }
 
   .navbar-toggle {
@@ -278,7 +283,9 @@ header .auth-button {
 
   .header-logo:hover,
   .nav-links:hover {
-    color: rgba(255, 255, 255, 1);
+    color: #111;
+    background-color: #326FC0;
+    border-style: solid;
   }
 
 }
@@ -359,6 +366,14 @@ header .auth-button {
   display: none;
 }
 
+.sign-up-form p {
+  text-align: center;
+  font-family: Catamaran;
+  display: block;
+  margin: auto;
+  text-align: left;
+}
+
 @media screen and (min-width: 1366px) {
   .sign-up-form {
     display: block;
@@ -372,6 +387,7 @@ header .auth-button {
   }
 
   input[type=text],
+  input[type=email],
   input[type=password],
   select,
   textarea {
@@ -383,6 +399,7 @@ header .auth-button {
     resize: vertical;
     font-size: 13px;
     font-family: Ubuntu;
+    margin-top: 10px;
   }
 
   label {

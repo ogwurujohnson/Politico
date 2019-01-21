@@ -20,7 +20,7 @@
 			<span class="navbar-toggle" id="toggle">
 				<i class="fa fa-bars"></i>
 			</span>
-			<a href="index.html" class="header-logo">Politico</a>
+			<a href="index.html" class="header-logo"><img class="header-logo" src="assets/img/logo.png"></a>
 			<ul class="main-nav" id="menu">
 				<li><a href="#" class="nav-links">Parties</a></li>
 				<li><a href="#" class="nav-links">Candidates</a></li>
@@ -39,16 +39,16 @@
 			</div>
 			<div class="sign-up-form">
 				<form> 
-					<p>Sign Up to start voting</p>
-					<input id="firstname" type="text" placeholder="First Name">
-					<input id="lastname" type="text" placeholder="Last Name">
-					<input id="email" type="text" placeholder="Email">
-					<input id="password" type="password" placeholder="Password">
-					<input id="re-password" type="password" placeholder="Confirm Password">
-					<input type="submit">
+					<p><b>Register to vote for your choice <br> candidate</b></p>
+					<input id="firstname" type="text" placeholder="First Name*" autofocus required>
+					<input id="lastname" type="text" placeholder="Last Name*" required>
+					<input id="email" type="email" placeholder="Email*" required>
+					<input id="password" type="password" placeholder="Password*" required>
+					<input id="re-password" type="password" placeholder="Confirm Password*" required>
+					<input type="submit" value="SIGN UP">
 				</form>
 			</div>
-			<a href="sign-up.html" class="auth-big-button"><span>SIGN UP FREE</span></a>
+			<a href="pages/auth/sign-up.html" class="auth-big-button"><span>SIGN UP FREE</span></a>
 		</section>
 	</main>
 	<footer>
