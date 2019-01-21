@@ -8,6 +8,7 @@ Politico enables citizens give their mandate to politicians running for differen
 Required Features
 * Users can sign up.
 * Users can login.
+* Users can reset password.
 * Admin (electoral body) can create political parties.
 * Admin (electoral body) can delete a political party.
 * Admin (electoral body) can create different political offices .
