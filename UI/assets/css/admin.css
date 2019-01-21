@@ -176,135 +176,112 @@ select {
 }
 
 /**My code */
+
 * {
   text-decoration: none;
 }
 
-body {
-  background-color: #F0F4F3;
+.navbar {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
 }
 
-.sign-up-form {
-  display: block;
-  border-radius: 5px;
-  background-color: transparent;
-  padding: 0px 50px 50px 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  margin-top: 40px;
-}
-
-.sign-in-form {
-  display: block;
-  border-radius: 5px;
-  background-color: transparent;
-  padding: 10px 50px 50px 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  margin-top: 75px;
-}
-
-.sign-up-form p {
-  text-align: center;
+header .header-logo {
   font-family: Catamaran;
-  display: block;
-  text-align: center;
+  font-size: 15px;
+  color: #111;
+  text-transform: uppercase;
+  display: inline-block;
   margin-top: 10px;
-}
-
-.sign-in-form p {
+  margin-left: 20px;
   text-align: center;
-  font-family: Catamaran;
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.form-class {
-  display: block;
-  border-radius: 5px;
-  background-color: transparent;
-  padding: 30px 10px 20px 30px;
-  text-align: center;
-}
-
-input[type=text],
-input[type=password],
-input[type=email],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  padding-right: 5px;
-  margin-top: 10px;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  font-size: 13px;
-  font-family: Ubuntu;
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: block;
-  text-align: left;
-}
-
-input[type=submit] {
-  width: 50%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: auto;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-.header-logo {
-  display: block;
-  margin: auto;
-  margin-top: 15px;
-  text-align: center;
-  padding: 10px 0px;
+  padding: 20px 0px;
   width: 60%;
+  margin: auto;
 }
 
-/*for laptop screen*/
+header nav ul {
+  display: block;
+  /*used to make centering possible*/
+  margin: auto;
+  width: fit-content;
+}
+
+header nav ul li {
+
+  text-align: center;
+  list-style: none;
+  padding: 0 16px;
+  margin: 12px auto;
+}
+
+header nav ul li a {
+  font-family: Catamaran;
+  font-size: 13px;
+  color: #111;
+  text-transform: uppercase;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #111;
+  font-size: 30px;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/**styling for larger screens using media query */
 @media screen and (min-width: 1280px) {
-  .sign-up-form {
-    margin: auto;
-    margin-top: 50px;
-    width: 35%;
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
   }
 
-  .sign-in-form {
-    margin: auto;
-    margin-top: 50px;
-    width: 35%;
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
   }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 0px;
+  }
+
+  header .header-logo {
+    margin-top: 0;
+    width: 30%;
+    margin-left: 0px;
+    margin-bottom: 1px;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .header-logo:hover,
+  .nav-links:hover {
+    color: #111;
+    background-color: #326FC0;
+    border-style: solid;
+  }
+
 }
-
-/*for ipad screen*/
-@media screen and (width: 1024px) {
-  .sign-up-form {
-    margin: auto;
-    margin-top: 100px;
-    width: 55%;
-  }
-
-  .sign-in-form {
-    margin: auto;
-    margin-top: 100px;
-    width: 55%;
-  }
-}
-
-
-/**create media query for several screens , responsiveness still has issues */
