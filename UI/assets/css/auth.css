@@ -31,13 +31,14 @@ body {
   display: block;
   border-radius: 5px;
   background-color: transparent;
-  padding: 30px 10px 20px 60px;
+  padding: 30px 10px 20px 30px;
   text-align: center;
 }
 
 input[type=text], input[type=password], select, textarea {
-  width: 80%;
+  width: 100%;
   padding: 10px;
+  padding-right: 5px;
   display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -57,7 +58,7 @@ input[type=submit] {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 10px 8px 50px;
+  margin: auto;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -81,12 +82,37 @@ input[type=submit]:hover {
   padding: 10px 0px;
 }
 
-@media screen and (min-width: 640px) 
+/*for laptop screen*/
+@media screen and (min-width: 1280px) 
 {
   .sign-up-form {
-    margin-right: 450px;
-    margin-left: 450px;
+    margin: auto;
+    margin-top: 50px;
+    width: 35%;
+  }
+
+  .sign-in-form {
+    margin: auto;
+    margin-top: 50px;
+    width: 35%;
   }
 }
 
-/**create media query for sevral screens , responsiveness still has issues */
+/*for ipad screen*/
+@media screen and (width: 1024px) 
+{
+  .sign-up-form {
+    margin: auto;
+    margin-top: 100px;
+    width: 55%;
+  }
+
+  .sign-in-form {
+    margin: auto;
+    margin-top: 100px;
+    width: 55%;
+  }
+}
+
+
+/**create media query for several screens , responsiveness still has issues */
