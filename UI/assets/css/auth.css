@@ -245,11 +245,7 @@ textarea {
   font-family: Ubuntu;
 }
 
-label {
-  padding: 12px 12px 12px 0;
-  display: block;
-  text-align: left;
-}
+
 
 input[type=submit] {
   width: 50%;

@@ -11,7 +11,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i"
 	 rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<link rel="stylesheet" href="../../assets/css/admin.css">
+	<link rel="stylesheet" href="../../assets/css/shared.css">
 </head>
 
 <body>
@@ -34,10 +36,25 @@
 		</nav>
 	</header>
 	<main>
-		<section>
-
+    <section>
+      <div class="create-party-form">
+				<div class="page-title">
+					<h3>Create Party</h3>
+				</div>
+        <form>
+          <div class="form-class">
+            <input id="party-name" type="email" placeholder="Party Name*" autofocus required>
+						<input id="party-symbol" type="password" placeholder="Party Abbreviation*" required>
+						<input id="date-formed" type="date" placeholder="Date formed">
+						<input id="party-chairman" type="text" placeholder="Party Chairman">
+          </div>
+          <div>
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
     </section>
-	</main>
+  </main>
 	<footer>
 
 	</footer>
