@@ -7,7 +7,7 @@
 	<meta name="keywords" content="politico, election, nigeria, nigeria election, political party">
 	<meta name="author" content="Johnson Ogwuru">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Politico | Admin - Create Office</title>
+	<title>Politico | Admin - All Parties</title>
 	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i"
 	 rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +25,7 @@
 			<a href="index.html" class="header-logo"><img class="header-logo" src="../../assets/img/logo.png"></a>
 			<ul class="main-nav" id="menu">
         <li><a href="create-party.html" class="nav-links">Create Parties</a></li>
-        <li><a href="view-parties.html" class="nav-links">View Parties</a></li>
+        <li><a href="#" class="nav-links">View Parties</a></li>
         <li><a href="#" class="nav-links">Candidates</a></li>
         <li><a href="#" class="nav-links">Create Election Cycle</a></li>
         <li><a href="create-office.html" class="nav-links">Create Offices</a></li>
@@ -37,19 +37,34 @@
 	</header>
 	<main>
     <section>
-      <div class="create-party-form">
-				<div class="page-title">
-					<h3>Create Government Office</h3>
-				</div>
-        <form>
-          <div class="form-class">
-            <input id="office-name" type="email" placeholder="Office Name*" autofocus required>
-          </div>
-          <div>
-            <input type="submit" value="Submit">
-          </div>
-        </form>
-      </div>
+      <div>
+				<table id="table">
+					<tr>
+						<th>Party Name</th>
+						<th>Party Abbrv.</th>
+						<th>Date formed</th>
+						<th>Action</th>
+					</tr>
+					<tr>
+						<td>Peoples democratic</td>
+						<td>PDP</td>
+						<td>21/03/1990</td>
+						<td>
+							<a href=""><i class="fa fa-edit"></i></a>
+							<a href=""><i class="fa fa-trash"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>All Progressive</td>
+						<td>APC</td>
+						<td>21/03/1992</td>
+						<td>
+							<a href=""><i class="fa fa-edit"></i></a>
+							<a href=""><i class="fa fa-trash"></i></a>
+						</td>
+					</tr>
+				</table>
+			</div>
     </section>
   </main>
 	<footer>
