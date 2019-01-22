@@ -277,13 +277,6 @@ header nav ul li a {
     display: none;
   }
 
-  .header-logo:hover,
-  .nav-links:hover {
-    color: #111;
-    background-color: #326FC0;
-    border-style: solid;
-  }
-
 }
 
 /**Form section**/
