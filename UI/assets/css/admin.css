@@ -312,10 +312,23 @@ input[type=password],
 input[type=email],
 input[type=date],
 input[type=file],
-select,
-textarea {
+select {
   width: 100%;
   padding: 10px;
+  padding-right: 5px;
+  margin-top: 10px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 13px;
+  font-family: Ubuntu;
+}
+
+#manifesto {
+  width: 100%;
+  padding: 60px;
+  padding-left: 15px;
   padding-right: 5px;
   margin-top: 10px;
   display: block;
