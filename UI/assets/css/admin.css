@@ -397,3 +397,70 @@ input[type=submit]:hover {
   padding-bottom: 5px;
   font-family: Catamaran;
 }
+
+/**user profile page */
+.about-user {
+  width:50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  margin-top: 30px;
+}
+
+.user-avatar {
+  width: 30%;
+}
+
+#user-activity-table {
+  font-family: Catamaran;
+  border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#user-activity-table td, #user-activity-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#user-activity-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4893D8;
+  color: white;
+}
+
+@media screen and (min-width: 1280px) {
+  .about-user {
+    width:20%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .user-avatar {
+    width: 20%;
+  }
+  
+  #user-activity-table {
+    font-family: Catamaran;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  #user-activity-table td, #user-activity-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #user-activity-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4893D8;
+    color: white;
+  }
+}
