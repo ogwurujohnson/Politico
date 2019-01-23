@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i"
 	 rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+
 	<link rel="stylesheet" href="../assets/css/admin.css">
 	<link rel="stylesheet" href="../assets/css/shared.css">
 </head>
@@ -24,36 +24,45 @@
 			</span>
 			<a href="index.html" class="header-logo"><img class="header-logo" src="../assets/img/logo.png"></a>
 			<ul class="main-nav" id="menu">
-        <li><a href="create-party.html" class="nav-links">Create Parties</a></li>
-        <li><a href="view-parties.html" class="nav-links">View Parties</a></li>
-        <li><a href="#" class="nav-links">Candidates</a></li>
-        <li><a href="#" class="nav-links">Create Election Cycle</a></li>
-        <li><a href="create-office.html" class="nav-links">Create Offices</a></li>
-        <li><a href="#" class="nav-links">View Offices</a></li>
+				<li><a href="create-party.html" class="nav-links">Create Parties</a></li>
+				<li><a href="view-parties.html" class="nav-links">View Parties</a></li>
+				<li><a href="#" class="nav-links">Candidates</a></li>
+				<li><a href="#" class="nav-links">Create Election Cycle</a></li>
+				<li><a href="create-office.html" class="nav-links">Create Offices</a></li>
+				<li><a href="#" class="nav-links">View Offices</a></li>
 				<li><a href="../index.html" class="nav-links">Sign out</a></li>
 			</ul>
 
 		</nav>
 	</header>
 	<main>
-    <section>
-      <div class="create-party-form">
+		<section>
+			<div class="create-party-form">
 				<div class="page-title">
 					<h3>Create Government Office</h3>
 				</div>
-        <form>
-          <div class="form-class">
-            <input id="office-name" type="email" placeholder="Office Name*" autofocus required>
-          </div>
-          <div>
-            <input type="submit" value="Submit">
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+				<form>
+					<div class="form-class">
+						<select>
+							<option>Select office type</option>
+							<option>Federal</option>
+							<option>legislative</option>
+							<option>state</option>
+							<option>local government</option>
+						</select>
+						<input id="office-name" type="email" placeholder="Office Name*" autofocus required>
+					</div>
+					<div>
+						<input type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
 	<footer>
-
+		<div class="footer">
+			<p>Politico &copy;2019</p>
+		</div>
 	</footer>
 
 	<script src="../assets/js/script.js"></script>
