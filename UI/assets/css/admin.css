@@ -464,3 +464,15 @@ input[type=submit]:hover {
     color: white;
   }
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #fff;
+  color: #111;
+  text-align: center;
+  font-family: Catamaran;
+}
