@@ -30,9 +30,9 @@
   color: white;
 }
 
-@media screen and (max-width: 280px){
+@media screen and (width: 1024px) {
   #table {
-    width: 20%;
+    width: 100%;
   }
   
   #table td, #table th {
@@ -43,8 +43,8 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  
 }
+
 
 /**candidate overview */
 .candidates-grid {

@@ -185,6 +185,7 @@ select {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 header .header-logo {
@@ -194,7 +195,7 @@ header .header-logo {
   text-transform: uppercase;
   display: inline-block;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: -  20px;
   text-align: center;
   padding: 20px 0px;
   width: 60%;
@@ -230,6 +231,7 @@ header nav ul li a {
   cursor: pointer;
   color: #111;
   font-size: 30px;
+  margin-top: 30px;
 }
 
 .main-nav {
@@ -264,6 +266,11 @@ header nav ul li a {
 
   .nav-links {
     margin-left: 0px;
+    color: #4893D8;
+  }
+
+  .nav-links:hover {
+    color: #111;
   }
 
   header .header-logo {
@@ -358,7 +365,7 @@ input[type=submit]:hover {
 
 
 /*for laptop screen*/
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1374px) {
   .create-party-form {
     margin: auto;
     margin-top: 50px;
@@ -375,12 +382,91 @@ input[type=submit]:hover {
   }
 }
 
+/**admin summary BEGINS */
+div .card-grid {
+  
+  width: 100%;
+  margin-top: 10%;
+}
+
+div .card {
+  display: flex;
+  flex-flow: row wrap;
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  margin-top: 20px;
+}
+
+div .header{
+  background-color: #4893D8;
+  color: white;
+  padding: 10px;
+  font-size: 40px;
+}
+
+div .container {
+  padding: 10px;
+  margin: auto;
+}
+
+
+/**admin  summary ENDS */
+
+
+
+/**all candidates overview BEGINS*/
+.candidates-grid {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%; /* 4 items * item width(100+5+5) = 440 */
+}
+
+.candidates-grid .single-candidate {
+  padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 5px;
+}
+
+.candidates-grid .single-candidate p {
+  font-size: 12px;
+  text-align: center;
+  font-family: Catamaran;
+}
+
+.candidate-image {
+  width: 200px;
+}
+
+@media screen and (max-width: 414px){
+  .candidate-image {
+    width: 50px;
+  }
+  .candidates-grid .single-candidate p {
+    font-size: 8px;
+    text-align: center;
+  }
+  .candidates-grid .single-candidate {
+    
+    margin: auto;
+  }
+}
+/**all candidates overview ENDS*/
+
+
+/**Single candidate view style BEGINS */
 .candidate {
-  width: 40%;
+  width: 70%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   margin: auto;
   margin-top: 30px;
+}
+
+@media screen and (min-width: 1280px) {
+  .candidate {
+    width: 40%;
+  }
 }
 
 #candidate-avatar {
@@ -397,25 +483,31 @@ input[type=submit]:hover {
   padding-bottom: 5px;
   font-family: Catamaran;
 }
+/**SIngle candidate view style ENDS */
 
-/**user profile page */
+/**user profile page and admin table BEGINS */
+
 .about-user {
   width:50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   margin-top: 30px;
+  padding-bottom: 10px;
 }
 
 .user-avatar {
   width: 30%;
+  padding-bottom: 10px;
 }
+
+
 
 #user-activity-table {
   font-family: Catamaran;
   border-collapse: collapse;
   width: 100%;
   margin: auto;
-  margin-top: 10px;
+  padding: 10px;
 }
 
 #user-activity-table td, #user-activity-table th {
@@ -430,6 +522,12 @@ input[type=submit]:hover {
   background-color: #4893D8;
   color: white;
 }
+
+#user-activity-1 #user-activity-2 h3 {
+  font-family: Catamaran;
+  padding-top: 20px;
+}
+
 
 @media screen and (min-width: 1280px) {
   .about-user {
@@ -446,9 +544,7 @@ input[type=submit]:hover {
   #user-activity-table {
     font-family: Catamaran;
     border-collapse: collapse;
-    width: 100%;
-    margin: auto;
-    margin-top: 10px;
+    
   }
   
   #user-activity-table td, #user-activity-table th {
@@ -463,8 +559,23 @@ input[type=submit]:hover {
     background-color: #4893D8;
     color: white;
   }
+
+  #user-activity-1 {
+    width: 50%;
+    margin: auto;
+    margin-top: -100px;  
+  }
+
+  #user-activity-2 {
+    width: 50%;
+    margin: auto;
+    margin-top: -300px;  
+  }
 }
 
+/**user profile page and admin table ENDS */
+
+/**footer BEGINS */
 .footer {
   position: fixed;
   left: 0;
@@ -475,4 +586,7 @@ input[type=submit]:hover {
   color: #111;
   text-align: center;
   font-family: Catamaran;
+  padding-top: 15px;
 }
+/**footer ENDS */
+

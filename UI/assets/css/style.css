@@ -185,6 +185,7 @@ select {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 header .header-logo {
@@ -213,12 +214,12 @@ header nav ul li {
   text-align: center;
   list-style: none;
   padding: 0 16px;
-  margin: 15px auto;
+  margin: 12px auto;
 }
 
 header nav ul li a {
   font-family: Catamaran;
-  font-size: 16px;
+  font-size: 13px;
   color: #111;
   text-transform: uppercase;
 }
@@ -233,7 +234,8 @@ header .auth-button {
   right: 20px;
   cursor: pointer;
   color: #111;
-  font-size: 24px;
+  font-size: 30px;
+  margin-top: 30px;
 }
 
 .main-nav {
@@ -246,7 +248,7 @@ header .auth-button {
 }
 
 /**styling for larger screens using media query */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -267,7 +269,12 @@ header .auth-button {
   }
 
   .nav-links {
-    margin-left: 40px;
+    margin-left: 0px;
+    color: #4893D8;
+  }
+
+  .nav-links:hover {
+    color: #111;
   }
 
   header .header-logo {
@@ -368,7 +375,7 @@ header .auth-button {
   text-align: left;
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1280px) {
   .sign-up-form {
     display: block;
     border-radius: 5px;
