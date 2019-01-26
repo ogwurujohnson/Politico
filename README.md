@@ -26,4 +26,8 @@ Required Features
 
 ## Pivotal Tracker
 
-Project is currently being managed with Pivotal Tracker, a project management tool. You can find the stories on the [politico Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2238975)
+Project is currently being managed with Pivotal Tracker, a project management tool. You can find the stories on the 
+[Politico Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2238975)
+
+Template is being hosted on GitHub pages Here: 
+[Politico Template](https://ogwurujohnson.github.io/Politico/UI/)
