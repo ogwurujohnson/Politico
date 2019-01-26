@@ -179,7 +179,28 @@ select {
 
 * {
   text-decoration: none;
+  box-sizing: border-box;
 }
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+.main-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+}
+
 
 .navbar {
   background-color: #fff;
@@ -364,7 +385,7 @@ input[type=submit]:hover {
 
 
 /*for laptop screen*/
-@media screen and (min-width: 1374px) {
+@media screen and (min-width: 1024px) {
   .create-party-form {
     margin: auto;
     margin-top: 50px;
@@ -499,13 +520,16 @@ div .container {
   padding-bottom: 10px;
 }
 
+.activity-section {
+  padding-top: 20px;
+  margin: auto;
 
+}
 
 #user-activity-table {
   font-family: Catamaran;
   border-collapse: collapse;
   width: 100%;
-  margin: auto;
   padding: 10px;
 }
 
@@ -576,18 +600,15 @@ div .container {
 
 /**footer BEGINS */
 .footer {
-  clear: both;
-  position: relative;
-  left: 0;
+  position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 40px;
   background-color: #fff;
   color: #111;
   text-align: center;
   font-family: Catamaran;
-  padding-top: 15px;
-  margin-top: -40px;
+  
 }
+
+
 /**footer ENDS */
 
