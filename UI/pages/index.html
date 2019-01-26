@@ -12,103 +12,104 @@
 	 rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../assets/css/admin.css">
-	
+
 </head>
 
 <body>
-	<header>
-		<nav class="navbar">
-			<span class="navbar-toggle" id="toggle">
-				<i class="fa fa-bars"></i>
-			</span>
-			<a href="index.html" class="header-logo"><img class="header-logo" src="../assets/img/logo.png"></a>
-			<ul class="main-nav" id="menu">
-				<li><a href="create-party.html" class="nav-links">Create Parties</a></li>
-				<li><a href="#" class="nav-links">View Parties</a></li>
-				<li><a href="#" class="nav-links">Candidates</a></li>
-				<li><a href="#" class="nav-links">Create Election Cycle</a></li>
-				<li><a href="create-office.html" class="nav-links">Create Offices</a></li>
-				<li><a href="#" class="nav-links">View Offices</a></li>
-				<li><a href="../index.html" class="nav-links">Sign out</a></li>
-			</ul>
+	<div class="container">
+		<header>
+			<nav class="navbar">
+				<span class="navbar-toggle" id="toggle">
+					<i class="fa fa-bars"></i>
+				</span>
+				<a href="index.html" class="header-logo"><img class="header-logo" src="../assets/img/logo.png"></a>
+				<ul class="main-nav" id="menu">
+					<li><a href="create-party.html" class="nav-links">Create Parties</a></li>
+					<li><a href="#" class="nav-links">View Parties</a></li>
+					<li><a href="#" class="nav-links">Candidates</a></li>
+					<li><a href="#" class="nav-links">Create Election Cycle</a></li>
+					<li><a href="create-office.html" class="nav-links">Create Offices</a></li>
+					<li><a href="#" class="nav-links">View Offices</a></li>
+					<li><a href="../index.html" class="nav-links">Sign out</a></li>
+				</ul>
 
-		</nav>
-	</header>
-	<main>
-		<section>
-			<div class="card-grid">
-				<div class="card">
-					<div class="header">
-						<h1>3</h1>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<div class="card-grid">
+					<div class="card">
+						<div class="header">
+							<h1>3</h1>
+						</div>
+
+						<div class="container">
+							<p>Number of Offices</p>
+						</div>
 					</div>
+					<div class="card">
+						<div class="header">
+							<h1>3</h1>
+						</div>
 
-					<div class="container">
-						<p>Number of Offices</p>
+						<div class="container">
+							<p>Number of Parties</p>
+						</div>
+					</div>
+					<div class="card">
+						<div class="header">
+							<h1>3</h1>
+						</div>
+
+						<div class="container">
+							<p>Number of Candidates</p>
+						</div>
+					</div>
+					<div class="card">
+						<div class="header">
+							<h1>3</h1>
+						</div>
+
+						<div class="container">
+							<p>Number of Voters</p>
+						</div>
 					</div>
 				</div>
-				<div class="card">
-					<div class="header">
-						<h1>3</h1>
-					</div>
-
-					<div class="container">
-						<p>Number of Parties</p>
-					</div>
+			</section>
+			<section class="activity-section">
+				<div id="user-activity-2">
+					<h3>Real-Time Election Results</h3>
+					<!--this would require us creating a candidate db-->
+					<!--our voting table would only be incrementing based on votes-->
+					<table id="user-activity-table">
+						<tr>
+							<th>Candidate</th>
+							<th>Party</th>
+							<th>Office</th>
+							<th>Votes</th>
+						</tr>
+						<tr>
+							<td>Johnson Ogwuru</td>
+							<td>PDP</td>
+							<td>President</td>
+							<td>30</td>
+						</tr>
+						<tr>
+							<td>Mustapha Braimah</td>
+							<td>APC</td>
+							<td>President</td>
+							<td>20</td>
+						</tr>
+					</table>
 				</div>
-				<div class="card">
-					<div class="header">
-						<h1>3</h1>
-					</div>
-
-					<div class="container">
-						<p>Number of Candidates</p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="header">
-						<h1>3</h1>
-					</div>
-
-					<div class="container">
-						<p>Number of Voters</p>
-					</div>
-				</div>
+			</section>
+		</main>
+		<footer>
+			<div class="footer">
+				<p>Politico &copy;2019</p>
 			</div>
-		</section>
-		<section class="activity-section">
-			<div id="user-activity-2">
-				<h3>Real-Time Election Results</h3>
-				<!--this would require us creating a candidate db-->
-				<!--our voting table would only be incrementing based on votes-->
-				<table id="user-activity-table">
-					<tr>
-						<th>Candidate</th>
-						<th>Party</th>
-						<th>Office</th>
-						<th>Votes</th>
-					</tr>
-					<tr>
-						<td>Johnson Ogwuru</td>
-						<td>PDP</td>
-						<td>President</td>
-						<td>30</td>
-					</tr>
-					<tr>
-						<td>Mustapha Braimah</td>
-						<td>APC</td>
-						<td>President</td>
-						<td>20</td>
-					</tr>
-				</table>
-			</div>
-		</section>
-	</main>
-	<footer>
-		<div class="footer">
-			<p>Politico &copy;2019</p>
-		</div>
-	</footer>
-
+		</footer>
+	</div>
 	<script src="../assets/js/script.js"></script>
 </body>
 
