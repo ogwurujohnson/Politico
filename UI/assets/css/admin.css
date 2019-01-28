@@ -598,6 +598,62 @@ div .container {
 
 /**user profile page and admin table ENDS */
 
+.small-success-button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.small-default-button {
+  background-color: #4d90bd;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.small-danger-button {
+  background-color: #f80808;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 /**footer BEGINS */
 .footer {
   position: absolute;
