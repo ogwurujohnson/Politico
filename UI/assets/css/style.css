@@ -362,7 +362,7 @@ header .auth-button {
     background-color: transparent;
     padding: 10px 30px 50px 55px;
     width: 300px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
     text-align: center;
     margin: -120px 50px 50px 900px;
   }
