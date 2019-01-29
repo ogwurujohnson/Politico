@@ -214,9 +214,6 @@ header .header-logo {
   color: #111;
   text-transform: uppercase;
   display: inline-block;
-  margin-top: 10px;
-  margin-left: -  20px;
-  text-align: center;
   padding: 20px 0px;
   width: 60%;
   margin: auto;
@@ -404,7 +401,6 @@ input[type=submit]:hover {
 
 /**admin summary BEGINS */
 div .card-grid {
-  
   width: 100%;
   margin-top: 10%;
 }
@@ -416,6 +412,7 @@ div .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   margin-top: 20px;
+  color: #111;
 }
 
 div .header{
