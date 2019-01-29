@@ -601,7 +601,7 @@ div .container {
   #user-activity-table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4893D8;
     color: white;
   }
