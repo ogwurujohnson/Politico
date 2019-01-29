@@ -307,7 +307,7 @@ header .auth-button {
 
 .landing-page h2 {
   font-family: Catamaran;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   color: #111;
   text-align: center;
@@ -326,7 +326,7 @@ header .auth-button {
   font-family: Catamaran;
   font-size: 18px;
   position: absolute;
-  top: 65%;
+  top: 50%;
   left: 50%;
   cursor: pointer;
   transform: translate(-50%, -50%);
