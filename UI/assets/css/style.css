@@ -360,7 +360,7 @@ header .auth-button {
     display: block;
     border-radius: 5px;
     background-color: transparent;
-    padding: 10px 30px 50px 55px;
+    padding: 30px 30px 50px 55px;
     width: 300px;
     box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
     text-align: center;
@@ -370,9 +370,11 @@ header .auth-button {
   .sign-up-form p {
     text-align: center;
     font-family: Catamaran;
-    display: block;
-    margin: auto;
-    text-align: left;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 50px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
   }
 
   input[type=text],
