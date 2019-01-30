@@ -63,7 +63,9 @@
 .candidates-grid {
   display: flex;
   flex-flow: row wrap;
-  width: 100%; /* 4 items * item width(100+5+5) = 440 */
+  width: 95%;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .candidates-grid .single-candidate {
@@ -83,6 +85,9 @@
 }
 
 @media screen and (max-width: 414px){
+  .candidates-grid {
+    width: 75%;
+  }
   .candidate-image {
     width: 50px;
   }
@@ -91,7 +96,7 @@
     text-align: center;
   }
   .candidates-grid .single-candidate {
-    
+    padding: 5px;
     margin: auto;
   }
 }

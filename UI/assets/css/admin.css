@@ -260,6 +260,10 @@ header nav ul li a {
   display: block;
 }
 
+.deactivate {
+  display: none;
+}
+
 /**styling for larger screens using media query */
 @media screen and (min-width: 1280px) {
   .navbar {
@@ -464,7 +468,6 @@ div .container {
     text-align: center;
   }
   .candidates-grid .single-candidate {
-    
     margin: auto;
   }
 }
