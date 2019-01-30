@@ -69,12 +69,31 @@ const Party = {
       });
     }
     const updatedParty = PartyModel.editParty(id, req.params.partyName);
-    return res.status(200).json({
-      status: 200,
+    return res.status(201).json({
+      status: 201,
       data: [updatedParty],
     });
   },
-
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns {void} returns code 2014
+   */
+  deleteParty(req, res) {
+    const id = Number(req.params.id);
+    const party = PartyModel.getSingleParty(id);
+    if(!party) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Party not found',
+      });
+    }
+    const remainingParties = PartyModel.deleteParty(id);
+    return res.status(204).json({
+      status: 204,
+      data: remainingParties,
+    });
+  }
 };
 
 export default Party;

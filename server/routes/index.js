@@ -12,5 +12,6 @@ router.post('/parties', Party.createParty);
 router.get('/parties',Party.getAllParties);
 router.get('/parties/:id',Party.getSingleParty);
 router.patch('/parties/:id/:partyName', Party.editParty);
+router.delete('/parties/:id', Party.deleteParty);
 
 export default router;
