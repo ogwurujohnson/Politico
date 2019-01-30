@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import partyRouter from './routes/party';
+import partyRouter from './routes/index';
 
 // import dotenv config
 dotenv.config();
