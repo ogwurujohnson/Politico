@@ -1,185 +1,8 @@
-/* 
-/**Stylesheet RESET code
-*html5doctor.com Reset Stylesheet
-*v1.6.1
-*Last Updated: 2010-09-17
-*Author: Richard Clark - http://richclarkdesign.com 
-*Twitter: @rich_clark
-*/
-
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
-
-body {
-  line-height: 1;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-nav ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
-
-/* change colours to suit your needs */
-ins {
-  background-color: #ff9;
-  color: #000;
-  text-decoration: none;
-}
-
-/* change colours to suit your needs */
-mark {
-  background-color: #ff9;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-abbr[title],
-dfn[title] {
-  border-bottom: 1px dotted;
-  cursor: help;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* change border colour to suit your needs */
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-input,
-select {
-  vertical-align: middle;
-}
-
-/**My code */
-
 * {
   text-decoration: none;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 *:before,
@@ -190,8 +13,14 @@ select {
 html,
 body {
   height: 100%;
-  position: relative;
+  margin: 0;
 }
+
+/*#wrap {
+  min-height: -webkit-calc(100% - 100px);     /* Chrome */
+  min-height: -moz-calc(100% - 100px);     /* Firefox */
+  min-height: calc(100% - 100px);     /* native */
+} */
 
 .main-container {
   min-height: 100vh;
@@ -214,10 +43,8 @@ header .header-logo {
   color: #111;
   text-transform: uppercase;
   display: inline-block;
-  margin-top: 10px;
-  margin-left: -  20px;
-  text-align: center;
   padding: 20px 0px;
+  padding-left: 20px;
   width: 60%;
   margin: auto;
 }
@@ -230,7 +57,6 @@ header nav ul {
 }
 
 header nav ul li {
-
   text-align: center;
   list-style: none;
   padding: 0 16px;
@@ -261,6 +87,10 @@ header nav ul li a {
 
 .active {
   display: block;
+}
+
+.deactivate {
+  display: none;
 }
 
 /**styling for larger screens using media query */
@@ -404,7 +234,6 @@ input[type=submit]:hover {
 
 /**admin summary BEGINS */
 div .card-grid {
-  
   width: 100%;
   margin-top: 10%;
 }
@@ -416,6 +245,7 @@ div .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   margin-top: 20px;
+  color: #111;
 }
 
 div .header{
@@ -467,7 +297,6 @@ div .container {
     text-align: center;
   }
   .candidates-grid .single-candidate {
-    
     margin: auto;
   }
 }
@@ -508,29 +337,36 @@ div .container {
 /**user profile page and admin table BEGINS */
 
 .about-user {
-  width:50%;
+  width:100%;
+  height: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-  margin-top: 30px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  padding-top: 30px;
   padding-bottom: 10px;
+  font-family: Catamaran;
 }
 
 .user-avatar {
-  width: 30%;
+  width: 50%;
   padding-bottom: 10px;
 }
 
 .activity-section {
-  padding-top: 20px;
+  padding-top: 50px;
   margin: auto;
-
+  margin-top: 10px;
+  text-align: center;
+  font-family: Catamaran;
 }
 
 #user-activity-table {
-  font-family: Catamaran;
   border-collapse: collapse;
   width: 100%;
   padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #user-activity-table td, #user-activity-table th {
@@ -551,13 +387,32 @@ div .container {
   padding-top: 20px;
 }
 
+/**for tablet view */
+@media screen and (min-width: 768px) {
+  .about-user {
+    font-family: Catamaran;
+    font-size: 30px;
+  }
+  .activity-section {
+    font-size: 25px;
+  }
+}
 
+/**for laptop screen */
 @media screen and (min-width: 1280px) {
   .about-user {
-    width:20%;
+    width:50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center; 
+    font-size: 20px;
+  }
+
+  .activity-section {
+    padding-top: 150px;
+    margin: auto;
+    margin-top: 10px;
     text-align: center;
-    margin-top: 30px;
+    font-size: 15px;
   }
   
   .user-avatar {
@@ -567,7 +422,7 @@ div .container {
   #user-activity-table {
     font-family: Catamaran;
     border-collapse: collapse;
-    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   
   #user-activity-table td, #user-activity-table th {
@@ -578,7 +433,7 @@ div .container {
   #user-activity-table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4893D8;
     color: white;
   }
@@ -598,17 +453,219 @@ div .container {
 
 /**user profile page and admin table ENDS */
 
-/**footer BEGINS */
-.footer {
-  position: absolute;
-  bottom: 0;
-  background-color: #fff;
-  color: #111;
+.small-success-button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
   font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
   
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.small-default-button {
+  background-color: #4d90bd;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.small-danger-button {
+  background-color: #f80808;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Catamaran;
+  font-size: 12px;
+  top: 65%;
+  left: 50%;
+  cursor: pointer;
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 
-/**footer ENDS */
+.footer {
+  left:0px;
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  text-align: left;
+  font: bold 16px Catamaran;
+  padding: 55px 50px;
+  width: 100%;
+  bottom:0;
+  position: relative;
+  clear:both;
+  margin-top: 10%;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  vertical-align: top;
+}
+
+.footer .footer-left {
+  width: 40%;
+}
+
+.footer .company-logo {
+  width: 30%;
+  margin: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
+}
+
+.footer .footer-links {
+  color: #fff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .footer-company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .footer-center {
+  width: 35%;
+}
+
+.footer .footer-center i{
+  background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+	line-height: 38px;
+}
+
+.footer .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+.footer .footer-right{
+	width: 20%;
+}
+
+.footer .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer .footer-icons{
+	margin-top: 25px;
+}
+
+.footer .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+
+@media (max-width: 880px) {
+
+	.footer{
+    font: bold 14px sans-serif;
+    margin-top: 20%;
+	}
+
+	.footer .footer-left{
+		display: inline-block;
+		width: 100%;
+    text-align: center;
+  }
+
+	.footer .footer-center,
+	.footer .footer-right{
+		display: none;
+	}
+  
+
+}
+
+
 

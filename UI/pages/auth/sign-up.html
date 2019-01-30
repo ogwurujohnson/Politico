@@ -18,13 +18,13 @@
 <body>
   <main>
     <section>
-      <div class="successful-feedback">
-        <span class="closebtn">&times;</span>
-        <strong>Success!</strong>Registration was successful.
+      <div class="successful-feedback feedback">
+        <span class="closebtn" onclick="closeNotification()">&times;</span>
+        <strong>Success!</strong> Registration was successful.
       </div>
-      <div class="failed-feedback">
-        <span class="closebtn">&times;</span>
-        <strong>Failed!</strong>Registration failed, please try again in few seconds.
+      <div class="failed-feedback feedback">
+        <span class="closebtn" onclick="closeNotification()">&times;</span>
+        <strong>Failed!</strong> Registration failed, please try again in few seconds.
       </div>
     </section>
     <section>
@@ -52,6 +52,7 @@
       </div>
     </section>
   </main>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

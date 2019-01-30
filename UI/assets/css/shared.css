@@ -11,6 +11,14 @@
   margin-top: 30px;
 }
 
+#table-section {
+  padding-top: 10px;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
 #table {
   font-family: Catamaran;
   border-collapse: collapse;
@@ -25,14 +33,19 @@
 #table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #4893D8;
   color: white;
 }
 
-@media screen and (width: 1024px) {
+@media screen and (min-width: 1280px) {
+ 
   #table {
-    width: 100%;
+    width: 70%;
+    font-family: Catamaran;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: auto;
   }
   
   #table td, #table th {
@@ -50,7 +63,9 @@
 .candidates-grid {
   display: flex;
   flex-flow: row wrap;
-  width: 100%; /* 4 items * item width(100+5+5) = 440 */
+  width: 95%;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .candidates-grid .single-candidate {
@@ -70,6 +85,9 @@
 }
 
 @media screen and (max-width: 414px){
+  .candidates-grid {
+    width: 75%;
+  }
   .candidate-image {
     width: 50px;
   }
@@ -78,7 +96,7 @@
     text-align: center;
   }
   .candidates-grid .single-candidate {
-    
+    padding: 5px;
     margin: auto;
   }
 }

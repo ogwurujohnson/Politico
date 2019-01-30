@@ -7,9 +7,9 @@ navBarToggle.addEventListener('click', () => {
 });
 
 
-let closeBtn = document.querySelector('.closebtn');
-let feedback = document.querySelector('.feedback');
+function closeNotification() {
+  let closeBtn = document.querySelector('.closebtn');
+  let feedback = document.querySelector('.feedback');
+  feedback.style.display = 'none';
+}
 
-closeBtn.addEventListener('click', () => {
-  feedback.style.display='none';
-});

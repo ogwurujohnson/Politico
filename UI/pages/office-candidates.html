@@ -25,6 +25,7 @@
         </span>
         <a href="index.html" class="header-logo"><img class="header-logo" src="../assets/img/logo.png"></a>
         <ul class="main-nav" id="menu">
+          <li><a href="election-result.html" class="nav-links">Results</a></li>
           <li><a href="view-parties.html" class="nav-links">Parties</a></li>
           <li><a href="candidate-summary.html" class="nav-links">Candidates</a></li>
           <li><a href="view-offices.html" class="nav-links">Offices</a></li>
@@ -36,16 +37,16 @@
     </header>
     <main>
       <section>
-        <div class="successful-feedback">
-          <span class="closebtn">&times;</span>
-          <strong>Success!</strong>you've successfully voted for candidate A.
+        <div class="successful-feedback feedback">
+          <span class="closebtn" onclick="closeNotification()">&times;</span>
+          <strong>Success!</strong> You've successfully voted for candidate A.
         </div>
-        <div class="failed-feedback">
-          <span class="closebtn">&times;</span>
-          <strong>Failed!</strong>voting for candidate A was not successful, please try again in few seconds.
+        <div class="failed-feedback feedback">
+          <span class="closebtn" onclick="closeNotification()">&times;</span>
+          <strong>Failed!</strong> Voting for candidate A was not successful, please try again in few seconds.
         </div>
       </section>
-      <section>
+      <section id="table-section">
         <div>
           <table id="table">
             <tr>
@@ -57,27 +58,79 @@
               <td>Johnson Ogwuru</td>
               <td>PDP</td>
               <td>
-                <a href="#" title="Vote Candidate"><i class="fa fa-check"></i></a>
-                <a href="view-candidate.html" title="View Candidate"><i class="fa fa-eye"></i></a>
+                <a href="#" class="small-success-button" title="Vote Candidate">Vote</a>
+                <a href="view-candidate.html" class="small-default-button" title="View Candidate">View</a>
               </td>
             </tr>
             <tr>
               <td>Mustapha Braimah</td>
               <td>APC</td>
               <td>
-                <a href="#" title="Vote Candidate"><i class="fa fa-check"></i></a>
-                <a href="view-candidate.html" title="View Candidate"><i class="fa fa-eye"></i></a>
+                <a href="#" class="small-success-button" title="Vote Candidate">Vote</a>
+                <a href="view-candidate.html" class="small-default-button" title="View Candidate">View</a>
               </td>
             </tr>
           </table>
         </div>
       </section>
     </main>
-    <footer>
-      <div class="footer">
-        <p>Politico &copy;2019</p>
-      </div>
-    </footer>
+    <footer class="footer">
+
+        <div class="footer-left">
+  
+            <img class="company-logo" src="../assets/img/logo.png">
+  
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="#">About</a>
+            ·
+            <a href="#">Faq</a>
+            ·
+            <a href="#">Contact</a>
+          </p>
+  
+          <p class="footer-company-name">Politico &copy; 2019</p>
+        </div>
+  
+        <div class="footer-center">
+  
+          <div>
+            <i class="fa fa-map-marker"></i>
+            <p>Word-wide</p>
+          </div>
+  
+          <div>
+            <i class="fa fa-phone"></i>
+            <p>+234 8033525155</p>
+          </div>
+  
+          <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:support@politico.com">support@politico.com</a></p>
+          </div>
+  
+        </div>
+  
+        <div class="footer-right">
+  
+          <p class="footer-company-about">
+            <span>About the company</span>
+            Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+          </p>
+  
+          <div class="footer-icons">
+  
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+  
+          </div>
+  
+        </div>
+  
+      </footer>
   </div>
   <script src="../assets/js/script.js"></script>
 </body>

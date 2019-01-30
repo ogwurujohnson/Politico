@@ -22,11 +22,13 @@
 			</span>
 			<a href="index.html" class="header-logo"><img class="header-logo" src="assets/img/logo.png"></a>
 			<ul class="main-nav" id="menu">
+				<li><a href="pages/election-result.html" class="nav-links">Results</a></li>
 				<li><a href="pages/view-parties.html" class="nav-links">Parties</a></li>
 				<li><a href="pages/candidate-summary.html" class="nav-links">Candidates</a></li>
 				<li><a href="pages/view-offices.html" class="nav-links">Offices</a></li>
 				<li><a href="pages/auth/sign-up.html" class="nav-links">Sign up</a></li>
 				<li><a href="pages/auth/sign-in.html" class="nav-links">Sign in</a></li>
+				<li><a href="pages/index.html" class="nav-links">Admin</a></li>
 			</ul>
 
 		</nav>
@@ -38,20 +40,78 @@
 				</h2>
 			</div>
 			<div class="sign-up-form">
-				<form> 
+				<form>
 					<p><b>Register to vote for your choice <br> candidate</b></p>
-					<input id="firstname" type="text" placeholder="First Name*" autofocus required>
-					<input id="lastname" type="text" placeholder="Last Name*" required>
-					<input id="email" type="email" placeholder="Email*" required>
-					<input id="password" type="password" placeholder="Password*" required>
-					<input id="re-password" type="password" placeholder="Confirm Password*" required>
+					<input id="firstname" type="text" placeholder="First Name*" required autofocus>
+            <input id="lastname" type="text" placeholder="Last Name*" required>
+            <input id="othername" type="text" placeholder="Other Name*" required>
+            <input id="email" type="text" placeholder="Email*" required>
+            <input id="phone" type="phone" placeholder="Phone*" required>
+            <input id="passport" type="file" title="upload passport" required>
+            <input id="password" type="password" placeholder="Password*" required>
+            <input id="re-password" type="password" placeholder="Confirm Password*" required>
 					<input type="submit" value="SIGN UP">
 				</form>
 			</div>
 			<a href="pages/auth/sign-up.html" class="auth-big-button"><span>SIGN UP FREE</span></a>
 		</section>
 	</main>
-	<footer>
+	<footer class="footer">
+
+		<div class="footer-left">
+
+			<img class="company-logo" src="assets/img/logo.png">
+
+			<p class="footer-links">
+				<a href="index.html">Home</a>
+				·
+				<a href="#">About</a>
+				·
+				<a href="#">Faq</a>
+				·
+				<a href="#">Contact</a>
+			</p>
+
+			<p class="footer-company-name">Politico &copy; 2019</p>
+		</div>
+
+		<div class="footer-center">
+
+			<div>
+				<i class="fa fa-map-marker"></i>
+				<p>Word-wide</p>
+			</div>
+
+			<div>
+				<i class="fa fa-phone"></i>
+				<p>+234 8033525155</p>
+			</div>
+
+			<div>
+				<i class="fa fa-envelope"></i>
+				<p><a href="mailto:support@politico.com">support@politico.com</a></p>
+			</div>
+
+		</div>
+
+		<div class="footer-right">
+
+			<p class="footer-company-about">
+				<span>About the company</span>
+				Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula
+				sit amet.
+			</p>
+
+			<div class="footer-icons">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+
+			</div>
+
+		</div>
 
 	</footer>
 
