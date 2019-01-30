@@ -17,10 +17,10 @@ class Party {
       },
     ];
   }
+  
   /**
    * @returns {object} party object
    */
-
   createParty(data) {
     const newParty = {
       id: uuid.v4(),
@@ -33,13 +33,20 @@ class Party {
     this.parties.push(newParty);
     return newParty;
   }
+
   /**
-   * @returns {array} returns an array of all party objects
+   * @returns [array] returns an array of all party objects
    */
   getAllParties() {
     return this.parties;
   }
 
+  /**
+   * @returns [array] returns an array of a single party
+   */
+  getSingleParty(id) {
+    return this.parties.find(party => { return party.id === id });
+  }
 
 }
 

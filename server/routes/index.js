@@ -10,5 +10,6 @@ router.get('/', (req, res) => {
 
 router.post('/parties', Party.createParty);
 router.get('/parties',Party.getAllParties);
+router.get('/parties/:id',Party.getSingleParty);
 
 export default router;
