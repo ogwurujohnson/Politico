@@ -2,9 +2,10 @@
   "name": "politico",
   "version": "1.0.0",
   "description": "Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.",
-  "main": "app.js",
+  "main": "./server/app.js",
   "scripts": {
-    "start:dev": "nodemon app.js",
+    "start": "babel-node ./server/app.js",
+    "start:dev": "nodemon ./server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,11 +19,13 @@
   },
   "homepage": "https://github.com/ogwurujohnson/Politico#readme",
   "dependencies": {
+    "@babel/node": "^7.2.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
-    "env": "0.0.2",
     "express": "^4.16.4",
     "mochai": "^0.2.5",
     "moment": "^2.24.0",
@@ -30,8 +33,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.2.2",
     "babel-watch": "^2.0.8",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
