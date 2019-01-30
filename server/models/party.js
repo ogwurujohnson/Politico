@@ -17,7 +17,7 @@ class Party {
       },
     ];
   }
-  
+
   /**
    * @returns {object} party object
    */
@@ -46,6 +46,17 @@ class Party {
    */
   getSingleParty(id) {
     return this.parties.find(party => { return party.id === id });
+  }
+
+  /**
+   * @param {uuid} id
+   * @param {string} partyName
+   */
+  editParty(id, partyName) {
+    const party = this.getSingleParty(id);
+    const partyIndex = this.parties.indexOf(party);
+    this.parties[partyIndex].partyName = partyName;
+    return this.parties[partyIndex];
   }
 
 }

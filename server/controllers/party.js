@@ -36,7 +36,7 @@ const Party = {
   /**
    * @param {object} req
    * @param {object} res
-   * @returns {array} an array of a single party object
+   * @returns [array] an array of a single party object
    */
   getSingleParty(req, res) {
     const id = Number(req.params.id);
@@ -46,12 +46,32 @@ const Party = {
     if(!party) {
       return res.status(404).json({
         status: 404,
-        error: "Party not found",
+        error: 'Party not found',
       });
     }
     return res.status(200).json({
       status: 200,
-      data: party,
+      data: [party],
+    });
+  },
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns [array] an array containing the updated party object
+   */
+  editParty(req, res) {
+    const id = Number(req.params.id);
+    const party = PartyModel.getSingleParty(id);
+    if(!party) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Party not found',
+      });
+    }
+    const updatedParty = PartyModel.editParty(id, req.params.partyName);
+    return res.status(200).json({
+      status: 200,
+      data: [updatedParty],
     });
   },
 
