@@ -9,7 +9,7 @@ const Party = {
    */
 
   createParty(req, res) {
-    if (!req.body.partyName && !req.body.logoUrl) {
+    if (!req.body.partyName || !req.body.logoUrl) {
       return res.status(400).json({
         status: 400,
         error: 'Party Name and Logo Required',
