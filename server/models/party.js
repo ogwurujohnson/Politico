@@ -45,7 +45,7 @@ class Party {
    * @returns [array] returns an array of a single party
    */
   getSingleParty(id) {
-    return this.parties.find(party => { return party.id === id });
+    return this.parties.find(party => party.id === id);
   }
 
   /**
@@ -58,6 +58,7 @@ class Party {
     this.parties[partyIndex].partyName = partyName;
     return this.parties[partyIndex];
   }
+
   /**
    * @param {uuid} id
    */
