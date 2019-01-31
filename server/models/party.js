@@ -4,6 +4,7 @@ import uuid from 'uuid';
 class Party {
   /**
    * class constructor
+   * @author Johnson Ogwuru
    * @param {object} data
    */
   constructor() {
@@ -32,6 +33,14 @@ class Party {
     this.parties.push(newParty);
     return newParty;
   }
+  /**
+   * @returns {array} returns an array of all party objects
+   */
+  getAllParties() {
+    return this.parties;
+  }
+
+
 }
 
 export default new Party();
