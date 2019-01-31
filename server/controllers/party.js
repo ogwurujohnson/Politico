@@ -41,8 +41,6 @@ const Party = {
   getSingleParty(req, res) {
     const id = Number(req.params.id);
     const party = PartyModel.getSingleParty(id);
-    console.log(typeof id);
-    console.log(typeof party);
     if (!party) {
       return res.status(404).json({
         status: 404,

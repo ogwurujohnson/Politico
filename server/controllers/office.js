@@ -33,6 +33,25 @@ const Office = {
       data: offices,
     });
   },
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @return [array] an array of a single office object
+   */
+  getSingleOffice(req, res) {
+    const id = Number(req.params.id);
+    const office = OfficeModel.getSingleOffice(id);
+    if (!office) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Office not found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: [office],
+    });
+  },
   
 };
 

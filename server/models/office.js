@@ -36,6 +36,14 @@ class Office {
   getAllOffices() {
     return this.offices;
   }
+
+  /**
+   * @returns [array] returns an array of a single office
+   */
+  getSingleOffice(id) {
+    return this.offices.find(office => office.id === id);
+  }
+  
 }
 
 export default new Office();
