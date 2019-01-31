@@ -9,7 +9,7 @@ const Office = {
    */
 
   createOffice(req, res) {
-    if (!req.body.officeName && !req.body.officeType) {
+    if (!req.body.officeName || !req.body.officeType) {
       return res.status(400).json({
         status: 400,
         error: 'Office name and type Required',
