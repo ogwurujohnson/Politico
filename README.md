@@ -31,3 +31,6 @@ Project is currently being managed with Pivotal Tracker, a project management to
 
 Template is being hosted on GitHub pages Here: 
 [Politico Template](https://ogwurujohnson.github.io/Politico/UI/)
+
+Link of API Hosted on Heroku: 
+[Link to API](https://better-politico.herokuapp.com/api/v1)
