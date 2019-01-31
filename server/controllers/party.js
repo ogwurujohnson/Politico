@@ -28,7 +28,7 @@ const Party = {
    */
   getAllParties(req, res) {
     const parties = PartyModel.getAllParties();
-    return res.status(200).send({
+    return res.status(200).json({
       status: 200,
       data: parties,
     });
@@ -43,7 +43,7 @@ const Party = {
     const party = PartyModel.getSingleParty(id);
     console.log(typeof id);
     console.log(typeof party);
-    if(!party) {
+    if (!party) {
       return res.status(404).json({
         status: 404,
         error: 'Party not found',
@@ -62,7 +62,7 @@ const Party = {
   editParty(req, res) {
     const id = Number(req.params.id);
     const party = PartyModel.getSingleParty(id);
-    if(!party) {
+    if (!party) {
       return res.status(404).json({
         status: 404,
         error: 'Party not found',
@@ -82,7 +82,7 @@ const Party = {
   deleteParty(req, res) {
     const id = Number(req.params.id);
     const party = PartyModel.getSingleParty(id);
-    if(!party) {
+    if (!party) {
       return res.status(404).json({
         status: 404,
         error: 'Party not found',
@@ -93,7 +93,7 @@ const Party = {
       status: 204,
       data: remainingParties,
     });
-  }
+  },
 };
 
 export default Party;

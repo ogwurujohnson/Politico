@@ -17,5 +17,5 @@ router.delete('/parties/:id', Party.deleteParty);
 
 
 router.post('/offices', Office.createOffice);
-
+router.get('/offices', Office.getAllOffices);
 export default router;
