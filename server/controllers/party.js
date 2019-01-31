@@ -5,7 +5,7 @@ const Party = {
    * @author Johnson Ogwuru
    * @param {object} req
    * @param {object} res
-   * @returns {array} party array
+   * @returns [array] party array
    */
 
   createParty(req, res) {

@@ -1,5 +1,6 @@
 import express from 'express';
 import Party from '../controllers/party';
+import Office from '../controllers/office';
 
 const router = express.Router();
 
@@ -9,9 +10,12 @@ router.get('/', (req, res) => {
 
 
 router.post('/parties', Party.createParty);
-router.get('/parties',Party.getAllParties);
-router.get('/parties/:id',Party.getSingleParty);
+router.get('/parties', Party.getAllParties);
+router.get('/parties/:id', Party.getSingleParty);
 router.patch('/parties/:id/:partyName', Party.editParty);
 router.delete('/parties/:id', Party.deleteParty);
+
+
+router.post('/offices', Office.createOffice);
 
 export default router;
