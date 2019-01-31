@@ -24,13 +24,34 @@ const Party = {
   /**
    * @param {object} req
    * @param {object} res
-   * @returns {array} an array of party objects
+   * @returns [array] an array of party objects
    */
   getAllParties(req, res) {
     const parties = PartyModel.getAllParties();
     return res.status(200).send({
       status: 200,
       data: parties,
+    });
+  },
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns {array} an array of a single party object
+   */
+  getSingleParty(req, res) {
+    const id = Number(req.params.id);
+    const party = PartyModel.getSingleParty(id);
+    console.log(typeof id);
+    console.log(typeof party);
+    if(!party) {
+      return res.status(404).json({
+        status: 404,
+        error: "Party not found",
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: party,
     });
   },
 
