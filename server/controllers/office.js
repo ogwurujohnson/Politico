@@ -21,7 +21,19 @@ const Office = {
       data: [office],
     });
   },
-
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns [array] an array of office objects
+   */
+  getAllOffices(req, res) {
+    const offices = OfficeModel.getAllOffices();
+    return res.status(200).json({
+      status: 200,
+      data: offices,
+    });
+  },
+  
 };
 
 export default Office;

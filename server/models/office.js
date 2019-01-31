@@ -29,6 +29,13 @@ class Office {
     this.offices.push(newOffice);
     return newOffice;
   }
+
+  /**
+   * @return [array] returns an array of all office objects
+   */
+  getAllOffices() {
+    return this.offices;
+  }
 }
 
 export default new Office();
