@@ -5,7 +5,10 @@ import Office from '../controllers/office';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to Politico');
+  res.status(200).json({
+    status: 200,
+    message: 'Welcome to the Politico Application',
+  });
 });
 
 
@@ -19,5 +22,13 @@ router.delete('/parties/:id', Party.deleteParty);
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSingleOffice);
+
+
+router.all('*', (req, res) => {
+  res.status(404).json({
+    status: 404,
+    message: 'Invalid request, Route does not exist',
+  });
+});
 
 export default router;
