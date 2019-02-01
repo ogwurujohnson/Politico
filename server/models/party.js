@@ -1,5 +1,5 @@
 import moment from 'moment';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 
 class Party {
   /**
@@ -52,10 +52,16 @@ class Party {
    * @param {uuid} id
    * @param {string} partyName
    */
-  editParty(id, partyName) {
+  editParty(id, identifier, userInput) {
     const party = this.getSingleParty(id);
     const partyIndex = this.parties.indexOf(party);
-    this.parties[partyIndex].partyName = partyName;
+    if (identifier === 'name') {
+      this.parties[partyIndex].partyName = userInput;
+    } else if (identifier === 'hq') {
+      this.parties[partyIndex].hqAddress = userInput;
+    } else if (identifier === 'logo') {
+      this.parties[partyIndex].logoUrl = userInput;
+    }
     return this.parties[partyIndex];
   }
 

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 
 class Office {
   /**
@@ -50,10 +50,14 @@ class Office {
    * @param {uuid} id
    * @param {string} officeName
    */
-  editOffice(id, officeName) {
+  editOffice(id, identifier, userInput) {
     const office = this.getSingleOffice(id);
     const officeIndex = this.offices.indexOf(office);
-    this.offices[officeIndex].officeName = officeName;
+    if (identifier === 'name') {
+      this.offices[officeIndex].officeName = userInput;
+    } else if (identifier === 'type') {
+      this.offices[officeIndex].officeType = userInput;
+    }
     return this.offices[officeIndex];
   }
 
@@ -62,7 +66,7 @@ class Office {
    */
   deleteOffice(id) {
     const office = this.getSingleOffice(id);
-    const officeIndex = this.parties.indexOf(office);
+    const officeIndex = this.offices.indexOf(office);
     this.offices.splice(officeIndex, 1);
     return this.offices;
   }
