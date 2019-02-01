@@ -22,6 +22,8 @@ router.delete('/parties/:id', Party.deleteParty);
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSingleOffice);
+router.patch('/offices/:id/:officeName', Office.editOffice);
+router.delete('/offices/:id', Office.deleteOffice);
 
 
 router.all('*', (req, res) => {

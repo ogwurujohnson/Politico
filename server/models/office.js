@@ -11,8 +11,8 @@ class Office {
     this.offices = [
       {
         id: 87879,
-        type: 'test type',
-        name: 'test name',
+        officeType: 'test type',
+        officeName: 'test name',
       },
     ];
   }
@@ -22,9 +22,11 @@ class Office {
    */
   createOffice(data) {
     const newOffice = {
-      id: uuid.v4(),
-      type: data.officeType,
-      name: data.officeName,
+      id: Math.floor(Math.random() * 10000),
+      officeType: data.officeType,
+      officeName: data.officeName,
+      createdDate: moment.now(),
+      modifiedDate: moment.now(),
     };
     this.offices.push(newOffice);
     return newOffice;
@@ -43,7 +45,27 @@ class Office {
   getSingleOffice(id) {
     return this.offices.find(office => office.id === id);
   }
-  
+
+  /**
+   * @param {uuid} id
+   * @param {string} officeName
+   */
+  editOffice(id, officeName) {
+    const office = this.getSingleOffice(id);
+    const officeIndex = this.offices.indexOf(office);
+    this.offices[officeIndex].officeName = officeName;
+    return this.offices[officeIndex];
+  }
+
+  /**
+   * @param {uuid} id
+   */
+  deleteOffice(id) {
+    const office = this.getSingleOffice(id);
+    const officeIndex = this.parties.indexOf(office);
+    this.offices.splice(officeIndex, 1);
+    return this.offices;
+  }
 }
 
 export default new Office();

@@ -23,7 +23,7 @@ class Party {
    */
   createParty(data) {
     const newParty = {
-      id: uuid.v4(),
+      id: (Math.floor(Math.random() * 10000)),
       partyName: data.partyName,
       hqAddress: data.hqAddress,
       logoUrl: data.logoUrl,
