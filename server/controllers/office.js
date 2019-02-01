@@ -88,10 +88,10 @@ const Office = {
         error: 'Office not found',
       });
     }
-    const deletedOffices = OfficeModel.deleteOffice(id);
+    OfficeModel.deleteOffice(id);
     return res.status(200).json({
       status: 200,
-      data: deletedOffices,
+      data: 'Office deleted Successfully',
     });
   },
 };

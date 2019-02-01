@@ -91,7 +91,7 @@ const Party = {
     const deletedParties = PartyModel.deleteParty(id);
     return res.status(200).json({
       status: 200,
-      data: deletedParties,
+      data: 'party deleted successfully',
     });
   },
 };

@@ -103,11 +103,47 @@ describe('Parties', () => {
   });
   
   describe('PATCH /', () => {
-    it('should update record of party in data structure', (done) => {
-      const partyName = 'New Name';
+    it('should update name of party in data structure', (done) => {
+      const identifier = 'name';
+      const data = {
+        userInput: 'PDP',
+      };
       const partyId = 526278;
       chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${partyName}`)
+        .patch(`/api/v1/parties/${partyId}/${identifier}`)
+        .send(data)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          done();
+        });
+    });
+    it('should update logo of party in data structure', (done) => {
+      const identifier = 'logo';
+      const data = {
+        userInput: '235.8.8.5',
+      };
+      const partyId = 526278;
+      chai.request(app)
+        .patch(`/api/v1/parties/${partyId}/${identifier}`)
+        .send(data)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          done();
+        });
+    });
+    it('should update hq of party in data structure', (done) => {
+      const identifier = 'hq';
+      const data = {
+        userInput: 'Lagos',
+      };
+      const partyId = 526278;
+      chai.request(app)
+        .patch(`/api/v1/parties/${partyId}/${identifier}`)
+        .send(data)
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
@@ -116,10 +152,14 @@ describe('Parties', () => {
         });
     });
     it('should return party not found', (done) => {
-      const partyName = 'PDP';
+      const identifier = 'name';
+      const data = {
+        userInput: 'PDP',
+      };
       const partyId = 100;
       chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${partyName}`)
+        .patch(`/api/v1/parties/${partyId}/${identifier}`)
+        .send(data)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -136,18 +176,22 @@ describe('Parties', () => {
       chai.request(app)
         .delete(`/api/v1/parties/${partyId}`)
         .end((err, res) => {
-          res.should.have.status(204);
+          res.should.have.status(200);
           res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.data.should.equal('party deleted successfully');
           done();
         });
     });
     it('should return party not found', (done) => {
       const partyId = 100;
       chai.request(app)
-        .patch(`/api/v1/parties/${partyId}`)
+        .delete(`/api/v1/parties/${partyId}`)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Party not found');
           done();
         });
     });
