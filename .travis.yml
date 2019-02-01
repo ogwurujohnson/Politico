@@ -1,12 +1,28 @@
 language: node_js
+
 node_js:
   - "stable"
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8cbbb5692d02c0d5b9e7cf10caf6604306bff5db53f9d72afb965fb3dd7e45dc\
+    - SECRET_KEY='supersecret'
+
+
 before_script:
- # - psql -c 'create database travis;' -U postgres
-script: 
- # - "npm run-script migration"
-  - "npm run-script test-travis"
- 
-  
-# send coverage data to coveralls
-after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - npm install -g nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+
+script:
+  - nyc --reporter=lcov npm run test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+cache:
+  directories:
+    - "node_modules"
+
+after_success: npm run coverage
