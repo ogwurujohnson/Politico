@@ -138,7 +138,7 @@ more info:
       <td>/api/v1/parties/:id</td>
       <td>Deletes a specific political party</td>
       <td>{
-    "status": 200,
+    "status": 204,
     "data": [
         {
             "partyId": 2,
@@ -196,63 +196,8 @@ more info:
     }
       </td>
     </tr>
-    <tr>
-      <td>POST /offices/</td>
-      <td>/api/v1/offices/</td>
-      <td>Creates a government office</td>
-      <td>{
-        "status": 201,
-        "data": [
-            {
-                "officeId": 3,
-                "type": "legislative",
-                "name": "Councillor",
-                "description": "lorem opsum lef"
-            }
-        ]
-    }
-      </td>
-    </tr>
-    <tr>
-      <td>PATCH /offices/:id</td>
-      <td>/api/v1/offices/:id</td>
-      <td>Updates a specific government office</td>
-      <td>{
-    "status": 200,
-    "data": [
-        {
-            "officeId": 2,
-            "type": "legislative",
-            "name": "Councillor",
-            "description": "lorem opsum lef"
-        }
-    ]
-}
-      </td>
-    </tr>
-    <tr>
-      <td>DELETE /offices/:id</td>
-      <td>/api/v1/offices/:id</td>
-      <td>Deletes a specific government office</td>
-      <td>{
-    "status": 200,
-    "data": [
-        {
-            "officeId": 2,
-            "type": "legislative",
-            "name": "Councillor",
-            "description": "lorem opsum lef"
-        },
-        {
-            "officeId": 3,
-            "type": "legislative",
-            "name": "Councillor",
-            "description": "lorem opsum lef"
-        }
-    ]
-}
-      </td>
-    </tr>
+    
+   
 </table>
 
 ### Technologies Used

@@ -75,7 +75,7 @@ const Party = {
   /**
    * @param {object} req
    * @param {object} res
-   * @returns {void} returns code 2014
+   * @returns {void} returns code 204
    */
   deleteParty(req, res) {
     const id = Number(req.params.id);
@@ -86,10 +86,10 @@ const Party = {
         error: 'Party not found',
       });
     }
-    const remainingParties = PartyModel.deleteParty(id);
+    const deletedParties = PartyModel.deleteParty(id);
     return res.status(204).json({
       status: 204,
-      data: remainingParties,
+      data: deletedParties,
     });
   },
 };

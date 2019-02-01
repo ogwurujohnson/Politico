@@ -52,6 +52,46 @@ const Office = {
       data: [office],
     });
   },
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns [array] an array containing the updated office object
+   */
+  editOffice(req, res) {
+    const id = Number(req.params.id);
+    const office = OfficeModel.getSingleOffice(id);
+    if (!office) {
+      return res.status(404).json({
+        status: 401,
+        error: 'Office not found',
+      });
+    }
+    const updatedOffice = OfficeModel.editOffice(id, req.params.officeName);
+    return res.status(201).json({
+      status: 201,
+      data: [updatedOffice],
+    });
+  },
+  /**
+   * @param {object} req
+   * @param {object} res
+   * @returns {void} returns code 204
+   */
+  deleteOffice(req, res) {
+    const id = Number(req.params.id);
+    const office = OfficeModel.getSingleOffice(id);
+    if (!office) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Office not found',
+      });
+    }
+    const deletedOffices = OfficeModel.deleteOffice(id);
+    return res.status(204).json({
+      status: 204,
+      data: deletedOffices,
+    });
+  },
 };
 
 export default Office;
