@@ -59,6 +59,8 @@ const Party = {
    */
   editParty(req, res) {
     const id = Number(req.params.id);
+    const { identifier } = req.params;
+    const { userInput } = req.body;
     const party = PartyModel.getSingleParty(id);
     if (!party) {
       return res.status(404).json({
@@ -66,7 +68,7 @@ const Party = {
         error: 'Party not found',
       });
     }
-    const updatedParty = PartyModel.editParty(id, req.params.partyName);
+    const updatedParty = PartyModel.editParty(id, identifier, userInput);
     return res.status(201).json({
       status: 201,
       data: [updatedParty],
@@ -87,9 +89,9 @@ const Party = {
       });
     }
     const deletedParties = PartyModel.deleteParty(id);
-    return res.status(204).json({
-      status: 204,
-      data: deletedParties,
+    return res.status(200).json({
+      status: 200,
+      data: 'party deleted successfully',
     });
   },
 };

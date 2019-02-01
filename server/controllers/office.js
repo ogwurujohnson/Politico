@@ -60,13 +60,15 @@ const Office = {
   editOffice(req, res) {
     const id = Number(req.params.id);
     const office = OfficeModel.getSingleOffice(id);
+    const { identifier } = req.params;
+    const { userInput } = req.body;
     if (!office) {
       return res.status(404).json({
         status: 401,
         error: 'Office not found',
       });
     }
-    const updatedOffice = OfficeModel.editOffice(id, req.params.officeName);
+    const updatedOffice = OfficeModel.editOffice(id, identifier, userInput);
     return res.status(201).json({
       status: 201,
       data: [updatedOffice],
@@ -86,10 +88,10 @@ const Office = {
         error: 'Office not found',
       });
     }
-    const deletedOffices = OfficeModel.deleteOffice(id);
-    return res.status(204).json({
-      status: 204,
-      data: deletedOffices,
+    OfficeModel.deleteOffice(id);
+    return res.status(200).json({
+      status: 200,
+      data: 'Office deleted Successfully',
     });
   },
 };

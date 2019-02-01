@@ -69,16 +69,16 @@ more info:
       "status": 200,
       "data": [
                 {
-                    "partyId": 1,
+                    "id": 1,
                     "name": "Peoples Democratic Party",
-                    "address": "21, Ilupeju Road, Ikeja",
-                    "logo": "http://mylogopdp.com/pdp"
+                    "address": "Ikeja, Lagos",
+                    "logo": "http://example.com/pdp"
                 },
                 {
-                    "partyId": 2,
-                    "name": "Alliance National Peoples party",
-                    "address": "2, James Owl lane, VI",
-                    "logo": "http://mylogodp.com/anpp"
+                    "id": 2,
+                    "name": "APC",
+                    "address": "Abuja, Nigeria",
+                    "logo": "http://example.com/apc"
                 }
             ]
         }
@@ -92,10 +92,10 @@ more info:
       "status": 200,
       "data": [
           {
-              "partyId": 1,
-              "name": "Peoples Democratic Party",
-              "address": "21, Ilupeju Road, Ikeja",
-              "logo": "http://mylogopdp.com/pdp"
+              "id": 1,
+                "name": "Peoples Democratic Party",
+                "address": "Ikeja, Lagos",
+                "logo": "http://example.com/pdp"
           }
       ]
   }</td>
@@ -108,10 +108,10 @@ more info:
       "status": 201,
       "data": [
           {
-              "partyId": 3,
-              "address": "No 21,nejhfeuhebwejbgwj",
+              "id": 3,
+              "address": "No 235 ikorodu road",
               "name": "Councillor",
-              "logo": "http://logo.co"
+              "logo": "http://example.co"
           }
       ]
   }</td>
@@ -121,10 +121,10 @@ more info:
       <td>/api/v1/parties/:id</td>
       <td>Updates a specific party</td>
       <td>{
-    "status": 200,
+    "status": 201,
     "data": [
         {
-            "partyId": 2,
+            "id": 2,
             "name": "Councillor",
             "address": "No 21,nejhfeuhebwejbgwj",
             "logo": "http://logo.co"
@@ -138,20 +138,13 @@ more info:
       <td>/api/v1/parties/:id</td>
       <td>Deletes a specific political party</td>
       <td>{
-    "status": 204,
+    "status": 200,
     "data": [
         {
-            "partyId": 2,
-            "name": "Councillor",
-            "address": "No 21,nejhfeuhebwejbgwj",
-            "logo": "http://logo.co"
-        },
-        {
-            "partyId": 3,
-            "address": "No 21,nejhfeuhebwejbgwj",
-            "name": "Councillor",
-            "logo": "http://logo.co"
+            "status",
+            "data": "party successfully deleted"
         }
+        
     ]
 }
       </td>
@@ -164,7 +157,7 @@ more info:
     "status": 200,
     "data": [
         {
-            "officeId": 2,
+            "id": 2,
             "type": "State",
             "name": "Governor",
             "description": "Office of the Governor of Lagos State"
@@ -181,19 +174,51 @@ more info:
         "status": 200,
         "data": [
             {
-                "officeId": 1,
+                "id": 1,
                 "type": "Federal",
                 "name": "President",
                 "description": "Office of the president of the federal republic of Nigeria"
             },
             {
-                "officeId": 2,
+                "id": 2,
                 "type": "State",
                 "name": "Governor",
                 "description": "Office of the Governor of Lagos State"
             }
         ]
     }
+      </td>
+    </tr>
+    <tr>
+      <td>PATCH /offices/:id</td>
+      <td>/api/v1/offices/:id</td>
+      <td>Updates a specific office</td>
+      <td>{
+    "status": 201,
+    "data": [
+        {
+            "id": 2,
+            "officeName": "Councillor",
+            "officeType": "local",
+        }
+    ]
+}
+      </td>
+    </tr>
+    <tr>
+      <td>DELETE /offices/:id</td>
+      <td>/api/v1/offices/:id</td>
+      <td>Deletes a specific political office</td>
+      <td>{
+    "status": 200,
+    "data": [
+        {
+            "status",
+            "data": "office successfully deleted"
+        }
+        
+    ]
+}
       </td>
     </tr>
     

@@ -15,14 +15,14 @@ router.get('/', (req, res) => {
 router.post('/parties', Party.createParty);
 router.get('/parties', Party.getAllParties);
 router.get('/parties/:id', Party.getSingleParty);
-router.patch('/parties/:id/:partyName', Party.editParty);
+router.patch('/parties/:id/:identifier', Party.editParty);
 router.delete('/parties/:id', Party.deleteParty);
 
 
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSingleOffice);
-router.patch('/offices/:id/:officeName', Office.editOffice);
+router.patch('/offices/:id/:identifier', Office.editOffice);
 router.delete('/offices/:id', Office.deleteOffice);
 
 
