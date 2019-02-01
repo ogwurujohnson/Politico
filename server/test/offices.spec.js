@@ -56,6 +56,7 @@ describe('Offices', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
+          res.body.data.should.be.a('array');
           done();
         });
     });

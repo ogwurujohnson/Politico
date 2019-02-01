@@ -52,7 +52,6 @@ const Office = {
       data: [office],
     });
   },
-  
 };
 
 export default Office;

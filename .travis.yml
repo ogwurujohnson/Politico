@@ -1,0 +1,20 @@
+language: node_js
+node_js: "8.11.1"
+
+notifications:
+  email: false
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=1483b924cb0df1f7f2d973afc21d5845ddd8c8118076f99cc6971db5d9beb7fe
+
+before_script:
+  - npm install nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - nyc --reporter=lcov --reporter=text-lcov npm test
+
+after_success:
+  npm run coverage

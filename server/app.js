@@ -16,7 +16,7 @@ app.use('/api/v1', partyRouter);
 
 // app.get('/api/v1', (req, res) => res.status(200).send({ message: 'Yay, server setup complete' }));
 
-const port = process.env.PORT || 7700;
+const port = process.env.PORT || 4500;
 
 app.listen(port, () => {
   console.log(`Application running on port ${port}`);
