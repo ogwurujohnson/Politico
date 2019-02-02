@@ -447,7 +447,8 @@ div .container {
   #user-activity-2 {
     width: 50%;
     margin: auto;
-    margin-top: -300px;  
+    margin-top: -550px;  
+    margin-left: 30%;
   }
 }
 
