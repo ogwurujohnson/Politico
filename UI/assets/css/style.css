@@ -176,8 +176,8 @@ header .auth-button {
 /**laptop screens */
 @media screen and (min-width: 1280px) {
   .landing-page h2 {
-    font-weight: 400;
-    font-size: 60px;
+    font-weight: 200;
+    font-size: 40px;
   }
 
   .sign-up-form {
