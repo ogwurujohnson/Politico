@@ -188,7 +188,7 @@ header .auth-button {
     width: 300px;
     box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
     text-align: center;
-    margin: -170px 50px 50px 900px;
+    margin: -125px 50px 50px 900px;
   }
 
   .sign-up-form p {
@@ -247,8 +247,11 @@ header .auth-button {
     display: none;
   }
 
-  .landing-page h2 {
+  .landing-page .side-write-up {
+    margin-left: -690px;
     text-align: left;
+    display: block;
+    padding-right: 20px;
   }
 
 }
