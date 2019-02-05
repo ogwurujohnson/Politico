@@ -171,6 +171,13 @@ header .auth-button {
     font-weight: 700;
     font-size: 60px; 
   }
+
+  .landing-page .side-write-up {
+    margin-left: -690px;
+    text-align: left;
+    display: block;
+    padding-right: 10px;
+  }
 }
 
 /**laptop screens */
@@ -188,7 +195,7 @@ header .auth-button {
     width: 300px;
     box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
     text-align: center;
-    margin: -220px 50px 50px 900px;
+    margin: -125px 50px 50px 900px;
   }
 
   .sign-up-form p {
@@ -209,7 +216,7 @@ header .auth-button {
   input[type=phone],
   select,
   textarea {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     display: block;
     border: 1px solid #ccc;
@@ -218,6 +225,7 @@ header .auth-button {
     font-size: 13px;
     font-family: Ubuntu;
     margin-top: 10px;
+    margin-left: -15px;
   }
 
   label {
@@ -231,7 +239,7 @@ header .auth-button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    margin: 8px 10px 8px 50px;
+    margin: 8px 10px 8px 40px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -246,10 +254,22 @@ header .auth-button {
     display: none;
   }
 
-  .landing-page h2 {
+  .landing-page .side-write-up {
+    margin-left: -600px;
     text-align: left;
+    display: block;
+    padding-right: 20px;
   }
 
+}
+
+@media screen and (min-width: 1440px) {
+  .landing-page .side-write-up {
+    margin-left: -750px;
+    text-align: left;
+    display: block;
+    padding-right: 20px;
+  }
 }
 
 .footer {
@@ -388,20 +408,20 @@ header .auth-button {
 @media (max-width: 880px) {
 
 	.footer{
-		font: bold 14px sans-serif;
+    font: bold 14px sans-serif;
+    margin-top: 20%;
 	}
 
-	.footer .footer-left,
+	.footer .footer-left{
+		display: inline-block;
+		width: 100%;
+    text-align: center;
+  }
+
 	.footer .footer-center,
 	.footer .footer-right{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
+		display: none;
 	}
-
-	.footer .footer-center i{
-		margin-left: 0;
-	}
+  
 
 }

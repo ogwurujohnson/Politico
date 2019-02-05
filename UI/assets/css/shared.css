@@ -2,6 +2,12 @@
  text-decoration: none;
 }
 
+a {
+  color: #111;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .page-title {
   margin: auto;
   font-family: Catamaran;
@@ -28,6 +34,7 @@
 #table td, #table th {
   border: 1px solid #ddd;
   padding: 8px;
+  color: #111;
 }
 
 #table th {
