@@ -3,22 +3,10 @@ import pg from 'pg';
 import dotenv from 'dotenv';
 import bcrypt from '../helpers/bcrypt';
 
-
-// const path = require('path');
-
 dotenv.config();
 
-// let dbUrl;
 const nodeEnv = process.env.NODE_ENV;
-/* if (nodeEnv === 'development') {
-  dbUrl = process.env.DATABASE_URL;
-  console.log('yeah');
-} else if (nodeEnv === 'test') {
-  dbUrl = process.env.TEST_DATABASE_URL;
-}
- const config = ({
-  dbUrl,
-}); */
+
 
 let dbName;
 if (nodeEnv === 'development') {
