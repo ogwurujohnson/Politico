@@ -1,4 +1,4 @@
-import OfficeModel from '../models/office';
+import OfficeModel from '../Data_struct/office';
 
 const Office = {
   /**

@@ -1,4 +1,4 @@
-import PartyModel from '../models/party';
+import PartyModel from '../Data_struct/party';
 
 const Party = {
   /**
