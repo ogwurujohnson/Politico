@@ -1,10 +1,10 @@
 import uuid from 'uuid';
+import pg from 'pg';
+import dotenv from 'dotenv';
 import bcrypt from '../helpers/bcrypt';
 
-const pg = require('pg');
-// const path = require('path');
-const dotenv = require('dotenv');
 
+// const path = require('path');
 
 dotenv.config();
 
