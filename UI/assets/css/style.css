@@ -171,6 +171,13 @@ header .auth-button {
     font-weight: 700;
     font-size: 60px; 
   }
+
+  .landing-page .side-write-up {
+    margin-left: -690px;
+    text-align: left;
+    display: block;
+    padding-right: 10px;
+  }
 }
 
 /**laptop screens */
@@ -248,12 +255,21 @@ header .auth-button {
   }
 
   .landing-page .side-write-up {
-    margin-left: -690px;
+    margin-left: -600px;
     text-align: left;
     display: block;
     padding-right: 20px;
   }
 
+}
+
+@media screen and (min-width: 1440px) {
+  .landing-page .side-write-up {
+    margin-left: -750px;
+    text-align: left;
+    display: block;
+    padding-right: 20px;
+  }
 }
 
 .footer {
@@ -392,20 +408,20 @@ header .auth-button {
 @media (max-width: 880px) {
 
 	.footer{
-		font: bold 14px sans-serif;
+    font: bold 14px sans-serif;
+    margin-top: 20%;
 	}
 
-	.footer .footer-left,
+	.footer .footer-left{
+		display: inline-block;
+		width: 100%;
+    text-align: center;
+  }
+
 	.footer .footer-center,
 	.footer .footer-right{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
+		display: none;
 	}
-
-	.footer .footer-center i{
-		margin-left: 0;
-	}
+  
 
 }

@@ -16,14 +16,14 @@ body {
   margin: 0;
 }
 
-/*#wrap {
+#wrap {
   min-height: -webkit-calc(100% - 100px);     /* Chrome */
   min-height: -moz-calc(100% - 100px);     /* Firefox */
   min-height: calc(100% - 100px);     /* native */
-} */
+} 
 
-.main-container {
-  min-height: 100vh;
+main {
+  min-height: 50vh;
   overflow: hidden;
   display: block;
   position: relative;
@@ -518,10 +518,10 @@ div .container {
   font: bold 16px Catamaran;
   padding: 55px 50px;
   width: 100%;
-  bottom:0;
   position: relative;
   clear:both;
   margin-top: 10%;
+  margin-bottom: 0%;
 }
 
 .footer .footer-left,
@@ -653,6 +653,7 @@ div .container {
 	.footer{
     font: bold 14px sans-serif;
     margin-top: 20%;
+    margin-bottom: 0;
 	}
 
 	.footer .footer-left{
