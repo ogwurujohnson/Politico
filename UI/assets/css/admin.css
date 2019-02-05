@@ -233,9 +233,10 @@ input[type=submit]:hover {
 }
 
 /**admin summary BEGINS */
-div .card-grid {
-  width: 100%;
-  margin-top: 10%;
+.card-grid {
+  width: 20%;
+  margin-top: 70px;
+  margin-left: 20px;
 }
 
 div .card {
@@ -447,8 +448,8 @@ div .container {
   #user-activity-2 {
     width: 50%;
     margin: auto;
-    margin-top: -550px;
-    margin-left: 30%;  
+    margin-top: -590px;
+    margin-left: 40%;  
   }
 }
 
