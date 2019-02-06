@@ -71,4 +71,57 @@ export default {
       );
     });
   },
+  /**
+   * @description login an existing user
+   *
+   * @function loginUser
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} json data
+   */
+  loginUser: (req, res) => {
+    const text = 'SELECT * FROM tblusers WHERE email=$1';
+    const { email, password } = req.body;
+    db.query(text, [email], (err, result) => {
+      if (err) {
+        return res.status(400).json({
+          status: 400,
+          error: 'There was a probem trying to sign in user',
+        });
+      }
+      const user = result.rows[0];
+      if (!user) {
+        return res.status(404).json({
+          status: 404,
+          error: 'No user found',
+        });
+      }
+      const encryptedPassword = result.rows[0].password;
+      const validPassword = bcrypt.comparePassword(password, encryptedPassword);
+      if (!validPassword) {
+        return res.status(401).json({
+          status: 401,
+          error: 'Email or password does not match',
+        });
+      }
+      const token = Helper.generateToken(result.rows[0].id);
+      return res.status(200).json({
+        status: 200,
+        data: [
+          {
+            token,
+            user: {
+              id: result.rows[0].id,
+              firstname: result.rows[0].firstname,
+              lastname: result.rows[0].lastname,
+              othername: result.rows[0].othername,
+              phonenumber: result.rows[0].phoneNumber,
+              email: result.rows[0].email,
+              passporturl: result.rows[0].passportUrl,
+            },
+          },
+        ],
+      });
+    });
+  },
 };
