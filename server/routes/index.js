@@ -2,6 +2,7 @@ import express from 'express';
 import Party from '../controllers/party';
 import Office from '../controllers/office';
 import Auth from '../controllers/auth';
+import User from '../controllers/user';
 
 const router = express.Router();
 
@@ -26,6 +27,7 @@ router.delete('/parties/:id', Party.deleteParty);
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSpecificOffice);
+router.post('/office/:uId/register', User.declareInterest);
 
 router.all('*', (req, res) => {
   res.status(404).json({
