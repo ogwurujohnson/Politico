@@ -283,7 +283,7 @@ div .container {
 .candidates-grid {
   display: flex;
   flex-flow: row wrap;
-  width: 100%; /* 4 items * item width(100+5+5) = 440 */
+  width: 100%;/* 4 items * item width(100+5+5) = 440 */
 }
 
 .candidates-grid .single-candidate {
@@ -300,11 +300,17 @@ div .container {
 
 .candidate-image {
   width: 200px;
+  height: 250px;
+  margin: auto;
 }
 
 @media screen and (max-width: 414px){
   .candidate-image {
-    width: 50px;
+    width: 100px;
+    height: 50px;
+  }
+  .candidates-grid .single-candidate {
+    padding: 10px;
   }
   .candidates-grid .single-candidate p {
     font-size: 8px;
