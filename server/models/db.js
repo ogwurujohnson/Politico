@@ -39,7 +39,7 @@ if (nodeEnv === 'development' || nodeEnv === 'test') {
 const db = pool;
 
 pool.on('connect', () => {
-  logger.log('connected to the db');
+  console.log('connected to the db');
 });
 
 /**

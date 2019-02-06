@@ -1,99 +1,120 @@
-import OfficeModel from '../Data_struct/office';
+import uuidv4 from 'uuid/v4';
+import moment from 'moment';
+import logger from 'winston';
+import dbHelper from '../models/index';
+import Helper from '../helpers/helper';
 
-const Office = {
-  /**
-   * @author Johnson Ogwuru
-   * @param {object} req
-   * @param {object} res
-   * @returns [array] office array
-   */
+const { db } = dbHelper;
 
-  createOffice(req, res) {
-    if (!req.body.officeName || !req.body.officeType) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Office name and type Required',
-      });
-    }
-    const office = OfficeModel.createOffice(req.body);
-    return res.status(201).json({
-      status: 201,
-      data: [office],
+export default {
+  /**
+   * @description create new office
+   * @function createOffice
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} office object
+   */
+  createOffice: (req, res) => {
+    const text = 'INSERT INTO tbloffice(id, type, name, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5) RETURNING *';
+    const {
+      type, officename,
+    } = req.body;
+    const id = uuidv4();
+    const date = moment(new Date());
+
+    db.query('SELECT * FROM tbloffice WHERE name=$1', [officename], (err, resp) => {
+      if (err) {
+        logger.log(err);
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount > 0) {
+        return res.status(409).json({
+          status: 409,
+          error: 'An office with the name exists',
+        });
+      }
+      return db.query(
+        text,
+        [id, type, officename, date, date],
+        (error, result) => {
+          if (error) {
+            logger.log(error);
+            return res.status(400).json({
+              status: 400,
+              error: 'There was a problem creating office',
+            });
+          }
+          return res.status(201).json({
+            status: 201,
+            data: [{
+              id: result.rows[0].id,
+              type: result.rows[0].type,
+              officename: result.rows[0].name,
+            }],
+          });
+        },
+      );
     });
   },
   /**
+   * @description get all offices
+   * @function getAllOffices
    * @param {object} req
    * @param {object} res
-   * @returns [array] an array of office objects
+   * @returns [array] array of office objects
    */
-  getAllOffices(req, res) {
-    const offices = OfficeModel.getAllOffices();
-    return res.status(200).json({
-      status: 200,
-      data: offices,
+  getAllOffices: (req, res) => {
+    db.query('SELECT * FROM tbloffice', (err, resp) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occured',
+        });
+      }
+      if (resp.rowCount < 1) {
+        return res.status(400).json({
+          status: 404,
+          error: 'No offices available',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: [resp.rows],
+      });
     });
   },
   /**
+   * @description get a specific office
+   * @function getSpecificOffice
    * @param {object} req
    * @param {object} res
-   * @return [array] an array of a single office object
+   * @returns [array] array of office object
    */
-  getSingleOffice(req, res) {
-    const id = Number(req.params.id);
-    const office = OfficeModel.getSingleOffice(id);
-    if (!office) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Office not found',
+  getSpecificOffice: (req, res) => {
+    const text = 'SELECT * FROM tbloffice WHERE id=$1';
+    const { id } = req.params;
+    db.query(text, [id], (err, resp) => {
+      if (err) {
+        logger.log(err);
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Office not found',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: [resp.rows],
       });
-    }
-    return res.status(200).json({
-      status: 200,
-      data: [office],
-    });
-  },
-  /**
-   * @param {object} req
-   * @param {object} res
-   * @returns [array] an array containing the updated office object
-   */
-  editOffice(req, res) {
-    const id = Number(req.params.id);
-    const office = OfficeModel.getSingleOffice(id);
-    const { identifier } = req.params;
-    const { userInput } = req.body;
-    if (!office) {
-      return res.status(404).json({
-        status: 401,
-        error: 'Office not found',
-      });
-    }
-    const updatedOffice = OfficeModel.editOffice(id, identifier, userInput);
-    return res.status(201).json({
-      status: 201,
-      data: [updatedOffice],
-    });
-  },
-  /**
-   * @param {object} req
-   * @param {object} res
-   * @returns {void} returns code 204
-   */
-  deleteOffice(req, res) {
-    const id = Number(req.params.id);
-    const office = OfficeModel.getSingleOffice(id);
-    if (!office) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Office not found',
-      });
-    }
-    OfficeModel.deleteOffice(id);
-    return res.status(200).json({
-      status: 200,
-      data: 'Office deleted Successfully',
     });
   },
 };
-
-export default Office;
