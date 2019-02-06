@@ -29,6 +29,8 @@ router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSpecificOffice);
 router.post('/office/:uId/register', User.declareInterest);
 
+router.post('/vote', User.voteCandidate);
+
 router.all('*', (req, res) => {
   res.status(404).json({
     status: 404,
