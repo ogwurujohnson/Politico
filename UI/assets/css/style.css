@@ -121,7 +121,7 @@ header .auth-button {
   width: 100%;
   height: calc(100vh - 100px);
   background-image: url('../img/election-landing.jpg');
-  /*background-color: #447f70;*/
+  background-color: rgba(255, 255, 255, 0.493);
   background-blend-mode: screen;
   background-repeat: no-repeat;
   background-position: center;
@@ -150,7 +150,7 @@ header .auth-button {
   font-family: Catamaran;
   font-size: 18px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   cursor: pointer;
   transform: translate(-50%, -50%);
@@ -186,47 +186,8 @@ header .auth-button {
     font-weight: 200;
     font-size: 40px;
   }
+  
 
-  .sign-up-form {
-    display: block;
-    border-radius: 5px;
-    background-color: transparent;
-    padding: 30px 30px 50px 55px;
-    width: 300px;
-    box-shadow: 0 4px 8px 0 #111, 0 6px 20px 0 #111;
-    text-align: center;
-    margin: -125px 50px 50px 900px;
-  }
-
-  .sign-up-form p {
-    text-align: center;
-    font-family: Catamaran;
-    font-size: 14px;
-    text-align: center;
-    padding-right: 50px;
-    padding-bottom: 15px;
-    text-transform: uppercase;
-  }
-
-  input[type=text],
-  input[type=email],
-  input[type=password],
-  input[type=date],
-  input[type=file],
-  input[type=phone],
-  select,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    font-size: 13px;
-    font-family: Ubuntu;
-    margin-top: 10px;
-    margin-left: -15px;
-  }
 
   label {
     padding: 12px 12px 12px 0;
@@ -250,9 +211,7 @@ header .auth-button {
     background-color: #45a049;
   }
 
-  .auth-big-button {
-    display: none;
-  }
+ 
 
   .landing-page .side-write-up {
     margin-left: -600px;
@@ -409,7 +368,7 @@ header .auth-button {
 
 	.footer{
     font: bold 14px sans-serif;
-    margin-top: 20%;
+    margin-top: 0%;
 	}
 
 	.footer .footer-left{
