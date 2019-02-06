@@ -38,9 +38,7 @@ if (nodeEnv === 'development' || nodeEnv === 'test') {
 
 const db = pool;
 
-pool.on('connect', () => {
-  console.log('connected to the db');
-});
+pool.on('connect', () => {});
 
 /**
  * Create Tables
