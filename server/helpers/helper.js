@@ -9,9 +9,10 @@ const Helper = {
    * @param { string } id
    * @returns { string } token
    */
-  generateToken(id) {
+  generateToken(id, admin) {
     const token = jwt.sign({
       userId: id,
+      isAdmin: admin,
     },
     process.env.SECRET, { expiresIn: '24h' });
     return token;

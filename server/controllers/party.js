@@ -1,99 +1,164 @@
-import PartyModel from '../Data_struct/party';
+import uuidv4 from 'uuid/v4';
+import moment from 'moment';
+import dbHelper from '../models/index';
 
-const Party = {
-  /**
-   * @author Johnson Ogwuru
-   * @param {object} req
-   * @param {object} res
-   * @returns [array] party array
-   */
+const { db } = dbHelper;
 
-  createParty(req, res) {
-    if (!req.body.partyName || !req.body.logoUrl) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Party Name and Logo Required',
-      });
-    }
-    const party = PartyModel.createParty(req.body);
-    return res.status(201).json({
-      status: 201,
-      data: [party],
+export default {
+  /**
+   * @description create new party
+   * @function createParty
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} party object
+   */
+  createParty: (req, res) => {
+    const text = 'INSERT INTO tblparty(id, name, hqAddress, logoUrl, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
+    const {
+      partyname, hqaddress, logourl,
+    } = req.body;
+    const id = uuidv4();
+    const date = moment(new Date());
+
+    db.query('SELECT * FROM tblparty WHERE name=$1', [partyname], (err, resp) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount > 0) {
+        return res.status(409).json({
+          status: 409,
+          error: 'A party with the name exists',
+        });
+      }
+      return db.query(
+        text,
+        [id, partyname, hqaddress, logourl, date, date],
+        (error, result) => {
+          if (error) {
+            return res.status(400).json({
+              status: 400,
+              error: 'There was a problem creating party',
+            });
+          }
+          return res.status(201).json({
+            status: 201,
+            data: [{
+              id: result.rows[0].id,
+              partyname: result.rows[0].name,
+              hqaddress: result.rows[0].hqaddress,
+              logourl: result.rows[0].logourl,
+            }],
+          });
+        },
+      );
     });
   },
   /**
+   * @description get all parties
+   * @function getAllParties
    * @param {object} req
    * @param {object} res
-   * @returns [array] an array of party objects
+   * @returns [array] array of party objects
    */
-  getAllParties(req, res) {
-    const parties = PartyModel.getAllParties();
-    return res.status(200).json({
-      status: 200,
-      data: parties,
+  getAllParties: (req, res) => {
+    db.query('SELECT * FROM tblparty', (err, resp) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occured',
+        });
+      }
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          data: resp.rows,
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: resp.rows,
+      });
     });
   },
   /**
+   * @description get a specific party
+   * @function getSpecificParty
    * @param {object} req
    * @param {object} res
-   * @returns [array] an array of a single party object
+   * @returns [array] array of party object
    */
-  getSingleParty(req, res) {
-    const id = Number(req.params.id);
-    const party = PartyModel.getSingleParty(id);
-    if (!party) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Party not found',
+  getSpecificParty: (req, res) => {
+    const text = 'SELECT * FROM tblparty WHERE id=$1';
+    const { id } = req.params;
+    db.query(text, [id], (err, resp) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          data: resp.rows,
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: resp.rows,
       });
-    }
-    return res.status(200).json({
-      status: 200,
-      data: [party],
     });
   },
   /**
+   * @description delete a specific party
+   * @function deleteParty
    * @param {object} req
    * @param {object} res
-   * @returns [array] an array containing the updated party object
    */
-  editParty(req, res) {
-    const id = Number(req.params.id);
-    const { identifier } = req.params;
-    const { userInput } = req.body;
-    const party = PartyModel.getSingleParty(id);
-    if (!party) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Party not found',
+  deleteParty: (req, res) => {
+    const { id } = req.params;
+    const text = 'DELETE FROM tblparty WHERE id=$1';
+
+    db.query(text, [id], (err, resp) => {
+      if (err) {
+        res.status(500).json({
+          status: 500,
+          error: 'unexpected error occurred',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        message: `Party deleted ${resp}`,
       });
-    }
-    const updatedParty = PartyModel.editParty(id, identifier, userInput);
-    return res.status(201).json({
-      status: 201,
-      data: [updatedParty],
     });
   },
   /**
+   * @description edit a specific party
+   * @function editSpecificParty
    * @param {object} req
    * @param {object} res
-   * @returns {void} returns code 204
+   * @returns [array] array of party object
    */
-  deleteParty(req, res) {
-    const id = Number(req.params.id);
-    const party = PartyModel.getSingleParty(id);
-    if (!party) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Party not found',
+  editSpecificParty: (req, res) => {
+    const text = 'UPDATE tblparty SET name=$1, hqAddress=$2, logoUrl=$3, modifiedDate=$4 WHERE id=$5 RETURNING *';
+    const { partyname, hqaddress, logourl } = req.body;
+    const { id } = req.params;
+    const date = moment(new Date());
+
+    db.query(text, [partyname, hqaddress, logourl, date, id], (err, resp) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'unexpected error occurred',
+        });
+      }
+      return res.status(201).json({
+        status: 201,
+        data: resp.rows,
       });
-    }
-    const deletedParties = PartyModel.deleteParty(id);
-    return res.status(200).json({
-      status: 200,
-      data: 'party deleted successfully',
     });
   },
 };
-
-export default Party;

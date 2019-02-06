@@ -18,16 +18,14 @@ router.post('/auth/login', Auth.loginUser);
 
 router.post('/parties', Party.createParty);
 router.get('/parties', Party.getAllParties);
-router.get('/parties/:id', Party.getSingleParty);
-router.patch('/parties/:id/:identifier', Party.editParty);
+router.get('/parties/:id', Party.getSpecificParty);
+router.patch('/parties/:id', Party.editSpecificParty);
 router.delete('/parties/:id', Party.deleteParty);
 
 
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
-router.get('/offices/:id', Office.getSingleOffice);
-router.patch('/offices/:id/:identifier', Office.editOffice);
-router.delete('/offices/:id', Office.deleteOffice);
+router.get('/offices/:id', Office.getSpecificOffice);
 
 router.all('*', (req, res) => {
   res.status(404).json({

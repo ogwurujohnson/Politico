@@ -29,7 +29,7 @@ export default {
         logger.log(err);
         return res.status(500).json({
           status: 500,
-          error: 'An unexpected error occured',
+          error: 'An unexpected error occurred',
         });
       }
       if (resp.rowCount > 0) {
@@ -51,7 +51,7 @@ export default {
             });
           }
           // create token with hwt that expires in 24hrs
-          const token = Helper.generateToken(result.rows[0].id);
+          const token = Helper.generateToken(result.rows[0].id, result.rows[0].isadmin);
           return res.status(201).json({
             status: 201,
             data: [
@@ -63,6 +63,7 @@ export default {
                   lastname: result.rows[0].lastname,
                   email: result.rows[0].email,
                   phonenumber: result.rows[0].phoneNumber,
+                  isadmin: result.rows[0].isAdmin,
                 },
               },
             ],
@@ -118,6 +119,7 @@ export default {
               phonenumber: result.rows[0].phoneNumber,
               email: result.rows[0].email,
               passporturl: result.rows[0].passportUrl,
+              isadmin: result.rows[0].isAdmin,
             },
           },
         ],

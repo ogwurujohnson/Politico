@@ -4,7 +4,7 @@
   "description": "Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.",
   "main": "./server/app.js",
   "scripts": {
-    "start": "babel-node ./server/app.js",
+    "start": "set NODE_ENV=test&& babel-node server/models/db.js createAllTables&& babel-node ./server/app.js",
     "start:dev": "babel-watch ./server/app.js",
     "test": "set NODE_ENV=test&& babel-node server/models/db.js createAllTables && babel-node server/models/db.js seedAllTables --exec && nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill server/test/* --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
