@@ -51,7 +51,7 @@ export default {
             });
           }
           // create token with hwt that expires in 24hrs
-          const token = Helper.generateToken(result.rows[0].id);
+          const token = Helper.generateToken(result.rows[0].id, result.rows[0].isadmin);
           return res.status(201).json({
             status: 201,
             data: [

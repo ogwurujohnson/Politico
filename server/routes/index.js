@@ -18,8 +18,8 @@ router.post('/auth/login', Auth.loginUser);
 
 router.post('/parties', Party.createParty);
 router.get('/parties', Party.getAllParties);
-router.get('/parties/:id', Party.getSingleParty);
-router.patch('/parties/:id/:identifier', Party.editParty);
+router.get('/parties/:id', Party.getSpecificParty);
+router.patch('/parties/:id', Party.editSpecificParty);
 router.delete('/parties/:id', Party.deleteParty);
 
 

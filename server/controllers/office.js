@@ -78,12 +78,12 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(400).json({
           status: 404,
-          error: 'No offices available',
+          data: resp.rows,
         });
       }
       return res.status(200).json({
         status: 200,
-        data: [resp.rows],
+        data: resp.rows,
       });
     });
   },
@@ -108,12 +108,12 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          error: 'Office not found',
+          data: resp.rows,
         });
       }
       return res.status(200).json({
         status: 200,
-        data: [resp.rows],
+        data: resp.rows,
       });
     });
   },
