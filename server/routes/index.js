@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 
 router.post('/auth/signup', Auth.createUser);
 router.post('/auth/login', Auth.loginUser);
+router.post('/auth/reset', Auth.resetPassword);
 
 
 router.post('/parties', Party.createParty);
