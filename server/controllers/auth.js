@@ -123,4 +123,31 @@ export default {
       });
     });
   },
+  /**
+   * @description reset user password
+   *
+   * @function resetPassword
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} json data
+   */
+  resetPassword: (req, res) => {
+    const { email } = req.body;
+    db.query('SELECT * FROM tblusers WHERE email=$1', [email], (err, resp) => {
+      if (resp.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          error: 'email not found',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: [{
+            message: 'Check your email for password reset link',
+            email,
+          }],
+        });
+      }
+    });
+  },
 };
