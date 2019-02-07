@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import dbHelper from '../models/index';
+import log from './winston';
 
 const { db } = dbHelper;
 
@@ -53,9 +54,9 @@ const Helper = {
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error);
+        log.info(error);
       } else {
-        console.log(`Email sent: ${info.response}`);
+        log.info(`Email sent: ${info.response}`);
       }
     });
   },
