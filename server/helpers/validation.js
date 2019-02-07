@@ -17,35 +17,35 @@ export default {
       || typeof firstname !== 'string'
       || firstname.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid firstname',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid firstname',
       });
     } else if (
       !lastname
       || typeof lastname !== 'string'
       || lastname.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid lastname',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid lastname',
       });
     } else if (
       typeof othername !== 'string'
       || othername.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid othername',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid othername',
       });
     } else if (
       !email
       || email.toString().trim() === ''
       || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid email',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid email',
       });
     } else if (
       !password
@@ -54,9 +54,9 @@ export default {
       || /[<>]/.test(password) === true
       || /[=]/.test(password) === true
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid password',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid password',
       });
     }
     return next();
@@ -75,9 +75,9 @@ export default {
       || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false
       || email.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid email',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid email',
       });
     } else if (
       !password
@@ -86,9 +86,9 @@ export default {
       || /[<>]/.test(password) === true
       || /[=]/.test(password) === true
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid password',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid password',
       });
     }
     return next();
@@ -107,27 +107,27 @@ export default {
       || typeof partyname !== 'string'
       || partyname.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid partyname',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid partyname',
       });
     } else if (
       !hqaddress
       || typeof hqaddress !== 'string'
       || hqaddress.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid hqaddress',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid hqaddress',
       });
     } else if (
       !logourl
       || typeof logourl !== 'string'
       || logourl.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid logourl',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid logourl',
       });
     }
     return next();
@@ -146,18 +146,44 @@ export default {
       || typeof type !== 'string'
       || type.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid office type',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid office type',
       });
     } else if (
       !officename
       || typeof officename !== 'string'
       || officename.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid office name',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid office name',
+      });
+    }
+    return next();
+  },
+  idQueryParameter: (req, res, next) => {
+    const { id } = req.params;
+    if (
+      !id
+      || typeof id !== 'number'
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid id query parameter',
+      });
+    }
+    return next();
+  },
+  uIdQueryParameter: (req, res, next) => {
+    const { uId } = req.params;
+    if (
+      !uId
+      || typeof uId !== 'number'
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid uId query parameter',
       });
     }
     return next();
