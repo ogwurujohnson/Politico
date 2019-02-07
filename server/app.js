@@ -4,6 +4,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import 'babel-polyfill';
 import router from './routes/index';
+import log from './helpers/winston';
 
 // import dotenv config
 dotenv.config();
@@ -33,7 +34,7 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
-  console.log(`Application running on port ${port}`);
+  log.info(`Application running on port ${port}`);
 });
 
 export default app;

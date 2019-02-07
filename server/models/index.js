@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import pg from 'pg';
-import logger from 'winston';
+import log from '../helpers/winston';
 
 dotenv.config();
 
@@ -47,7 +47,7 @@ if (nodeEnv === 'development' || nodeEnv === 'test') {
 const db = pool;
 
 pool.on('connect', () => {
-  console.log('connected to the db');
+  log.info('connected to the db');
 });
 
 export default {

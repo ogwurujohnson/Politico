@@ -1,6 +1,4 @@
-import uuidv4 from 'uuid/v4';
 import moment from 'moment';
-import logger from 'winston';
 import dbHelper from '../models/index';
 import Helper from '../helpers/helper';
 import bcrypt from '../helpers/bcrypt';
@@ -102,7 +100,8 @@ export default {
           error: 'Email or password does not match',
         });
       }
-      const token = Helper.generateToken(result.rows[0].id);
+      const admin = result.rows[0].isadmin;
+      const token = Helper.generateToken(result.rows[0].id, admin);
       return res.status(200).json({
         status: 200,
         data: [
@@ -116,7 +115,7 @@ export default {
               phonenumber: result.rows[0].phoneNumber,
               email: result.rows[0].email,
               passporturl: result.rows[0].passportUrl,
-              isadmin: result.rows[0].isAdmin,
+              isadmin: result.rows[0].isadmin,
             },
           },
         ],

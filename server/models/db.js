@@ -1,7 +1,7 @@
-import uuid from 'uuid';
 import pg from 'pg';
 import dotenv from 'dotenv';
 import bcrypt from '../helpers/bcrypt';
+import log from '../helpers/winston';
 
 dotenv.config();
 
@@ -72,11 +72,11 @@ const createUserTable = () => {
     )`;
   pool.query(userTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -93,11 +93,11 @@ const createPartyTable = () => {
   )`;
   pool.query(partyTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -113,11 +113,11 @@ const createOfficeTable = () => {
   )`;
   pool.query(officeTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -132,11 +132,11 @@ const createCandidateTable = () => {
   )`;
   pool.query(candidateTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -152,11 +152,11 @@ const createVoteTable = () => {
   )`;
   pool.query(voteTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -172,11 +172,11 @@ const createPetitionTable = () => {
   )`;
   pool.query(petitionTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -189,11 +189,11 @@ const dropUserTable = () => {
   const userTable = 'DROP TABLE IF EXISTS tblusers';
   pool.query(userTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -202,11 +202,11 @@ const dropPartyTable = () => {
   const partyTable = 'DROP TABLE IF EXISTS tblparty';
   pool.query(partyTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -215,11 +215,11 @@ const dropOfficeTable = () => {
   const officeTable = 'DROP TABLE IF EXISTS tbloffice';
   pool.query(officeTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -228,11 +228,11 @@ const dropCandidateTable = () => {
   const candidateTable = 'DROP TABLE IF EXISTS tblcandidates';
   pool.query(candidateTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -241,11 +241,11 @@ const dropVoteTable = () => {
   const voteTable = 'DROP TABLE IF EXISTS tblvotes';
   pool.query(voteTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -254,11 +254,11 @@ const dropPetitionTable = () => {
   const petitionTable = 'DROP TABLE IF EXISTS tblpetition';
   pool.query(petitionTable)
     .then((res) => {
-      console.log(res);
+      log.info(res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      log.info(err);
       pool.end();
     });
 };
@@ -268,19 +268,19 @@ const seedUserTable = () => {
   const text = 'INSERT INTO tblusers(firstname, lastname, othername, password, email, phonenumber, passporturl, isadmin) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
   db.query('SELECT * FROM tblusers WHERE email=$1', ['ogwurujohnson@gmail.com'], (err, resp) => {
     if (err) {
-      console.log(err);
+      log.info(err);
     }
     if (resp.rowCount >= 1) {
-      console.log('User with email already exists');
+      log.info('User with email already exists');
     }
     return db.query(
       text,
       ['Johnson', 'Ogwuru', 'Onyekachi', bcrypt.hashPassword('Johnny55'), 'ogwurujohnson@gmail.com', '08033525155', 'https://cloudinary.com/image/84849', true],
       (error, result) => {
         if (error) {
-          console.log(error);
+          log.info(error);
         }
-        console.log(`user created ${result}`);
+        log.info(`user created ${result}`);
       },
     );
   });
@@ -290,19 +290,19 @@ const seedPartyTable = () => {
   const text = 'INSERT INTO tblparty(name, hqAddress, logoUrl) VALUES ($1,$2,$3) RETURNING *';
   db.query('SELECT * FROM tblparty WHERE name=$1', ['Test Party'], (err, resp) => {
     if (err) {
-      console.log(err);
+      log.info(err);
     }
     if (resp.rowCount >= 1) {
-      console.log('Party already exists');
+      log.info('Party already exists');
     }
     return db.query(
       text,
       ['Test Party', 'Abuja', 'https://cloudinary.com/image/84849'],
       (error, result) => {
         if (error) {
-          console.log(error);
+          log.info(error);
         }
-        console.log(`party created ${result}`);
+        log.info(`party created ${result}`);
       },
     );
   });
@@ -312,19 +312,19 @@ const seedOfficeTable = () => {
   const text = 'INSERT INTO tbloffice(type, name) VALUES ($1,$2) RETURNING *';
   db.query('SELECT * FROM tbloffice WHERE name=$1', ['Test Office'], (err, resp) => {
     if (err) {
-      console.log(err);
+      log.info(err);
     }
     if (resp.rowCount >= 1) {
-      console.log('Office with name already exists');
+      log.info('Office with name already exists');
     }
     return db.query(
       text,
       ['Test Office Type', 'Test Office'],
       (error, result) => {
         if (error) {
-          console.log(error);
+          log.info(error);
         }
-        console.log(`office created ${result}`);
+        log.info(`office created ${result}`);
       },
     );
   });
@@ -356,7 +356,7 @@ const seedAllTables = () => {
 };
 
 pool.on('remove', () => {
-  console.log('Disconnected');
+  log.info('Disconnected');
   process.exit(0);
 });
 

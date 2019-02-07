@@ -1,4 +1,3 @@
-import uuidv4 from 'uuid/v4';
 import moment from 'moment';
 import dbHelper from '../models/index';
 
@@ -73,7 +72,7 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          data: resp.rows,
+          error: 'No parties',
         });
       }
       return res.status(200).json({
@@ -102,7 +101,7 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          data: resp.rows,
+          error: 'Party not found',
         });
       }
       return res.status(200).json({

@@ -1,4 +1,3 @@
-import uuidv4 from 'uuid/v4';
 import moment from 'moment';
 import dbHelper from '../models/index';
 
@@ -92,8 +91,7 @@ export default {
       if (result.rowCount < 1) {
         res.status(404).json({
           status: 404,
-          message: 'No result yet',
-          data: result.rows,
+          error: 'Result not found',
         });
       } else {
         res.status(200).json({

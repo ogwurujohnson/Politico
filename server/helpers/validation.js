@@ -17,35 +17,35 @@ export default {
       || typeof firstname !== 'string'
       || firstname.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid firstname',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid firstname',
       });
     } else if (
       !lastname
       || typeof lastname !== 'string'
       || lastname.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid lastname',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid lastname',
       });
     } else if (
       typeof othername !== 'string'
       || othername.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid othername',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid othername',
       });
     } else if (
       !email
       || email.toString().trim() === ''
       || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid email',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid email',
       });
     } else if (
       !password
@@ -54,9 +54,9 @@ export default {
       || /[<>]/.test(password) === true
       || /[=]/.test(password) === true
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid password',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid password',
       });
     }
     return next();
@@ -75,9 +75,9 @@ export default {
       || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false
       || email.toString().trim() === ''
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid email',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid email',
       });
     } else if (
       !password
@@ -86,9 +86,106 @@ export default {
       || /[<>]/.test(password) === true
       || /[=]/.test(password) === true
     ) {
-      return res.status(400).send({
-        valid: false,
-        message: 'Please provide a valid password',
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid password',
+      });
+    }
+    return next();
+  },
+  /**
+   * @description validate party creation
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
+  partyValidation: (req, res, next) => {
+    const { partyname, hqaddress, logourl } = req.body;
+    if (
+      !partyname
+      || typeof partyname !== 'string'
+      || partyname.toString().trim() === ''
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid partyname',
+      });
+    } else if (
+      !hqaddress
+      || typeof hqaddress !== 'string'
+      || hqaddress.toString().trim() === ''
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid hqaddress',
+      });
+    } else if (
+      !logourl
+      || typeof logourl !== 'string'
+      || logourl.toString().trim() === ''
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid logourl',
+      });
+    }
+    return next();
+  },
+  /**
+   * @description validate party creation
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
+  officeValidation: (req, res, next) => {
+    const { type, officename } = req.body;
+    if (
+      !type
+      || typeof type !== 'string'
+      || type.toString().trim() === ''
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid office type',
+      });
+    } else if (
+      !officename
+      || typeof officename !== 'string'
+      || officename.toString().trim() === ''
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid office name',
+      });
+    }
+    return next();
+  },
+  idQueryParameter: (req, res, next) => {
+    const { id } = req.params;
+    const ID = Number(id);
+    if (
+      !ID
+      || typeof ID !== 'number'
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid id query parameter',
+      });
+    }
+    return next();
+  },
+  uIdQueryParameter: (req, res, next) => {
+    const { uId } = req.params;
+    const UID = Number(uId);
+    if (
+      !UID
+      || typeof UID !== 'number'
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid uId query parameter',
       });
     }
     return next();

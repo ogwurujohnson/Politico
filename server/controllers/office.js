@@ -1,8 +1,5 @@
-import uuidv4 from 'uuid/v4';
 import moment from 'moment';
-import logger from 'winston';
 import dbHelper from '../models/index';
-import Helper from '../helpers/helper';
 
 const { db } = dbHelper;
 
@@ -23,7 +20,6 @@ export default {
 
     db.query('SELECT * FROM tbloffice WHERE name=$1', [officename], (err, resp) => {
       if (err) {
-        logger.log(err);
         return res.status(500).json({
           status: 500,
           error: 'An unexpected error occurred',
@@ -40,7 +36,6 @@ export default {
         [type, officename, date, date],
         (error, result) => {
           if (error) {
-            logger.log(error);
             return res.status(400).json({
               status: 400,
               error: 'There was a problem creating office',
@@ -68,7 +63,6 @@ export default {
   getAllOffices: (req, res) => {
     db.query('SELECT * FROM tbloffice', (err, resp) => {
       if (err) {
-        console.log(err);
         return res.status(500).json({
           status: 500,
           error: 'An unexpected error occured',
@@ -77,7 +71,7 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(400).json({
           status: 404,
-          data: resp.rows,
+          error: 'No offices',
         });
       }
       return res.status(200).json({
@@ -98,7 +92,6 @@ export default {
     const { id } = req.params;
     db.query(text, [id], (err, resp) => {
       if (err) {
-        logger.log(err);
         return res.status(500).json({
           status: 500,
           error: 'An unexpected error occurred',
@@ -107,7 +100,7 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          data: resp.rows,
+          error: 'Office not found',
         });
       }
       return res.status(200).json({
