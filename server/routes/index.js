@@ -4,6 +4,7 @@ import Office from '../controllers/office';
 import Auth from '../controllers/auth';
 import User from '../controllers/user';
 import Verification from '../helpers/verifyToken';
+import Validation from '../helpers/validation';
 
 const router = express.Router();
 
@@ -14,19 +15,19 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/auth/signup', Auth.createUser);
-router.post('/auth/login', Auth.loginUser);
+router.post('/auth/signup', Validation.userSignupValidation, Auth.createUser);
+router.post('/auth/login', Validation.userLoginValidation, Auth.loginUser);
 router.post('/auth/reset', Auth.resetPassword);
 
 
-router.post('/parties', Verification.isAdmin, Party.createParty);
+router.post('/parties', Verification.isAdmin, Validation.partyValidation, Party.createParty);
 router.get('/parties', Party.getAllParties);
 router.get('/parties/:id', Party.getSpecificParty);
 router.patch('/parties/:id', Verification.isAdmin, Party.editSpecificParty);
 router.delete('/parties/:id', Verification.isAdmin, Party.deleteParty);
 
 
-router.post('/offices', Verification.isAdmin, Office.createOffice);
+router.post('/offices', Verification.isAdmin, Validation.officeValidation, Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Verification.isLoggedIn, Office.getSpecificOffice);
 

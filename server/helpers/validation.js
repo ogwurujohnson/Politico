@@ -93,4 +93,73 @@ export default {
     }
     return next();
   },
+  /**
+   * @description validate party creation
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
+  partyValidation: (req, res, next) => {
+    const { partyname, hqaddress, logourl } = req.body;
+    if (
+      !partyname
+      || typeof partyname !== 'string'
+      || partyname.toString().trim() === ''
+    ) {
+      return res.status(400).send({
+        valid: false,
+        message: 'Please provide a valid partyname',
+      });
+    } else if (
+      !hqaddress
+      || typeof hqaddress !== 'string'
+      || hqaddress.toString().trim() === ''
+    ) {
+      return res.status(400).send({
+        valid: false,
+        message: 'Please provide a valid hqaddress',
+      });
+    } else if (
+      !logourl
+      || typeof logourl !== 'string'
+      || logourl.toString().trim() === ''
+    ) {
+      return res.status(400).send({
+        valid: false,
+        message: 'Please provide a valid logourl',
+      });
+    }
+    return next();
+  },
+  /**
+   * @description validate party creation
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
+  officeValidation: (req, res, next) => {
+    const { type, officename } = req.body;
+    if (
+      !type
+      || typeof type !== 'string'
+      || type.toString().trim() === ''
+    ) {
+      return res.status(400).send({
+        valid: false,
+        message: 'Please provide a valid office type',
+      });
+    } else if (
+      !officename
+      || typeof officename !== 'string'
+      || officename.toString().trim() === ''
+    ) {
+      return res.status(400).send({
+        valid: false,
+        message: 'Please provide a valid office name',
+      });
+    }
+    return next();
+  },
 };
