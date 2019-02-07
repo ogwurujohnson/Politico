@@ -87,7 +87,7 @@ export default {
    */
   officeResults: (req, res) => {
     const { id } = req.params;
-    db.query('SELECT tblcandidates.office, tblcandidates.id AS candidate, COUNT(tblvotes.candidate) AS result FROM tblvotes JOIN tblcandidates ON tblcandidates.id =tblvotes.candidate  WHERE tblvotes.office = $1 GROUP BY tblcandidates.id, tblcandidates.office', [id], (err, result) => {
+    db.query('SELECT office, candidate, COUNT(candidate) AS result FROM tblvotes WHERE office=$1 GROUP BY candidate, office', [id], (err, result) => {
       if (result.rowCount < 1) {
         res.status(404).json({
           status: 404,

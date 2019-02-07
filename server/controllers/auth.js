@@ -23,8 +23,8 @@ export default {
 
     db.query('SELECT * FROM tblusers WHERE email=$1', [email], (err, resp) => {
       if (err) {
-        return res.status(500).json({
-          status: 500,
+        return res.status(400).json({
+          status: 400,
           error: 'An unexpected error occurred',
         });
       }
@@ -58,6 +58,7 @@ export default {
                   lastname: result.rows[0].lastname,
                   email: result.rows[0].email,
                   phonenumber: result.rows[0].phoneNumber,
+                  passporturl: result.rows[0].passportUrl,
                   isadmin: result.rows[0].isAdmin,
                 },
               },

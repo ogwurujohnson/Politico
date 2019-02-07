@@ -12,7 +12,7 @@ let dbName;
 if (nodeEnv === 'development') {
   dbName = process.env.POSTGRES_DB_DEV;
 } else if (nodeEnv === 'test') {
-  dbName = process.env.POSTGRES_DB_TEST;
+  dbName = 'test_politico';
 } else if (nodeEnv === 'production') {
   dbName = '';
 }
