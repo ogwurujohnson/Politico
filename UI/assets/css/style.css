@@ -148,11 +148,11 @@ header .auth-button {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: block;
   font-family: Catamaran;
   font-size: 18px;
   position: absolute;
-  top: 60%;
+  top: 70%;
   left: 50%;
   cursor: pointer;
   transform: translate(-50%, -50%);
@@ -170,13 +170,13 @@ header .auth-button {
 /**tablet screens */
 @media screen and (min-width: 768px) {
   .landing-page h2 {
-    font-weight: 700;
-    font-size: 60px;
+    font-weight: 50;
+    font-size: 30px;
   }
 
   .landing-page .side-write-up {
-    margin-left: -690px;
-    text-align: left;
+    margin: auto;
+    text-align: center;
     display: block;
     padding-right: 10px;
   }
@@ -185,7 +185,7 @@ header .auth-button {
 /**laptop screens */
 @media screen and (min-width: 1280px) {
   .landing-page h2 {
-    font-weight: 200;
+    font-weight: 700;
     font-size: 40px;
     color: #e0d6d6;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
