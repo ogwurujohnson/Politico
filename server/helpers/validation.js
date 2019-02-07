@@ -164,9 +164,10 @@ export default {
   },
   idQueryParameter: (req, res, next) => {
     const { id } = req.params;
+    const ID = Number(id);
     if (
-      !id
-      || typeof id !== 'number'
+      !ID
+      || typeof ID !== 'number'
     ) {
       return res.status(400).json({
         status: 400,
@@ -177,9 +178,10 @@ export default {
   },
   uIdQueryParameter: (req, res, next) => {
     const { uId } = req.params;
+    const UID = Number(uId);
     if (
-      !uId
-      || typeof uId !== 'number'
+      !UID
+      || typeof UID !== 'number'
     ) {
       return res.status(400).json({
         status: 400,
