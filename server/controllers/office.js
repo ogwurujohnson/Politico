@@ -15,11 +15,10 @@ export default {
    * @returns {object} office object
    */
   createOffice: (req, res) => {
-    const text = 'INSERT INTO tbloffice(id, type, name, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5) RETURNING *';
+    const text = 'INSERT INTO tbloffice(type, name, createdDate, modifiedDate) VALUES ($1,$2,$3,$4) RETURNING *';
     const {
       type, officename,
     } = req.body;
-    const id = uuidv4();
     const date = moment(new Date());
 
     db.query('SELECT * FROM tbloffice WHERE name=$1', [officename], (err, resp) => {
@@ -38,7 +37,7 @@ export default {
       }
       return db.query(
         text,
-        [id, type, officename, date, date],
+        [type, officename, date, date],
         (error, result) => {
           if (error) {
             logger.log(error);

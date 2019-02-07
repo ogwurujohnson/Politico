@@ -27,8 +27,10 @@ router.delete('/parties/:id', Party.deleteParty);
 router.post('/offices', Office.createOffice);
 router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Office.getSpecificOffice);
-router.post('/office/:uId/register', User.declareInterest);
 
+
+router.post('/office/:uId/register', User.registerCandidate);
+router.get('/office/:id/result', User.officeResults);
 router.post('/vote', User.voteCandidate);
 
 router.all('*', (req, res) => {

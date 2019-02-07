@@ -1,32 +1,28 @@
 import uuidv4 from 'uuid/v4';
 import moment from 'moment';
-import logger from 'winston';
 import dbHelper from '../models/index';
-import Helper from '../helpers/helper';
+
 
 const { db } = dbHelper;
 
 export default {
   /**
    * @description indicate interest
-   * @function declareInterest
+   * @function registerCandidate
    * @param {object} req
    * @param {object} res
    * @returns {object} interest object
    */
-  declareInterest: (req, res) => {
-    const text = 'INSERT INTO tblcandidates (id, office, party, candidate) VALUES ($1,$2,$3,$4) RETURNING *';
+  registerCandidate: (req, res) => {
+    const text = 'INSERT INTO tblcandidates (office, party, candidate) VALUES ($1,$2,$3) RETURNING *';
     const {
-      office,party,
+      office, party,
     } = req.body;
     const candidate = req.params.uId;
-    const id = uuidv4();
-    const date = moment(new Date());
-
-    if(isNaN(office) || isNaN(party) || isNaN(candidate)){
+    if (isNaN(office) || isNaN(party) || isNaN(candidate)) {
       return res.status(400).json({
-        status: 500,
-        error: 'None-Integer number found',
+        status: 400,
+        error: 'Non-Integer number found',
       });
     }
     return db.query('SELECT * FROM tblcandidates WHERE candidate=$1', [candidate], (err, result) => {
@@ -36,7 +32,7 @@ export default {
           error: 'Cannot declare twice',
         });
       } else {
-        db.query(text, [id,office,party,candidate], (error, resp) => {
+        db.query(text, [office, party, candidate], (error, resp) => {
           res.status(201).json({
             status: 201,
             data: resp.rows,
@@ -45,21 +41,28 @@ export default {
       }
     });
   },
+  /**
+   * @description vote candidate
+   * @function voteCandidate
+   * @param {object} req
+   * @param {object} res
+   * @returns {object}
+   */
   voteCandidate: (req, res) => {
-    const text = 'INSERT INTO tblvotes (id, createdOn, createdBy, office, candidate) VALUES ($1,$2,$3,$4,$5) RETURNING *';
+    const text = 'INSERT INTO tblvotes (createdOn, createdBy, office, candidate) VALUES ($1,$2,$3,$4) RETURNING *';
     const {
-     voter, office, candidate,
+      voter, office, candidate,
     } = req.body;
-    const id = uuidv4();
     const date = moment(new Date());
 
-    if(isNaN(voter) || isNaN(office) || isNaN(candidate)) {
+
+    if (isNaN(voter) || isNaN(office) || isNaN(candidate)) {
       return res.status(400).json({
         status: 500,
-        error: "None-Integer number found",
+        error: 'None-Integer number found',
       });
     }
-    return db.query('SELECT * FROM tblvotes WHERE candidate=$1 AND createdby=$2', [candidate, voter], (err, result) => {
+    return db.query('SELECT * FROM tblvotes WHERE office=$1 AND createdby=$2', [office, voter], (err, result) => {
       if (result.rowCount >= 1) {
         res.status(409).json({
           status: 409,
@@ -67,7 +70,7 @@ export default {
         });
       } else {
         console.log(text);
-        db.query(text, [id, date, voter, office, candidate], (error, resp) => {
+        db.query(text, [date, voter, office, candidate], (error, resp) => {
           res.status(201).json({
             status: 201,
             data: resp.rows,
@@ -76,4 +79,28 @@ export default {
       }
     });
   },
-}
+  /**
+   * @description check results per office
+   * @function officeResults
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} office result objects
+   */
+  officeResults: (req, res) => {
+    const { id } = req.params;
+    db.query('SELECT tblcandidates.office, tblcandidates.id AS candidate, COUNT(tblvotes.candidate) AS result FROM tblvotes JOIN tblcandidates ON tblcandidates.id =tblvotes.candidate  WHERE tblvotes.office = $1 GROUP BY tblcandidates.id, tblcandidates.office', [id], (err, result) => {
+      if (result.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          message: 'No result yet',
+          data: result.rows,
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: result.rows,
+        });
+      }
+    });
+  },
+};

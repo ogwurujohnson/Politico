@@ -16,17 +16,15 @@ export default {
    * @returns {object} user object
    */
   createUser: (req, res) => {
-    const text = 'INSERT INTO tblusers(id, firstname, lastname, othername, email, password, phoneNumber, passportUrl, isAdmin, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *';
+    const text = 'INSERT INTO tblusers(firstname, lastname, othername, email, password, phoneNumber, passportUrl, isAdmin, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *';
     const {
       firstname, lastname, othername, email, password, phonenumber, passporturl,
     } = req.body;
-    const id = uuidv4();
     const isAdmin = false;
     const date = moment(new Date());
 
     db.query('SELECT * FROM tblusers WHERE email=$1', [email], (err, resp) => {
       if (err) {
-        logger.log(err);
         return res.status(500).json({
           status: 500,
           error: 'An unexpected error occurred',
@@ -40,11 +38,10 @@ export default {
       }
       return db.query(
         text,
-        [id, firstname, lastname, othername, email, bcrypt.hashPassword(password),
+        [firstname, lastname, othername, email, bcrypt.hashPassword(password),
           phonenumber, passporturl, isAdmin, date, date],
         (error, result) => {
           if (error) {
-            logger.log(error);
             return res.status(400).json({
               status: 400,
               error: 'There was a problem signing up',

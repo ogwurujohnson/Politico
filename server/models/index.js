@@ -25,9 +25,25 @@ const config = {
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000,
 };
+const herokuconfig = {
+  host: process.env.HEROKU_HOST,
+  user: process.env.HEROKU_USER,
+  database: process.env.HEROKU_DATABASE,
+  password: process.env.HEROKU_PASSWORD,
+  port: process.env.ELEPHANT_PORT,
+  ssl: true,
+  tcp_keepalives_idle: 3000000,
+  max: 10,
+  idleTimeoutMillis: 3000000,
+};
 
+let pool;
+if (nodeEnv === 'development' || nodeEnv === 'test') {
+  pool = new pg.Pool(config);
+} else if (nodeEnv === 'production') {
+  pool = new pg.Pool(herokuconfig);
+}
 
-const pool = new pg.Pool(config);
 const db = pool;
 
 pool.on('connect', () => {
