@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
 import dbHelper from '../models/index';
 
 const { db } = dbHelper;

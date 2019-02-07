@@ -13,11 +13,10 @@ export default {
    * @returns {object} party object
    */
   createParty: (req, res) => {
-    const text = 'INSERT INTO tblparty(id, name, hqAddress, logoUrl, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
+    const text = 'INSERT INTO tblparty(name, hqAddress, logoUrl, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5) RETURNING *';
     const {
       partyname, hqaddress, logourl,
     } = req.body;
-    const id = uuidv4();
     const date = moment(new Date());
 
     db.query('SELECT * FROM tblparty WHERE name=$1', [partyname], (err, resp) => {
@@ -35,7 +34,7 @@ export default {
       }
       return db.query(
         text,
-        [id, partyname, hqaddress, logourl, date, date],
+        [partyname, hqaddress, logourl, date, date],
         (error, result) => {
           if (error) {
             return res.status(400).json({
