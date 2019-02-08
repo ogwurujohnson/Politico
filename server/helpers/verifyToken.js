@@ -60,7 +60,6 @@ export default {
     }
     const decoded = jwt.verify(token, process.env.SECRET);
     const isadmin = decoded.isAdmin;
-    console.log(isadmin);
     if (isadmin === 'true') {
       return next();
     }

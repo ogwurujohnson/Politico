@@ -1,4 +1,4 @@
-import chai from 'chai';
+/* import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 
@@ -8,7 +8,7 @@ chai.should();
 
 describe('Offices', () => {
   describe('GET /', () => {
-    it('should get all office records', (done) => {
+    it('should return status 200 and get all offices', (done) => {
       chai.request(app)
         .get('/api/v1/offices')
         .end((err, res) => {
@@ -16,6 +16,7 @@ describe('Offices', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('')
           done();
         });
     });
@@ -154,4 +155,4 @@ describe('Offices', () => {
         });
     });
   });
-});
+}); */

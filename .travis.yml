@@ -7,13 +7,21 @@ env:
   global:
     - CC_TEST_REPORTER_ID=1e465e9084eaa5f9056254a37a1681510c3527466bb52f74dd7708783c62de01
 
+services:
+  - postgresql
+
 before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
   - npm install nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - nyc --reporter=lcov --reporter=text-lcov npm test
+  - npm install
+  - nyc --reporter=lcov --reporter=text-lcov npm run test
 
 after_success:
   npm run coverage
+
+notifications:
+  email: false
