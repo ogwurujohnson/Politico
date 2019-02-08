@@ -10,6 +10,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pg": "set NODE_ENV=development&& babel-node ./server/models/db.js dropAllTables && babel-node ./server/models/db.js createAllTables && babel-node ./server/models/db.js seedAllTables --exec"
   },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ogwurujohnson/Politico.git"
@@ -26,6 +29,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/register": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
