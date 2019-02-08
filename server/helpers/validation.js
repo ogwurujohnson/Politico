@@ -8,10 +8,12 @@ export default {
    * @param {object} next- The object that tell the next action to run
    * @returns {object}
    */
+
   userSignupValidation: (req, res, next) => {
     const {
-      firstname, lastname, othername, email, password,
+      firstname, lastname, othername, email, password, phonenumber,
     } = req.body;
+    const phoneRgex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
     if (
       !firstname
       || typeof firstname !== 'string'
@@ -57,6 +59,14 @@ export default {
       return res.status(400).json({
         status: 400,
         error: 'Please provide a valid password',
+      });
+    } else if (
+      !phonenumber
+      || phoneRgex.test(phonenumber) !== 'true'
+    ) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid phone number',
       });
     }
     return next();
