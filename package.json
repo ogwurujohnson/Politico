@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=production&& babel-node ./server/app.js",
     "start:dev": "set NODE_ENV=development&& babel-watch ./server/app.js",
-    "test": "set NODE_ENV=test&& nyc mocha  --timeout 15000  --require @babel/register --require @babel/polyfill ./server/test/* --exit",
+    "test": "set NODE_ENV=test&& nyc mocha  --timeout 15000  --require @babel/register ./server/test/* --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pg": "set NODE_ENV=development&& babel-node ./server/models/db.js dropAllTables && babel-node ./server/models/db.js createAllTables && babel-node ./server/models/db.js seedAllTables --exec"
   },
