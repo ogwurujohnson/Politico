@@ -162,12 +162,20 @@ export default {
     }
     return next();
   },
+  /**
+   * @description validate id query parameters
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
   idQueryParameter: (req, res, next) => {
     const { id } = req.params;
     const ID = Number(id);
     if (
       !ID
       || typeof ID !== 'number'
+      || Math.sign(ID === -1)
     ) {
       return res.status(400).json({
         status: 400,
@@ -176,12 +184,20 @@ export default {
     }
     return next();
   },
+  /**
+   * @description validate uid query parameters
+   * @param {object}  req - The object that return a request
+   * @param {object} res - The object that returns a response
+   * @param {object} next- The object that tell the next action to run
+   * @returns {object}
+   */
   uIdQueryParameter: (req, res, next) => {
     const { uId } = req.params;
     const UID = Number(uId);
     if (
       !UID
       || typeof UID !== 'number'
+      || Math.sign(UID === -1)
     ) {
       return res.status(400).json({
         status: 400,
