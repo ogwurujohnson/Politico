@@ -13,11 +13,11 @@ export default {
     const {
       firstname, lastname, othername, email, password, phonenumber,
     } = req.body;
-    const phoneRgex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
     if (
       !firstname
       || typeof firstname !== 'string'
       || firstname.toString().trim() === ''
+      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(firstname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -27,6 +27,7 @@ export default {
       !lastname
       || typeof lastname !== 'string'
       || lastname.toString().trim() === ''
+      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(lastname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -35,6 +36,7 @@ export default {
     } else if (
       typeof othername !== 'string'
       || othername.toString().trim() === ''
+      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(othername) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -62,7 +64,7 @@ export default {
       });
     } else if (
       !phonenumber
-      || phoneRgex.test(phonenumber) !== 'true'
+      || /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test(phonenumber) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -116,6 +118,7 @@ export default {
       !partyname
       || typeof partyname !== 'string'
       || partyname.toString().trim() === ''
+      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(partyname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -164,6 +167,7 @@ export default {
       !officename
       || typeof officename !== 'string'
       || officename.toString().trim() === ''
+      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(officename) === false
     ) {
       return res.status(400).json({
         status: 400,
