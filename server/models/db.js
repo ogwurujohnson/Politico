@@ -11,11 +11,6 @@ const nodeEnv = process.env.NODE_ENV;
 let dbName;
 if (nodeEnv === 'development') {
   dbName = process.env.POSTGRES_DB_DEV;
-  host = process.env.POSTGRES_HOST;
-  user = process.env.POSTGRES_USER;
-  database= dbName,
-  password = process.env.POSTGRES_PASSWORD,
-  port = process.env.POSTGRES_PORT,
 } else if (nodeEnv === 'test') {
   dbName = 'travis';
 } else if (nodeEnv === 'production') {
@@ -25,7 +20,9 @@ if (nodeEnv === 'development') {
 const config = {
   host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
-  
+  database: dbName,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT,
   max: 100, // max number of clients in the pool
   idleTimeoutMillis: 30000,
 };
@@ -79,7 +76,6 @@ const createUserTable = () => {
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -96,11 +92,9 @@ const createPartyTable = () => {
   pool.query(partyTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -116,11 +110,9 @@ const createOfficeTable = () => {
   pool.query(officeTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -135,11 +127,9 @@ const createCandidateTable = () => {
   pool.query(candidateTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -155,11 +145,9 @@ const createVoteTable = () => {
   pool.query(voteTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -175,11 +163,9 @@ const createPetitionTable = () => {
   pool.query(petitionTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -192,11 +178,9 @@ const dropUserTable = () => {
   pool.query(userTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -205,11 +189,9 @@ const dropPartyTable = () => {
   pool.query(partyTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -218,11 +200,9 @@ const dropOfficeTable = () => {
   pool.query(officeTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -231,11 +211,9 @@ const dropCandidateTable = () => {
   pool.query(candidateTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -244,11 +222,9 @@ const dropVoteTable = () => {
   pool.query(voteTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
-      ;
     });
 };
 
@@ -257,7 +233,6 @@ const dropPetitionTable = () => {
   pool.query(petitionTable)
     .then((res) => {
       log.info(res);
-      ;
     })
     .catch((err) => {
       log.info(err);
