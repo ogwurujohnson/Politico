@@ -1,7 +1,7 @@
-import pg from 'pg';
-import dotenv from 'dotenv';
-import bcrypt from '../helpers/bcrypt';
-import log from '../helpers/winston';
+const pg = require('pg');
+const dotenv = require('dotenv');
+const bcrypt = require('../helpers/bcrypt');
+const log = require('../helpers/winston');
 
 dotenv.config();
 
