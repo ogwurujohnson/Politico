@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=production&& babel-node ./server/app.js",
     "start:dev": "set NODE_ENV=development&& babel-watch ./server/app.js",
-    "test": "set NODE_ENV=test&& node ./server/models/db.js createAllTables && nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill ./server/test/* --exit",
+    "test": "set NODE_ENV=test&& babel-node ./server/models/db.js createAllTables && nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill ./server/test/* --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pg": "set NODE_ENV=development&& babel-node ./server/models/db.js dropAllTables && babel-node ./server/models/db.js createAllTables && babel-node ./server/models/db.js seedAllTables --exec"
   },
@@ -28,7 +28,6 @@
     "@babel/node": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/register": "^7.0.0",
-    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-polyfill": "^6.26.0",
