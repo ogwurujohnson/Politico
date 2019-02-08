@@ -27,6 +27,13 @@ const config = {
   idleTimeoutMillis: 30000,
 };
 
+const testconfig = {
+  database: 'travis_ci_test',
+  port: '5432',
+  max: 100, // max number of clients in the pool
+  idleTimeoutMillis: 30000,
+};
+
 
 const herokuconfig = {
   host: process.env.HEROKU_HOST,
@@ -41,10 +48,12 @@ const herokuconfig = {
 };
 
 let pool;
-if (nodeEnv === 'development' || nodeEnv === 'test') {
+if (nodeEnv === 'development') {
   pool = new pg.Pool(config);
 } else if (nodeEnv === 'production') {
   pool = new pg.Pool(herokuconfig);
+} else if (nodeEnv === 'test') {
+  pool = new pg.Pool(testconfig);
 }
 
 const db = pool;
