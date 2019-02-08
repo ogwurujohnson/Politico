@@ -31,12 +31,12 @@ const herokuconfig = {
 const testconfig = {
   host: '127.0.0.1',
   user: 'johnson',
-  database: 'travis_ci_tes',
+  database: 'travis_ci_test',
   password: 'abc',
   port: 5432,
   max: 10,
   idleTimeoutMillis: 3000,
-}
+};
 
 let pool;
 if (nodeEnv === 'development') {
