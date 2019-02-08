@@ -7,19 +7,10 @@ dotenv.config();
 const nodeEnv = process.env.NODE_ENV;
 
 
-let dbName;
-if (nodeEnv === 'development') {
-  dbName = process.env.POSTGRES_DB_DEV;
-} else if (nodeEnv === 'test') {
-  dbName = 'travis_ci_test';
-} else if (nodeEnv === 'production') {
-  dbName = '';
-}
-
 const config = {
   host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
-  database: dbName,
+  database: process.env.POSTGRES_DB_DEV,
   password: process.env.POSTGRES_PASSWORD,
   port: process.env.POSTGRES_PORT,
   max: 10, // max number of clients in the pool
@@ -37,11 +28,23 @@ const herokuconfig = {
   idleTimeoutMillis: 3000000,
 };
 
+const testconfig = {
+  host: '127.0.0.1',
+  user: 'johnson',
+  database: 'travis_ci_tes',
+  password: 'abc',
+  port: 5432,
+  max: 10,
+  idleTimeoutMillis: 3000,
+}
+
 let pool;
-if (nodeEnv === 'development' || nodeEnv === 'test') {
+if (nodeEnv === 'development') {
   pool = new pg.Pool(config);
 } else if (nodeEnv === 'production') {
   pool = new pg.Pool(herokuconfig);
+} else if (nodeEnv === 'test') {
+  pool = new pg.Pool(testconfig);
 }
 
 const db = pool;
