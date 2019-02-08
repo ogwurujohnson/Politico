@@ -163,7 +163,6 @@ export default {
       !officename
       || typeof officename !== 'string'
       || officename.toString().trim() === ''
-      || //.test(officename) === false
     ) {
       return res.status(400).json({
         status: 400,
