@@ -9,7 +9,6 @@ env:
     - NODE_ENV=test
 
 before_script:
-  - npm install pg
   - psql -c 'create database travis;' -U postgres
   - npm install nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

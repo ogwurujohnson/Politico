@@ -11,8 +11,13 @@ const nodeEnv = process.env.NODE_ENV;
 let dbName;
 if (nodeEnv === 'development') {
   dbName = process.env.POSTGRES_DB_DEV;
+  host = process.env.POSTGRES_HOST;
+  user = process.env.POSTGRES_USER;
+  database= dbName,
+  password = process.env.POSTGRES_PASSWORD,
+  port = process.env.POSTGRES_PORT,
 } else if (nodeEnv === 'test') {
-  dbName = 'test_politico';
+  dbName = 'travis';
 } else if (nodeEnv === 'production') {
   dbName = '';
 }
@@ -20,9 +25,7 @@ if (nodeEnv === 'development') {
 const config = {
   host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
-  database: dbName,
-  password: process.env.POSTGRES_PASSWORD,
-  port: process.env.POSTGRES_PORT,
+  
   max: 100, // max number of clients in the pool
   idleTimeoutMillis: 30000,
 };
@@ -73,11 +76,10 @@ const createUserTable = () => {
   pool.query(userTable)
     .then((res) => {
       log.info(res);
-      pool.end();
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -94,11 +96,11 @@ const createPartyTable = () => {
   pool.query(partyTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -114,11 +116,11 @@ const createOfficeTable = () => {
   pool.query(officeTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -133,11 +135,11 @@ const createCandidateTable = () => {
   pool.query(candidateTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -153,11 +155,11 @@ const createVoteTable = () => {
   pool.query(voteTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -173,11 +175,11 @@ const createPetitionTable = () => {
   pool.query(petitionTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -190,11 +192,11 @@ const dropUserTable = () => {
   pool.query(userTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -203,11 +205,11 @@ const dropPartyTable = () => {
   pool.query(partyTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -216,11 +218,11 @@ const dropOfficeTable = () => {
   pool.query(officeTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -229,11 +231,11 @@ const dropCandidateTable = () => {
   pool.query(candidateTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -242,11 +244,11 @@ const dropVoteTable = () => {
   pool.query(voteTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
-      pool.end();
+      ;
     });
 };
 
@@ -255,7 +257,7 @@ const dropPetitionTable = () => {
   pool.query(petitionTable)
     .then((res) => {
       log.info(res);
-      pool.end();
+      ;
     })
     .catch((err) => {
       log.info(err);
