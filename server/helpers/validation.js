@@ -17,7 +17,6 @@ export default {
       !firstname
       || typeof firstname !== 'string'
       || firstname.toString().trim() === ''
-      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(firstname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -27,7 +26,6 @@ export default {
       !lastname
       || typeof lastname !== 'string'
       || lastname.toString().trim() === ''
-      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(lastname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -36,7 +34,6 @@ export default {
     } else if (
       typeof othername !== 'string'
       || othername.toString().trim() === ''
-      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(othername) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -118,7 +115,6 @@ export default {
       !partyname
       || typeof partyname !== 'string'
       || partyname.toString().trim() === ''
-      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(partyname) === false
     ) {
       return res.status(400).json({
         status: 400,
@@ -167,7 +163,7 @@ export default {
       !officename
       || typeof officename !== 'string'
       || officename.toString().trim() === ''
-      || /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(officename) === false
+      || //.test(officename) === false
     ) {
       return res.status(400).json({
         status: 400,
