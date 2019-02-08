@@ -37,9 +37,22 @@ const herokuconfig = {
   idleTimeoutMillis: 3000000,
 };
 
+const testconfig = {
+  host: 'baasu.db.elephantsql.com',
+  user: 'chsmjqrf',
+  database: 'chsmjqrf',
+  password: 'KGwUpeFjp9TCcM8ydipB4tgaK-5G7tcU',
+  port: 5432,
+  ssl: true,
+  max: 10,
+  idleTimeoutMillis: 300000,
+}
+
 let pool;
-if (nodeEnv === 'development' || nodeEnv === 'test') {
+if (nodeEnv === 'development') {
   pool = new pg.Pool(config);
+} else if (nodeEnv === 'test') {
+  pool = new pg.Pool(testconfig);
 } else if (nodeEnv === 'production') {
   pool = new pg.Pool(herokuconfig);
 }
