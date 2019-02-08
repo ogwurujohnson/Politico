@@ -44,6 +44,13 @@ This application was developed using NodeJs with express for routing.
 - Run git clone (https://github.com/ogwurujohnson/Politico.git)
 ``` git clone https://github.com/ogwurujohnson/Politico.git ```
 
+### Starting and Testing
+- On your command prompt CD into the cloned folder
+- Run ``` npm run start:dev ```
+- Open postman and test endpoints
+- To test the application
+- Run ``` npm run test ```
+
 more info:
 (https://help.github.com/articles/cloning-a-repository/)
 - Run ``` npm install ``` to install the dependencies in the package.json file.
@@ -187,38 +194,6 @@ more info:
             }
         ]
     }
-      </td>
-    </tr>
-    <tr>
-      <td>PATCH /offices/:id</td>
-      <td>/api/v1/offices/:id</td>
-      <td>Updates a specific office</td>
-      <td>{
-    "status": 201,
-    "data": [
-        {
-            "id": 2,
-            "officeName": "Councillor",
-            "officeType": "local",
-        }
-    ]
-}
-      </td>
-    </tr>
-    <tr>
-      <td>DELETE /offices/:id</td>
-      <td>/api/v1/offices/:id</td>
-      <td>Deletes a specific political office</td>
-      <td>{
-    "status": 200,
-    "data": [
-        {
-            "status",
-            "data": "office successfully deleted"
-        }
-        
-    ]
-}
       </td>
     </tr>
     

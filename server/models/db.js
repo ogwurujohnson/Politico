@@ -8,19 +8,10 @@ dotenv.config();
 const nodeEnv = process.env.NODE_ENV;
 
 
-let dbName;
-if (nodeEnv === 'development') {
-  dbName = process.env.POSTGRES_DB_DEV;
-} else if (nodeEnv === 'test') {
-  dbName = 'travis_ci_test';
-} else if (nodeEnv === 'production') {
-  dbName = '';
-}
-
 const config = {
   host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
-  database: dbName,
+  database: process.env.POSTGRES_DB_DEV,
   password: process.env.POSTGRES_PASSWORD,
   port: process.env.POSTGRES_PORT,
   max: 100, // max number of clients in the pool
