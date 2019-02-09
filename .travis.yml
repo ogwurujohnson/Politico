@@ -6,6 +6,9 @@ node_js:
 notifications:
   email: false
 
+services:
+  - postgresql
+
 env:
   global:
     - CC_TEST_REPORTER_ID=1e465e9084eaa5f9056254a37a1681510c3527466bb52f74dd7708783c62de01

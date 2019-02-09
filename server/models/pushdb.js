@@ -39,10 +39,6 @@ const testconfig = {
   user: process.env.TRAVIS_USER,
   database: process.env.TRAVIS_DATABASE,
   password: process.env.TRAVIS_PASSWORD,
-  port: process.env.TRAVIS_PORT,
-  tcp_keepalives_idle: 3000000,
-  max: 10,
-  idleTimeoutMillis: 3000000,
 };
 
 let pool;
