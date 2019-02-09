@@ -14,6 +14,7 @@ env:
     - TRAVIS_DATABASE=travis_ci_test
     - TRAVIS_PASSWORD=abc123
     - TRAVIS_PORT=5432
+    - NODE_ENV=test
 
 before_script:
   - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
