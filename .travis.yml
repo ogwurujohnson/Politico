@@ -19,6 +19,9 @@ env:
     - TRAVIS_PORT=5432
     - NODE_ENV=test
 
+services:
+  - postgresql
+
 before_script:
   - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
   - psql -c "CREATE USER johnson WITH PASSWORD 'abc123';" -U postgres
@@ -27,7 +30,11 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - nyc --reporter=lcov --reporter=text-lcov npm test
+  - npm install
+  - nyc --reporter=lcov --reporter=text-lcov npm run test
 
 after_success:
   npm run coverage
+
+notifications:
+  email: false
