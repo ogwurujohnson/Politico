@@ -29,17 +29,14 @@ const herokuconfig = {
   idleTimeoutMillis: 3000000,
 };
 const testconfig = {
-  host: process.env.POSTGRES_HOST,
+  /* host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
   database: process.env.POSTGRES_DB_TEST,
   password: process.env.POSTGRES_PASSWORD,
-  /* user: process.env.TRAVIS_USER,
+  port: process.env.POSTGRES_PORT, */
+  user: process.env.TRAVIS_USER,
   database: process.env.TRAVIS_DATABASE,
-  password: process.env.TRAVIS_PASSWORD, */
-  port: process.env.POSTGRES_PORT,
-  tcp_keepalives_idle: 3000000,
-  max: 10,
-  idleTimeoutMillis: 3000000,
+  password: process.env.TRAVIS_PASSWORD,
 };
 
 let pool;
