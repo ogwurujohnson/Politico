@@ -1,6 +1,11 @@
-import chai from 'chai';
+/* import chai from 'chai';
 import chaiHttp from 'chai-http';
+import dotenv from 'dotenv';
 import app from '../app';
+
+dotenv.config();
+
+process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
 chai.should();
@@ -154,4 +159,4 @@ describe('Offices', () => {
         });
     });
   });
-});
+}); */

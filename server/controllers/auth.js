@@ -14,7 +14,7 @@ export default {
    * @returns {object} user object
    */
   createUser: (req, res) => {
-    const text = 'INSERT INTO tblusers(firstname, lastname, othername, email, password, phoneNumber, passportUrl, isAdmin, createdDate, modifiedDate) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *';
+    const text = 'INSERT INTO tblusers(firstname, lastname, othername, email, password, phonenumber, passporturl, isadmin, createddate, modifieddate) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *';
     const {
       firstname, lastname, othername, email, password, phonenumber, passporturl,
     } = req.body;
@@ -40,6 +40,7 @@ export default {
           phonenumber, passporturl, isAdmin, date, date],
         (error, result) => {
           if (error) {
+            console.log('error400');
             return res.status(400).json({
               status: 400,
               error: 'There was a problem signing up',
@@ -57,8 +58,9 @@ export default {
                   firstname: result.rows[0].firstname,
                   lastname: result.rows[0].lastname,
                   email: result.rows[0].email,
-                  phonenumber: result.rows[0].phoneNumber,
-                  isadmin: result.rows[0].isAdmin,
+                  phonenumber: result.rows[0].phonenumber,
+                  passporturl: result.rows[0].passporturl,
+                  isadmin: result.rows[0].isadmin,
                 },
               },
             ],
@@ -82,7 +84,7 @@ export default {
       if (err) {
         return res.status(400).json({
           status: 400,
-          error: 'There was a probem trying to sign in user',
+          error: 'There was a problem trying to sign in user',
         });
       }
       const user = result.rows[0];
@@ -112,9 +114,9 @@ export default {
               firstname: result.rows[0].firstname,
               lastname: result.rows[0].lastname,
               othername: result.rows[0].othername,
-              phonenumber: result.rows[0].phoneNumber,
+              phonenumber: result.rows[0].phonenumber,
               email: result.rows[0].email,
-              passporturl: result.rows[0].passportUrl,
+              passporturl: result.rows[0].passporturl,
               isadmin: result.rows[0].isadmin,
             },
           },

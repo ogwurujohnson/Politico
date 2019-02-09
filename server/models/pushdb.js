@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 import pg from 'pg';
 import log from '../helpers/winston';
 
+import createTable from './migration';
+import seedTable from './seed';
 
 dotenv.config();
 
@@ -29,14 +31,15 @@ const herokuconfig = {
   idleTimeoutMillis: 3000000,
 };
 const testconfig = {
-  host: process.env.POSTGRES_HOST,
+  /* host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
   database: process.env.POSTGRES_DB_TEST,
   password: process.env.POSTGRES_PASSWORD,
-  /* user: process.env.TRAVIS_USER,
+  port: process.env.POSTGRES_PORT, */
+  user: process.env.TRAVIS_USER,
   database: process.env.TRAVIS_DATABASE,
-  password: process.env.TRAVIS_PASSWORD, */
-  port: process.env.POSTGRES_PORT,
+  password: process.env.TRAVIS_PASSWORD,
+  port: process.env.TRAVIS_PORT,
   tcp_keepalives_idle: 3000000,
   max: 10,
   idleTimeoutMillis: 3000000,
@@ -58,6 +61,13 @@ pool.on('connect', () => {
 });
 
 
-export default {
-  db,
+const pushToDB = () => {
+  db.query(createTable);
+  db.query(seedTable);
 };
+pushToDB();
+
+pool.end();
+
+
+export default pushToDB;

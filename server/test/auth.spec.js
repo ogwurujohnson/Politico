@@ -13,13 +13,13 @@ chai.should();
 describe('Authentication', () => {
   describe('POST /signup', () => {
     const data = {
-      firstname: 'Johnson',
-      lastname: 'Test',
-      othername: 'Test other',
-      email: 'test@johnson.com',
+      firstname: 'Benrey',
+      lastname: 'Jadee',
+      othername: 'onyekachi',
       password: 'Johnny55',
-      phonenumber: '08033525155',
-      passporturl: 'https://test.cloudinary.com',
+      email: 'test@johnson.com',
+      phonenumber: '0803352515',
+      passporturl: 'https://cloudinary.com',
     };
     it('should be able to signup and return 201', (done) => {
       chai.request(app)
