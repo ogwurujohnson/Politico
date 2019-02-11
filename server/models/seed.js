@@ -16,7 +16,8 @@ const seedTable = `
   INSERT INTO
     tblusers
       VALUES
-      (default, 'Johnson', 'Ogwuru', 'Onyekachi', '$2b$08$DGAJRCdx84SCCyD76nV6bugeTo7jQgqIP0YtZr2MJyKUBzh.CC.zG', 'ogwurujohnson@gmail.com', 18007593000,null, true);
+      (default, 'Johnson', 'Ogwuru', 'Onyekachi', '$2b$08$k47oRPWWPx2Ed2QDgXu8IOETWIAFi4FcNLFoXHPWIM0ssCI6NOdfe', 'ogwurujohnson@gmail.com', 18007593000,null, true),
+      (default, 'Patrick', 'Ogwuru', 'Chigozie', '$2b$08$k47oRPWWPx2Ed2QDgXu8IOETWIAFi4FcNLFoXHPWIM0ssCI6NOdfe', 'ogwurupatrick@gmail.com', 18007593000,null, false);
 `;
 
 
