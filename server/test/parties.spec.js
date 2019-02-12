@@ -230,6 +230,20 @@ describe('Parties', () => {
           done();
         });
     });
+    it('should error 404 if party not found', (done) => {
+      const partyId = 100;
+      chai.request(app)
+        .delete(`/api/v1/parties/${partyId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .end((err, res) => {
+          if (err) done(err);
+          res.body.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Party not found');
+          done();
+        });
+    });
   });
 
   describe('DELETE /', () => {
@@ -244,6 +258,20 @@ describe('Parties', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('message');
           res.body.message.should.equal('Party deleted');
+          done();
+        });
+    });
+    it('should error 404 if party not found', (done) => {
+      const partyId = 100;
+      chai.request(app)
+        .delete(`/api/v1/parties/${partyId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .end((err, res) => {
+          if (err) done(err);
+          res.body.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Party not found');
           done();
         });
     });

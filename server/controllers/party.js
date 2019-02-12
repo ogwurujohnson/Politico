@@ -127,6 +127,12 @@ export default {
           error: 'unexpected error occurred',
         });
       }
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Party not found',
+        });
+      }
       return res.status(200).json({
         status: 200,
         message: 'Party deleted',
@@ -151,6 +157,12 @@ export default {
         return res.status(500).json({
           status: 500,
           error: 'unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Party not found',
         });
       }
       return res.status(201).json({
