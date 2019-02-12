@@ -39,6 +39,7 @@ describe('Offices', () => {
       chai.request(app)
         .get('/api/v1/offices')
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
@@ -55,6 +56,7 @@ describe('Offices', () => {
         .get(`/api/v1/offices/${id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
@@ -71,6 +73,7 @@ describe('Offices', () => {
         .get(`/api/v1/offices/${id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(404);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
@@ -101,6 +104,7 @@ describe('Offices', () => {
         .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
@@ -121,6 +125,7 @@ describe('Offices', () => {
         .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(409);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
@@ -128,9 +133,9 @@ describe('Offices', () => {
           done();
         });
     });
-    it('should return error 400 on issue with insertion', (done) => {
+    it('should return error 400 on omission of office type', (done) => {
       const data = {
-        typer: 'govt',
+        type: '',
         officeName: 'govt name',
       };
       chai.request(app)
@@ -138,10 +143,46 @@ describe('Offices', () => {
         .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(400);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
           res.body.error.should.equal('Please provide a valid office type');
+          done();
+        });
+    });
+    it('should return error 400 on omission of office name', (done) => {
+      const data = {
+        type: 'legislative',
+        officeName: '',
+      };
+      chai.request(app)
+        .post('/api/v1/offices')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Please provide a valid office name');
+          done();
+        });
+    });
+    it('should return error 403 if not loggedin', (done) => {
+      const data = {
+        type: 'legislative',
+        officeName: 'senate',
+      };
+      chai.request(app)
+        .post('/api/v1/offices')
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(403);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('You are not logged in!');
           done();
         });
     });

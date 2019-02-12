@@ -129,7 +129,7 @@ export default {
       }
       return res.status(200).json({
         status: 200,
-        message: `Party deleted ${resp}`,
+        message: 'Party deleted',
       });
     });
   },

@@ -1,199 +1,251 @@
-/* import chai from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 
 chai.use(chaiHttp);
 chai.should();
 
-describe('Welcome route', () => {
-  it('should return a welcome message', (done) => {
-    chai.request(app)
-      .get('/api/v1/')
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('message');
-        res.body.message.should.equal('Welcome to the Politico Application');
-        res.body.should.be.a('object');
-        done();
-      });
-  });
-  it('should return an error route message', (done) => {
-    chai.request(app)
-      .post('/api/v1/')
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property('message');
-        res.body.message.should.equal('Invalid request, Route does not exist');
-        res.body.should.be.a('object');
-        done();
-      });
-  });
-});
+
+let adminToken;
+
+const adminData = {
+  email: 'ogwurujohnson@gmail.com',
+  password: 'test',
+};
 
 describe('Parties', () => {
   describe('GET /', () => {
-    it('should get all party records', (done) => {
+    it('should return 200 and get an object of each party', (done) => {
       chai.request(app)
         .get('/api/v1/parties')
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('name');
+          res.body.data[0].should.have.property('hqaddress');
+          res.body.data[0].should.have.property('logourl');
           done();
         });
     });
 
     it('should get a single party record', (done) => {
-      const id = 526278;
+      const id = 1;
       chai.request(app)
         .get(`/api/v1/parties/${id}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('name');
+          res.body.data[0].should.have.property('hqaddress');
+          res.body.data[0].should.have.property('logourl');
           done();
         });
     });
 
-    it('should not get a single party record', (done) => {
+    it('should return error 404 if party not found', (done) => {
       const id = 100;
       chai.request(app)
         .get(`/api/v1/parties/${id}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(404);
           res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Party not found');
           done();
         });
     });
   });
 
   describe('POST /', () => {
-    it('should insert record  into data structure', (done) => {
-      const data = {
-        partyName: 'apc',
-        hqAddress: 'abuja',
-        logoUrl: '127.0.0.1',
-      };
+    before((done) => {
       chai.request(app)
-        .post('/api/v1/parties')
-        .send(data)
+        .post('/api/v1/auth/login')
+        .send(adminData)
         .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
+          if (err) done(err);
+          adminToken = res.body.data[0].token;
           done();
         });
     });
-    it('should not insert record  into data structure', (done) => {
+    it('should insert record and return 201', (done) => {
       const data = {
-        partyName: '',
-        hqAddress: 'abuja',
-        logoUrl: '127.0.0.1',
+        partyname: 'apc',
+        hqaddress: 'abuja',
+        logourl: 'https:///cloudinary.com/mypictures',
+      };
+      chai.request(app)
+        .post('/api/v1/parties')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('partyname');
+          res.body.data[0].should.have.property('hqaddress');
+          res.body.data[0].should.have.property('logourl');
+          done();
+        });
+    });
+    it('should return error 409 in cases of duplication', (done) => {
+      const data = {
+        partyname: 'apc',
+        hqaddress: 'abuja',
+        logourl: 'https:///cloudinary.com/mypictures',
+      };
+      chai.request(app)
+        .post('/api/v1/parties')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(409);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('A party with the name exists');
+          done();
+        });
+    });
+    it('should return error 400 in partyname is omitted', (done) => {
+      const data = {
+        partyname: '',
+        hqaddress: 'abuja',
+        logourl: '127.0.0.1',
+      };
+      chai.request(app)
+        .post('/api/v1/parties')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Please provide a valid partyname');
+          done();
+        });
+    });
+    it('should return error 400 in hqaddress is omitted', (done) => {
+      const data = {
+        partyname: 'pdp',
+        hqaddress: '',
+        logourl: '127.0.0.1',
+      };
+      chai.request(app)
+        .post('/api/v1/parties')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Please provide a valid hqaddress');
+          done();
+        });
+    });
+    it('should return error 400 if logourl is omitted', (done) => {
+      const data = {
+        partyname: 'pdp',
+        hqaddress: 'abuja',
+        logourl: '',
+      };
+      chai.request(app)
+        .post('/api/v1/parties')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Please provide a valid logourl');
+          done();
+        });
+    });
+    it('should return error 403 if not signed in', (done) => {
+      const data = {
+        partyname: 'pdp',
+        hqaddress: 'abuja',
+        logourl: '127.0.0.1',
       };
       chai.request(app)
         .post('/api/v1/parties')
         .send(data)
         .end((err, res) => {
-          res.should.have.status(400);
+          if (err) done(err);
+          res.should.have.status(403);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
+          res.body.error.should.equal('You are not logged in!');
           done();
         });
     });
   });
   
   describe('PATCH /', () => {
-    it('should update name of party in data structure', (done) => {
-      const identifier = 'name';
-      const data = {
-        userInput: 'PDP',
-      };
-      const partyId = 526278;
+    before((done) => {
       chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${identifier}`)
-        .send(data)
+        .post('/api/v1/auth/login')
+        .send(adminData)
         .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
+          if (err) done(err);
+          adminToken = res.body.data[0].token;
           done();
         });
     });
-    it('should update logo of party in data structure', (done) => {
-      const identifier = 'logo';
+    it('should update party details in DB and return 201', (done) => {
       const data = {
-        userInput: '235.8.8.5',
+        partyname: 'pdp',
+        hqaddress: 'lagos',
+        logourl: 'https://cloudinary.com/myalbum'
       };
-      const partyId = 526278;
+      const partyId = 1;
       chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${identifier}`)
+        .patch(`/api/v1/parties/${partyId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
-          done();
-        });
-    });
-    it('should update hq of party in data structure', (done) => {
-      const identifier = 'hq';
-      const data = {
-        userInput: 'Lagos',
-      };
-      const partyId = 526278;
-      chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${identifier}`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          done();
-        });
-    });
-    it('should return party not found', (done) => {
-      const identifier = 'name';
-      const data = {
-        userInput: 'PDP',
-      };
-      const partyId = 100;
-      chai.request(app)
-        .patch(`/api/v1/parties/${partyId}/${identifier}`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(404);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-          res.body.error.should.equal('Party not found');
+          res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('name');
+          res.body.data[0].should.have.property('hqaddress');
+          res.body.data[0].should.have.property('logourl');
           done();
         });
     });
   });
 
   describe('DELETE /', () => {
-    it('should delete record from data structure', (done) => {
-      const partyId = 526278;
+    it('should delete record and return 200', (done) => {
+      const partyId = 1;
       chai.request(app)
         .delete(`/api/v1/parties/${partyId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
         .end((err, res) => {
-          res.should.have.status(200);
+          if (err) done(err);
+          res.body.should.have.status(200);
           res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          res.body.data.should.equal('party deleted successfully');
-          done();
-        });
-    });
-    it('should return party not found', (done) => {
-      const partyId = 100;
-      chai.request(app)
-        .delete(`/api/v1/parties/${partyId}`)
-        .end((err, res) => {
-          res.should.have.status(404);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-          res.body.error.should.equal('Party not found');
+          res.body.should.have.property('message');
+          res.body.message.should.equal('Party deleted');
           done();
         });
     });
   });
-}); */
+});
