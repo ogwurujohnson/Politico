@@ -4,13 +4,12 @@
   "description": "Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.",
   "main": "./server/app.js",
   "scripts": {
-    "migration": "set NODE_ENV=test&& babel-node ./server/models/pushdb.js pushToDB",
+    "migration": "set NODE_ENV=test&& babel-node ./server/models/pushdb.js pushTable&& babel-node ./server/models/pushdb.js pushTableData",
     "start": "set NODE_ENV=production&& babel-node ./server/app.js",
     "start:dev": "set NODE_ENV=development&& babel-watch ./server/app.js",
-    "pretest": "set NODE_ENV=test&& npm run migration",
-    "test": "set NODE_ENV=test&& nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill ./server/test/* --exit",
+    "test": "set NODE_ENV=test&& npm run migration&& nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill ./server/test/* --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "pg": "set NODE_ENV=development&& babel-node ./server/models/db.js dropAllTables && babel-node ./server/models/db.js createAllTables && babel-node ./server/models/db.js seedAllTables --exec"
+    "pg": "set NODE_ENV=development&& babel-node ./server/models/pushdb.js pushToDB"
   },
   "repository": {
     "type": "git",

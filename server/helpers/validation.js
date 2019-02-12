@@ -61,7 +61,6 @@ export default {
       });
     } else if (
       !phonenumber
-      || /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test(phonenumber) === false
     ) {
       return res.status(400).json({
         status: 400,

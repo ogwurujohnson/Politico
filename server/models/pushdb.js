@@ -57,13 +57,20 @@ pool.on('connect', () => {
 });
 
 
-const pushToDB = () => {
+const pushTable = () => {
   db.query(createTable);
+};
+const pushTableData = () => {
   db.query(seedTable);
 };
-pushToDB();
+
+pushTable();
+pushTableData();
 
 pool.end();
 
 
-export default pushToDB;
+export default {
+  pushTable,
+  pushTableData,
+};

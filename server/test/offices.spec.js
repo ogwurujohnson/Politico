@@ -1,4 +1,4 @@
-/* import chai from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import app from '../app';
@@ -10,154 +10,181 @@ process.env.NODE_ENV = 'test';
 chai.use(chaiHttp);
 chai.should();
 
+let adminToken;
+let userToken;
+
+const adminData = {
+  email: 'ogwurujohnson@gmail.com',
+  password: 'test',
+};
+
+const userData = {
+  email: 'ogwurupatrick@gmail.com',
+  password: 'test',
+};
 
 describe('Offices', () => {
-  describe('GET /', () => {
+  describe('/GET Offices', () => {
+    before((done) => {
+      chai.request(app)
+        .post('/api/v1/auth/login')
+        .send(userData)
+        .end((err, res) => {
+          if (err) done(err);
+          userToken = res.body.data[0].token;
+          done();
+        });
+    });
     it('should return status 200 and get all offices', (done) => {
       chai.request(app)
         .get('/api/v1/offices')
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
-          res.body.data[0].should.have.property('')
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('type');
+          res.body.data[0].should.have.property('name');
           done();
         });
     });
-
-    it('should get a single office record', (done) => {
-      const id = 87879;
+    it('should return 200 on getting a single office record', (done) => {
+      const id = 1;
       chai.request(app)
         .get(`/api/v1/offices/${id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(200);
           res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('type');
+          res.body.data[0].should.have.property('name');
           done();
         });
     });
-
-    it('should not get a single office record', (done) => {
-      const id = 100;
+    it('should return 404 if office not found', (done) => {
+      const id = 844944;
       chai.request(app)
         .get(`/api/v1/offices/${id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(404);
           res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Office not found');
           done();
         });
     });
   });
 
-  describe('POST /', () => {
-    it('should insert record  into data structure', (done) => {
+  describe('/ POST', () => {
+    before((done) => {
+      chai.request(app)
+        .post('/api/v1/auth/login')
+        .send(adminData)
+        .end((err, res) => {
+          if (err) done(err);
+          adminToken = res.body.data[0].token;
+          done();
+        });
+    });
+    it('should insert record  into DB and return 201', (done) => {
       const data = {
-        officeType: 'govt',
-        officeName: 'govt name',
+        type: 'govt',
+        officename: 'govt name',
       };
       chai.request(app)
         .post('/api/v1/offices')
+        .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
+          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('type');
+          res.body.data[0].should.have.property('officename');
           done();
         });
     });
-    it('should not insert record  into data structure', (done) => {
+    it('should return error 409 due to duplication', (done) => {
       const data = {
-        officeType: '',
+        type: 'govt',
+        officename: 'govt name',
+      };
+      chai.request(app)
+        .post('/api/v1/offices')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(data)
+        .end((err, res) => {
+          if (err) done(err);
+          res.should.have.status(409);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('An office with the name exists');
+          done();
+        });
+    });
+    it('should return error 400 on omission of office type', (done) => {
+      const data = {
+        type: '',
         officeName: 'govt name',
       };
       chai.request(app)
         .post('/api/v1/offices')
+        .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
+          if (err) done(err);
           res.should.have.status(400);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
+          res.body.error.should.equal('Please provide a valid office type');
           done();
         });
     });
-  });
-  describe('PATCH /', () => {
-    it('should update name of office in data structure', (done) => {
-      const identifier = 'name';
+    it('should return error 400 on omission of office name', (done) => {
       const data = {
-        userInput: 'Governor',
+        type: 'legislative',
+        officeName: '',
       };
-      const officeId = 87879;
       chai.request(app)
-        .patch(`/api/v1/offices/${officeId}/${identifier}`)
+        .post('/api/v1/offices')
+        .set('Authorization', `Bearer ${adminToken}`)
         .send(data)
         .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          done();
-        });
-    });
-    it('should update type of office in data structure', (done) => {
-      const identifier = 'type';
-      const data = {
-        userInput: 'Legislative',
-      };
-      const officeId = 87879;
-      chai.request(app)
-        .patch(`/api/v1/offices/${officeId}/${identifier}`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          done();
-        });
-    });
-    it('should return office not found', (done) => {
-      const identifier = 'name';
-      const data = {
-        userInput: 'PDP',
-      };
-      const officeId = 100;
-      chai.request(app)
-        .patch(`/api/v1/offices/${officeId}/${identifier}`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(404);
+          if (err) done(err);
+          res.should.have.status(400);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
-          res.body.error.should.equal('Office not found');
+          res.body.error.should.equal('Please provide a valid office name');
           done();
         });
     });
-  });
-
-  describe('DELETE /', () => {
-    it('should delete record from data structure', (done) => {
-      const officeId = 87879;
+    it('should return error 403 if not loggedin', (done) => {
+      const data = {
+        type: 'legislative',
+        officeName: 'senate',
+      };
       chai.request(app)
-        .delete(`/api/v1/offices/${officeId}`)
+        .post('/api/v1/offices')
+        .send(data)
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          res.body.data.should.equal('Office deleted Successfully');
-          done();
-        });
-    });
-    it('should return  office not found', (done) => {
-      const officeId = 100;
-      chai.request(app)
-        .delete(`/api/v1/offices/${officeId}`)
-        .end((err, res) => {
-          res.should.have.status(404);
+          if (err) done(err);
+          res.should.have.status(403);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
-          res.body.error.should.equal('Office not found');
+          res.body.error.should.equal('You are not logged in!');
           done();
         });
     });
   });
-}); */
+});

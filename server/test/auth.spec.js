@@ -16,7 +16,7 @@ describe('Authentication', () => {
       firstname: 'Benrey',
       lastname: 'Jadee',
       othername: 'onyekachi',
-      password: 'Johnny55',
+      password: 'test',
       email: 'test@johnson.com',
       phonenumber: '0803352515',
       passporturl: 'https://cloudinary.com',
@@ -63,7 +63,7 @@ describe('Authentication', () => {
     it('should be able to login and return 200', (done) => {
       const data = {
         email: 'test@johnson.com',
-        password: 'Johnny55',
+        password: 'test',
       };
       chai.request(app)
         .post('/api/v1/auth/login')
@@ -91,7 +91,7 @@ describe('Authentication', () => {
     it('should return 404 if user does not exist', (done) => {
       const errorData = {
         email: 'test@johnson1.com',
-        password: 'Johnny55',
+        password: 'test',
       };
       chai.request(app)
         .post('/api/v1/auth/login')
@@ -108,7 +108,7 @@ describe('Authentication', () => {
     it('should return 401 if password does not match', (done) => {
       const errData = {
         email: 'test@johnson.com',
-        password: 'Johnny5',
+        password: 'testwe',
       };
       chai.request(app)
         .post('/api/v1/auth/login')
