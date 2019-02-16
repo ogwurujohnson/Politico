@@ -40,7 +40,6 @@ export default {
           phonenumber, passporturl, isAdmin, date, date],
         (error, result) => {
           if (error) {
-            console.log('error400');
             return res.status(400).json({
               status: 400,
               error: 'There was a problem signing up',
@@ -141,14 +140,68 @@ export default {
           error: 'email not found',
         });
       } else {
+        const randomNumber = Helper.generateRandomNumbers(5, 10);
+        const tokenSecretWord = process.env.TOKEN_SECRET_WORD;
+        const resetToken = `${randomNumber}-${tokenSecretWord}`;
+        const resetTokenHash = bcrypt.hashPassword(resetToken);
+        const resetLink = `https://politico.com/reset?token=${resetTokenHash}`;
+        const mailMessage = `Follow this link to reset password ${resetLink}`;
+        db.query('UPDATE tblusers SET resettoken = $1 WHERE id = $2', [resetTokenHash, resp.rows[0].id], (error, result) => {
+          if (error) {
+            return res.status(400).json({
+              status: 400,
+              error: 'there was a problem updating user table',
+            });
+          }
+          Helper.sendMail(email, mailMessage);
+          return res.status(200).json({
+            status: 200,
+            data: [{
+              message: 'Check your email for password reset link',
+              email,
+            }],
+          });
+        });
+      }
+    });
+  },
+  /**
+   * @description validate user token and save new password
+   *
+   * @function validateResetToken
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} json data
+   */
+  validateResetToken: (req, res) => {
+    const { email, password, resetTokenHash } = req.body;
+    db.query('SELECT * FROM tblusers WHERE email=$1', [email], (err, resp) => {
+      if (resp.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'email not found',
+        });
+      }
+      const savedHashToken = resp.rows[0].resettoken;
+      console.log(savedHashToken);
+      console.log(resetTokenHash);
+      
+      if (resetTokenHash !== savedHashToken) {
+        return res.status(400).json({
+          status: 400,
+          error: 'Token mismatch',
+        });
+      }
+      const newHashPassword = bcrypt.hashPassword(password);
+      return db.query('UPDATE tblusers SET password = $1 WHERE id = $2', [newHashPassword, resp.rows[0].id], (error, result) => {
         res.status(200).json({
           status: 200,
           data: [{
-            message: 'Check your email for password reset link',
+            message: 'Password reset successful',
             email,
           }],
         });
-      }
+      });
     });
   },
 };
