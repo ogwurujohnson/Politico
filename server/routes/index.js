@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
 router.post('/auth/signup', Validation.userSignupValidation, Auth.createUser);
 router.post('/auth/login', Validation.userLoginValidation, Auth.loginUser);
 router.post('/auth/reset', Auth.resetPassword);
+router.post('/auth/validate', Auth.validateResetToken);
 
 
 router.post('/parties', Verification.isAdmin, Validation.partyValidation, Party.createParty);

@@ -17,6 +17,7 @@ const createTables = `
     phoneNumber VARCHAR(128),
     passportUrl VARCHAR(128),
     isAdmin VARCHAR(128),
+    resettoken VARCHAR(225),
     createdDate TIMESTAMP,
     modifiedDate TIMESTAMP
   );
