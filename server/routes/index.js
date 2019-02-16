@@ -1,12 +1,17 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import Party from '../controllers/party';
 import Office from '../controllers/office';
 import Auth from '../controllers/auth';
 import User from '../controllers/user';
 import Verification from '../helpers/verifyToken';
 import Validation from '../helpers/validation';
+import swaggerDoc from '../../politico.postman_collection-Swagger20.json';
 
 const router = express.Router();
+
+router.use('/api-doc', swaggerUi.serve);
+router.get('/api-doc', swaggerUi.setup(swaggerDoc));
 
 router.get('/', (req, res) => {
   res.status(200).json({
