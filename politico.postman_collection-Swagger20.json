@@ -1,0 +1,745 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "politico",
+    "description": "Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.",
+    "contact": {}
+  },
+  "host": "better-politico.herokuapp.com",
+  "basePath": "/api",
+  "securityDefinitions": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "https://better-politico.herokuapp.com/api",
+      "scopes": {}
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/auth/signup": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/auth/signup",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "V1AuthSignupPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1auth~1signupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/auth/login",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "V1AuthLoginPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1auth~1loginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/auth/reset": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/auth/reset",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "V1AuthResetPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1auth~1resetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/parties/1": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/parties/1",
+        "tags": [
+          "Party"
+        ],
+        "operationId": "V1Parties1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "patch": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/parties/1",
+        "tags": [
+          "Party"
+        ],
+        "operationId": "V1Parties1Patch",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1parties~11Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "delete": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/parties/1",
+        "tags": [
+          "Party"
+        ],
+        "operationId": "V1Parties1Delete",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/parties": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/parties",
+        "tags": [
+          "Party"
+        ],
+        "operationId": "V1PartiesGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1",
+        "tags": [
+          "Homepage"
+        ],
+        "operationId": "V1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/offices": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/offices",
+        "tags": [
+          "Office"
+        ],
+        "operationId": "V1OfficesPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1officesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/offices",
+        "tags": [
+          "Office"
+        ],
+        "operationId": "V1OfficesGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/offices/1": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/offices/1",
+        "tags": [
+          "Office"
+        ],
+        "operationId": "V1Offices1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/office/7/register": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/office/7/register",
+        "tags": [
+          "Election"
+        ],
+        "operationId": "V1Office7RegisterPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1office~17~1registerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/office/1/result": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/office/1/result",
+        "tags": [
+          "Election"
+        ],
+        "operationId": "V1Office1ResultGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/v1/vote": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "https://better-politico.herokuapp.com/api/v1/vote",
+        "tags": [
+          "Election"
+        ],
+        "operationId": "V1VotePost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https:~1~1better-politico.herokuapp.com~1api~1v1~1voteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "https://better-politico.herokuapp.com/api/v1/auth/signupRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/auth/signupRequest",
+      "example": {
+        "firstname": "Johnson",
+        "lastname": "ogwuru",
+        "othername": "onyekachi",
+        "password": "test",
+        "email": "ogwurujohnson1@gmail.com",
+        "phonenumber": "08033525155",
+        "passporturl": "https://cloudinary.com"
+      },
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "othername": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phonenumber": {
+          "type": "string"
+        },
+        "passporturl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "othername",
+        "password",
+        "email",
+        "phonenumber",
+        "passporturl"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/auth/loginRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/auth/loginRequest",
+      "example": {
+        "email": "ogwurujohnson1@gmail.com",
+        "password": "test"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/auth/resetRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/auth/resetRequest",
+      "example": {
+        "email": "ogwurujohnson1@gmail.com"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/parties/1Request": {
+      "title": "https://better-politico.herokuapp.com/api/v1/parties/1Request",
+      "example": {
+        "partyname": "pdp",
+        "hqaddress": "abuja",
+        "logourl": "dkd.com"
+      },
+      "type": "object",
+      "properties": {
+        "partyname": {
+          "type": "string"
+        },
+        "hqaddress": {
+          "type": "string"
+        },
+        "logourl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "partyname",
+        "hqaddress",
+        "logourl"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/officesRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/officesRequest",
+      "example": {
+        "type": "state",
+        "officename": "speaker"
+      },
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "officename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "officename"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/office/7/registerRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/office/7/registerRequest",
+      "example": {
+        "office": "1",
+        "party": "2"
+      },
+      "type": "object",
+      "properties": {
+        "office": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "office",
+        "party"
+      ]
+    },
+    "https://better-politico.herokuapp.com/api/v1/voteRequest": {
+      "title": "https://better-politico.herokuapp.com/api/v1/voteRequest",
+      "example": {
+        "voter": "8",
+        "office": "1",
+        "candidate": "2"
+      },
+      "type": "object",
+      "properties": {
+        "voter": {
+          "type": "string"
+        },
+        "office": {
+          "type": "string"
+        },
+        "candidate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "voter",
+        "office",
+        "candidate"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "Endpoints here, handle the authorization of users, be it signup, login or password reset"
+    },
+    {
+      "name": "Party"
+    },
+    {
+      "name": "Homepage"
+    },
+    {
+      "name": "Office"
+    },
+    {
+      "name": "Election"
+    }
+  ]
+}
