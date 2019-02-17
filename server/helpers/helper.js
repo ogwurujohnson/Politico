@@ -28,7 +28,7 @@ const Helper = {
       },
     });
     const mailOptions = {
-      from: 'no-reply@politico.com',
+      from: 'Politico <ogwurujohnson@gmail.com>',
       to: email,
       subject: 'Password Reset',
       text: content,
