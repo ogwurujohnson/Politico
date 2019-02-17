@@ -145,7 +145,13 @@ export default {
         const resetToken = `${randomNumber}-${tokenSecretWord}`;
         const resetTokenHash = bcrypt.hashPassword(resetToken);
         const resetLink = `https://politico.com/reset?token=${resetTokenHash}`;
-        const mailMessage = `Follow this link to reset password ${resetLink}`;
+        const mailMessage = `Someone (hopefully you) has requested a password reset for your Politico account. Follow the link below  to set a new  password: 
+
+${resetLink} 
+
+If you don't  wish to reset your password, disregard this email and no action will be taken. 
+
+The Politico Team`;
         db.query('UPDATE tblusers SET resettoken = $1 WHERE id = $2', [resetTokenHash, resp.rows[0].id], (error, result) => {
           if (error) {
             return res.status(400).json({
@@ -183,9 +189,6 @@ export default {
         });
       }
       const savedHashToken = resp.rows[0].resettoken;
-      console.log(savedHashToken);
-      console.log(resetTokenHash);
-      
       if (resetTokenHash !== savedHashToken) {
         return res.status(400).json({
           status: 400,
