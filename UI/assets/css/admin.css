@@ -14,6 +14,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-color: #F0F4F3;
 }
 
 #wrap {
@@ -283,7 +284,10 @@ div .container {
 .candidates-grid {
   display: flex;
   flex-flow: row wrap;
-  width: 100%;/* 4 items * item width(100+5+5) = 440 */
+  width: 100%;
+  margin: 20px;
+  
+  
 }
 
 .candidates-grid .single-candidate {
@@ -305,19 +309,20 @@ div .container {
 }
 
 @media screen and (max-width: 414px){
+  .candidates-grid {
+    width: 75%;
+  }
   .candidate-image {
     width: 100px;
     height: 50px;
   }
   .candidates-grid .single-candidate {
     padding: 10px;
+    margin: auto;
   }
   .candidates-grid .single-candidate p {
     font-size: 8px;
     text-align: center;
-  }
-  .candidates-grid .single-candidate {
-    margin: auto;
   }
 }
 /**all candidates overview ENDS*/
@@ -351,6 +356,18 @@ div .container {
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: Catamaran;
+}
+
+.party-name {
+  
+}
+
+.party-candidates {
+
+}
+
+.hq_address {
+
 }
 /**SIngle candidate view style ENDS */
 
