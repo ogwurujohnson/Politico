@@ -66,48 +66,6 @@ a {
 }
 
 
-/**candidate overview */
-.candidates-grid {
-  display: flex;
-  flex-flow: row wrap;
-  width: 95%;
-  margin: auto;
-  margin-top: 30px;
-}
-
-.candidates-grid .single-candidate {
-  padding: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 5px;
-}
-
-.candidates-grid .single-candidate p {
-  font-size: 12px;
-  text-align: center;
-  font-family: Catamaran;
-}
-
-.candidate-image {
-  width: 200px;
-}
-
-@media screen and (max-width: 414px){
-  .candidates-grid {
-    width: 75%;
-  }
-  .candidate-image {
-    width: 50px;
-  }
-  .candidates-grid .single-candidate p {
-    font-size: 8px;
-    text-align: center;
-  }
-  .candidates-grid .single-candidate {
-    padding: 5px;
-    margin: auto;
-  }
-}
-
 
 /**FEEDBACK styling BEGINS */
 
