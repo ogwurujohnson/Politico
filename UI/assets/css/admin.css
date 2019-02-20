@@ -14,16 +14,17 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-color: #F0F4F3;
 }
 
-/*#wrap {
+#wrap {
   min-height: -webkit-calc(100% - 100px);     /* Chrome */
   min-height: -moz-calc(100% - 100px);     /* Firefox */
   min-height: calc(100% - 100px);     /* native */
-} */
+} 
 
-.main-container {
-  min-height: 100vh;
+main {
+  min-height: 50vh;
   overflow: hidden;
   display: block;
   position: relative;
@@ -136,6 +137,19 @@ header nav ul li a {
 
 }
 
+.page-explainer {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0;
+  color: #111;
+  text-align: center;
+  font-size: 20px;
+  font-family: Catamaran;
+}
+
 /**Form section**/
 
 .form-class {
@@ -233,9 +247,10 @@ input[type=submit]:hover {
 }
 
 /**admin summary BEGINS */
-div .card-grid {
-  width: 100%;
-  margin-top: 10%;
+.card-grid {
+  width: 20%;
+  margin-top: 70px;
+  margin-left: 20px;
 }
 
 div .card {
@@ -269,7 +284,10 @@ div .container {
 .candidates-grid {
   display: flex;
   flex-flow: row wrap;
-  width: 100%; /* 4 items * item width(100+5+5) = 440 */
+  width: 100%;
+  margin: 20px;
+  
+  
 }
 
 .candidates-grid .single-candidate {
@@ -286,18 +304,25 @@ div .container {
 
 .candidate-image {
   width: 200px;
+  height: 250px;
+  margin: auto;
 }
 
 @media screen and (max-width: 414px){
+  .candidates-grid {
+    width: 75%;
+  }
   .candidate-image {
-    width: 50px;
+    width: 100px;
+    height: 50px;
+  }
+  .candidates-grid .single-candidate {
+    padding: 10px;
+    margin: auto;
   }
   .candidates-grid .single-candidate p {
     font-size: 8px;
     text-align: center;
-  }
-  .candidates-grid .single-candidate {
-    margin: auto;
   }
 }
 /**all candidates overview ENDS*/
@@ -331,6 +356,18 @@ div .container {
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: Catamaran;
+}
+
+.party-name {
+  
+}
+
+.party-candidates {
+
+}
+
+.hq_address {
+
 }
 /**SIngle candidate view style ENDS */
 
@@ -447,8 +484,8 @@ div .container {
   #user-activity-2 {
     width: 50%;
     margin: auto;
-    margin-top: -550px;  
-    margin-left: 30%;
+    margin-top: -590px;
+    margin-left: 40%;  
   }
 }
 
@@ -517,10 +554,10 @@ div .container {
   font: bold 16px Catamaran;
   padding: 55px 50px;
   width: 100%;
-  bottom:0;
   position: relative;
   clear:both;
   margin-top: 10%;
+  margin-bottom: 0%;
 }
 
 .footer .footer-left,
@@ -652,6 +689,7 @@ div .container {
 	.footer{
     font: bold 14px sans-serif;
     margin-top: 20%;
+    margin-bottom: 0;
 	}
 
 	.footer .footer-left{
