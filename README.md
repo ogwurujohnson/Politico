@@ -1,214 +1,121 @@
-# Politico
-Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.
-
 [![Build Status](https://travis-ci.org/ogwurujohnson/Politico.svg?branch=develop)](https://travis-ci.org/ogwurujohnson/Politico)
-[![Coverage Status](https://coveralls.io/repos/github/ogwurujohnson/Politico/badge.svg?branch=ch-write-unit-test-163504250)](https://coveralls.io/github/ogwurujohnson/Politico?branch=ch-write-unit-test-163504250)
+[![Coverage Status](https://coveralls.io/repos/github/ogwurujohnson/Politico/badge.svg?branch=develop)](https://coveralls.io/github/ogwurujohnson/Politico?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ad2335df87681d5065e3/maintainability)](https://codeclimate.com/github/ogwurujohnson/Politico/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ad2335df87681d5065e3/test_coverage)](https://codeclimate.com/github/ogwurujohnson/Politico/test_coverage)
 
-### UI Templates
-My UI templates can be found here: [ UI ](https://ogwurujohnson.github.io/Politico/UI)
+# Politico
 
-### API Endpoints
-Link of API Hosted on Heroku: 
-[Link to API](https://better-politico.herokuapp.com/api/v1)
+Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.
 
-## Pivotal Tracker
+The application is hosted at [http://ogwurujohnson.github.io/Politico/UI/](http://ogwurujohnson.github.io/Politico/UI/)
 
-Project is currently being managed with Pivotal Tracker, a project management tool. You can find the stories on the 
-[Politico Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2238975)
+## Application Features
 
-### Key Application Features
-An admin can perform the following:
- - Admin (electoral body) can create political parties.
- - Admin (electoral body) can modify ​political parties
- - Admin (electoral body) can delete a political party.
- - Admin (electoral body) can create different ​political offices.
- - Admin (electoral body) can delete different ​political offices
- - Admin (electoral body) can modify different ​political offices
- - Users can sign up
- - Users can sign in
- - Users can vote for only one politician per ​political office​.
- - Users can see the results of election
+The Application Programming Interface(API) and fully hosted application implements the following features for different users correspondingly.
 
- ### Development
-This application was developed using NodeJs with express for routing.
+##### Unauthenticated Users
+- View the landing page
+- View the all party page
+- View all office page
+- View Election Result page
+- Register in the application
+- Sign into the application
 
-### Compiler
+##### Authenticated Users
+- Vie single office
+- Vote Candidate
+- View user profile
+- Log out of the application
 
-* [Babel](https://eslint.org/) - Compiler for Next Generation JavaScript
+##### Admin Users
+- Create Office
+- Create Party
+- Register Candidate
+- Delete Party
+- Delete a office
 
-### Installation
 
-- Clone the repository.
-- Run git clone (https://github.com/ogwurujohnson/Politico.git)
-``` git clone https://github.com/ogwurujohnson/Politico.git ```
+## Built With
 
-### Starting and Testing
-- On your command prompt CD into the cloned folder
-- Run ``` npm run start:dev ```
-- Open postman and test endpoints
-- To test the application
-- Run ``` npm run test ```
+* [Node js – A JavaScript runtime built on Chrome's V8 JavaScript engine ](https://nodejs.org/en/)
+* [Express Js – Fast, minimalistic web framework for Node.js ](https://expressjs.com)
+* [Postgresql – An open source database ](https://www.postgresql.org/)
 
-more info:
-(https://help.github.com/articles/cloning-a-repository/)
-- Run ``` npm install ``` to install the dependencies in the package.json file.
+## API
+The API can be found, hosted here [https://better-politico.herokuapp.com/api/v1](https://better-politico.herokuapp.com/api/v1)
 
-### Testing
+## API Documentation
 
-- Navigate to the project location in your terminal.
-- Run ``` npm test ``` to run the test.
+The application server-side API documentation can be found in [http://better-politico.herokuapp.com/api/v1/api-doc](http://better-politico.herokuapp.com/api/v1/api-doc)
 
-### API Endpoints
-<table>
-  <tr>
-    <th>HTTP VERB</th>
-		<th>ENDPOINT</th>
-		<th>FUNCTIONALITY</th>
-		<th>EXAMPLE RESPONSE</th>
-  </tr>
-  <tr>
-    <td> GET /parties </td>
-    <td> /api/v1/parties </td>
-    <td> Retrieves all parties </td>
-    <td> {
-      "status": 200,
-      "data": [
-                {
-                    "id": 1,
-                    "name": "Peoples Democratic Party",
-                    "address": "Ikeja, Lagos",
-                    "logo": "http://example.com/pdp"
-                },
-                {
-                    "id": 2,
-                    "name": "APC",
-                    "address": "Abuja, Nigeria",
-                    "logo": "http://example.com/apc"
-                }
-            ]
-        }
-    </td>
-  </tr>
-  <tr>
-    <td>GET /parties/:id</td>
-    <td>/api/v1/parties/:id</td>
-    <td>Fetch a specific party</td>
-    <td>{
-      "status": 200,
-      "data": [
-          {
-              "id": 1,
-                "name": "Peoples Democratic Party",
-                "address": "Ikeja, Lagos",
-                "logo": "http://example.com/pdp"
-          }
-      ]
-  }</td>
-  </tr>
-  <tr>
-    <td>POST /parties</td>
-    <td>/api/v1/parties/</td>
-    <td>Creates a party</td>
-    <td>{
-      "status": 201,
-      "data": [
-          {
-              "id": 3,
-              "address": "No 235 ikorodu road",
-              "name": "Councillor",
-              "logo": "http://example.co"
-          }
-      ]
-  }</td>
-  </tr>
-    <tr>
-      <td>PATCH /parties/:id</td>
-      <td>/api/v1/parties/:id</td>
-      <td>Updates a specific party</td>
-      <td>{
-    "status": 201,
-    "data": [
-        {
-            "id": 2,
-            "name": "Councillor",
-            "address": "No 21,nejhfeuhebwejbgwj",
-            "logo": "http://logo.co"
-        }
-    ]
-}
-      </td>
-    </tr>
-    <tr>
-      <td>DELETE /parties/:id</td>
-      <td>/api/v1/parties/:id</td>
-      <td>Deletes a specific political party</td>
-      <td>{
-    "status": 200,
-    "data": [
-        {
-            "status",
-            "data": "party successfully deleted"
-        }
-        
-    ]
-}
-      </td>
-    </tr>
-    <tr>
-      <td>GET /office/:id</td>
-      <td>/api/v1/offices/:id</td>
-      <td>Fetch a specific office</td>
-      <td>{
-    "status": 200,
-    "data": [
-        {
-            "id": 2,
-            "type": "State",
-            "name": "Governor",
-            "description": "Office of the Governor of Lagos State"
-        }
-    ]
-}
-      </td>
-    </tr>
-    <tr>
-      <td>GET /offices</td>
-      <td>/api/v1/offices/</td>
-      <td>Fetch all offices</td>
-      <td>{
-        "status": 200,
-        "data": [
-            {
-                "id": 1,
-                "type": "Federal",
-                "name": "President",
-                "description": "Office of the president of the federal republic of Nigeria"
-            },
-            {
-                "id": 2,
-                "type": "State",
-                "name": "Governor",
-                "description": "Office of the Governor of Lagos State"
-            }
-        ]
-    }
-      </td>
-    </tr>
-    
-   
-</table>
+## Project Management
 
-### Technologies Used
+Development of the Politico application is managed with Pivotal Tracker, here [https://pivotaltracker.com/n/projects/2238975](https://pivotaltracker.com/n/projects/2238975)
 
-- JavaScript (ES6) (http://es6-features.org/)
-- Node.js (https://nodejs.org/en/)
-- Express (https://www.npmjs.com/package/express-api)
-- [Babel](https://eslint.org/) - Compiler for Next Generation JavaScript
+## Getting Started
 
-### Author
-- JOHNSON OGWURU
+These instructions will get the politico application up and running on your local machine for development and testing purposes. See installation for notes on how to deploy the project on a live system.
 
-### License
-- MIT License
+### Prerequisites
+
+The following applications are required to have politico up and running on your system.
+
+```
+Node 5+ – (Version 5 and above)
+```
+```
+Editor – Sublime Text, Visual Studio Code or others
+```
+```
+Postgres database manager – PgAdmin, Elephant SQL
+```
+
+### Installing the application
+
+Take the following steps to get a development environment of Politico application running on you machine or server
+
+Clone Politico application
+
+On the root folder of the cloned application, add a .env file with required credentials following the .sample-env file pattern. This should contain the following
+
+```
+PORT = 
+POSTGRES_DB_DEV = 
+POSTGRES_DB_TEST = 
+POSTGRES_USER  = 
+POSTGRES_PASSWORD = 
+POSTGRES_PORT = 
+POSTGRES_HOST = 
+EMAIL = 
+EMAIL_PASSWORD = 
+TOKEN_SECRET_WORD = 
+
+SECRET = 
+
+TRAVIS_HOST=
+TRAVIS_USER=
+TRAVIS_DATABASE=
+TRAVIS_PASSWORD=
+ELEPHANT_PORT=
+
+```
+Navigate to the root folder of the application
+On command line, run the following commands
+```javascript
+npm install
+npm run start
+```
+Test the individual routes using postman
+End with an example of getting some data out of the system or using it for a little demo
+
+### Running the application tests
+
+In order to run tests cases for the routes, execute the following command
+- Server side test
+```javascript
+npm run test
+```
+
+## Authors
+
+* **Johnson Ogwuru** - (https://github.com/ogwurujohnson)
