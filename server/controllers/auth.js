@@ -144,7 +144,7 @@ export default {
         const tokenSecretWord = process.env.TOKEN_SECRET_WORD;
         const resetToken = `${randomNumber}-${tokenSecretWord}`;
         const resetTokenHash = bcrypt.hashPassword(resetToken);
-        const resetLink = `https://politico.com/reset?token=${resetTokenHash}`;
+        const resetLink = `https://ogwurujohnson.github.io/Politico/client/pages/auth/change-password?token=${resetTokenHash}`;
         const mailMessage = `Someone (hopefully you) has requested a password reset for your Politico account. Follow the link below  to set a new  password: 
 
 ${resetLink} 
