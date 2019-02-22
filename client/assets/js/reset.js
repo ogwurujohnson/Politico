@@ -1,6 +1,3 @@
-import user from "../../../server/controllers/user";
-import { profile } from "winston";
-
 /* eslint-disable no-undef */
 const baseUrl = 'https://better-politico.herokuapp.com/api/v1';
 
