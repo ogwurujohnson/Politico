@@ -1,7 +1,6 @@
-
-server
 node_modules
-.env
+coverage
 .nyc_output
-
+package-lock.json
+.env
 combined.log

@@ -45,7 +45,7 @@ export default {
               error: 'There was a problem signing up',
             });
           }
-          // create token with jwt that expires in 24hrs
+          // create token with hwt that expires in 24hrs
           const token = Helper.generateToken(result.rows[0].id, result.rows[0].isadmin);
           return res.status(201).json({
             status: 201,
@@ -144,7 +144,7 @@ export default {
         const tokenSecretWord = process.env.TOKEN_SECRET_WORD;
         const resetToken = `${randomNumber}-${tokenSecretWord}`;
         const resetTokenHash = bcrypt.hashPassword(resetToken);
-        const resetLink = `https://ogwurujohnson.github.io/Politico/client/pages/auth/change-password?token=${resetTokenHash}`;
+        const resetLink = `https://ogwurujohnson.github.io/Politico/client/pages/auth/change-password.html?token=${resetTokenHash}`;
         const mailMessage = `Someone (hopefully you) has requested a password reset for your Politico account. Follow the link below  to set a new  password: 
 
 ${resetLink} 
