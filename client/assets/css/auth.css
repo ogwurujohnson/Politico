@@ -1,0 +1,146 @@
+* {
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #4893D8;
+}
+
+body {
+  background-color: #F0F4F3;
+}
+
+.sign-up-form {
+  display: block;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 0px 50px 50px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.sign-in-form {
+  display: block;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 10px 50px 50px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  margin-top: 75px;
+}
+
+.sign-up-form p {
+  text-align: center;
+  font-family: Catamaran;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sign-in-form p {
+  text-align: center;
+  font-family: Catamaran;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-class {
+  display: block;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 30px 10px 20px 30px;
+  text-align: center;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=phone],
+input[type=file],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  padding-right: 5px;
+  margin-top: 5px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 13px;
+  font-family: Ubuntu;
+}
+
+
+
+input[type=button] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.header-logo {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  text-align: center;
+  padding: 10px 0px;
+  width: 60%;
+}
+
+.nav-logo {
+  font-family: Catamaran;
+  font-size: 12px;
+  color: #111;
+  text-transform: uppercase;
+  display: inline-block;
+  width: 30%;
+  margin-left: 10px;
+}
+
+/*for laptop screen*/
+@media screen and (min-width: 1280px) {
+  .sign-up-form {
+    margin: auto;
+    margin-top: 50px;
+    width: 35%;
+  }
+
+  .sign-in-form {
+    margin: auto;
+    margin-top: 50px;
+    width: 35%;
+  }
+}
+
+/*for ipad screen*/
+@media screen and (width: 1024px) {
+  .sign-up-form {
+    margin: auto;
+    margin-top: 100px;
+    width: 55%;
+  }
+
+  .sign-in-form {
+    margin: auto;
+    margin-top: 100px;
+    width: 55%;
+  }
+}
+
+
+/**create media query for several screens , responsiveness still has issues */
