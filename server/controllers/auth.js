@@ -45,7 +45,7 @@ export default {
               error: 'There was a problem signing up',
             });
           }
-          // create token with hwt that expires in 24hrs
+          // create token with jwt that expires in 24hrs
           const token = Helper.generateToken(result.rows[0].id, result.rows[0].isadmin);
           return res.status(201).json({
             status: 201,
