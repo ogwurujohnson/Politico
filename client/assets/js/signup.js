@@ -76,6 +76,5 @@ submitBtn.addEventListener('click', () => {
       }
     })
     .catch(error => console.error(error));
-  
   localStorage.removeItem('passportUrl');
 });

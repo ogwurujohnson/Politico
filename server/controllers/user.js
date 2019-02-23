@@ -1,5 +1,10 @@
 import moment from 'moment';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
 import dbHelper from '../models/index';
+
+dotenv.config();
 
 
 const { db } = dbHelper;
@@ -101,4 +106,59 @@ export default {
       }
     });
   },
+  /**
+   * @description fetch single user
+   * @function singleUser
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} single user record
+   */
+  singleUser: (req, res) => {
+    const { token } = req.params;
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(401).json({
+          status: 401,
+          error: 'There was an error trying to process request',
+        });
+      }
+      const { userId } = decoded;
+      db.query('SELECT * FROM tblusers WHERE id = $1', [userId], (error, resp) => {
+        if (resp.rowCount < 1) {
+          res.status(404).json({
+            status: 404,
+            error: 'Result not found',
+          });
+        } else {
+          res.status(200).json({
+            status: 200,
+            data: resp.rows,
+          });
+        }
+      });
+    });
+  },
+  /**
+   * @description fetch user votes
+   * @function userVotes
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} object of all votes by user
+   */
+  userVotes: (req, res) => {
+    const { id } = req.params;
+    db.query('SELECT tbloffice.name As office_name, tblusers.firstname, tblusers.lastname, tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1', [id], (error, resp) => {
+      if (resp.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          error: 'No vote found',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: resp.rows,
+        });
+      }
+    })
+  }
 };
