@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import dbHelper from '../models/index';
 import log from './winston';
+
+dotenv.config();
 
 const { db } = dbHelper;
 
