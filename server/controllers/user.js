@@ -147,7 +147,8 @@ export default {
    */
   userVotes: (req, res) => {
     const { id } = req.params;
-    db.query('SELECT tbloffice.name As office_name, tblusers.firstname, tblusers.lastname, tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1', [id], (error, resp) => {
+    // eslint-disable-next-line quotes
+    db.query(`SELECT tbloffice.name As office_name, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS "fullname", tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1`, [id], (error, resp) => {
       if (resp.rowCount < 1) {
         res.status(404).json({
           status: 404,
