@@ -38,7 +38,7 @@ router.get('/offices', Office.getAllOffices);
 router.get('/offices/:id', Validation.idQueryParameter, Verification.isLoggedIn, Office.getSpecificOffice);
 
 router.get('/user/:token', Verification.isLoggedIn, User.singleUser);
-router.get('/user/:id/vote', Verification.isLoggedIn, User.userVotes);
+router.get('/user/:id/vote', Validation.idQueryParameter, Verification.isLoggedIn, User.userVotes);
 router.post('/office/:uId/register', Validation.uIdQueryParameter, Verification.isAdmin, User.registerCandidate);
 router.get('/office/:id/result', Validation.idQueryParameter, User.officeResults);
 router.post('/vote', Verification.isLoggedIn, User.voteCandidate);
