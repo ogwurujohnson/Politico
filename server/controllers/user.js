@@ -1,5 +1,10 @@
 import moment from 'moment';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
 import dbHelper from '../models/index';
+
+dotenv.config();
 
 
 const { db } = dbHelper;
@@ -25,6 +30,12 @@ export default {
       });
     }
     return db.query('SELECT * FROM tblcandidates WHERE candidate=$1', [candidate], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount >= 1) {
         res.status(409).json({
           status: 409,
@@ -62,6 +73,12 @@ export default {
       });
     }
     return db.query('SELECT * FROM tblvotes WHERE office=$1 AND createdby=$2', [office, voter], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount >= 1) {
         res.status(409).json({
           status: 409,
@@ -88,6 +105,12 @@ export default {
   officeResults: (req, res) => {
     const { id } = req.params;
     db.query('SELECT office, candidate, COUNT(candidate) AS result FROM tblvotes WHERE office=$1 GROUP BY candidate, office', [id], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount < 1) {
         res.status(404).json({
           status: 404,
@@ -97,6 +120,74 @@ export default {
         res.status(200).json({
           status: 200,
           data: result.rows,
+        });
+      }
+    });
+  },
+  /**
+   * @description fetch single user
+   * @function singleUser
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} single user record
+   */
+  singleUser: (req, res) => {
+    const { token } = req.params;
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(401).json({
+          status: 401,
+          error: 'There was an error trying to process request',
+        });
+      }
+      const { userId } = decoded;
+      db.query('SELECT * FROM tblusers WHERE id = $1', [userId], (error, resp) => {
+        if (error) {
+          return res.status(500).json({
+            status: 500,
+            error: 'An unexpected error occurred',
+          });
+        }
+        if (resp.rowCount < 1) {
+          res.status(404).json({
+            status: 404,
+            error: 'Result not found',
+          });
+        } else {
+          res.status(200).json({
+            status: 200,
+            data: resp.rows,
+          });
+        }
+      });
+    });
+  },
+  /**
+   * @description fetch user votes
+   * @function userVotes
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} object of all votes by user
+   */
+  userVotes: (req, res) => {
+    const { id } = req.params;
+    // eslint-disable-next-line quotes
+    db.query(`SELECT tbloffice.name As office_name, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS "fullname", tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1`, [id], (error, resp) => {
+      if (error) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          error: 'No vote found',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: resp.rows,
         });
       }
     });
