@@ -27,9 +27,9 @@ submitBtn.addEventListener('click', () => {
         localStorage.setItem('userToken', response.data[0].token);
         const isAdmin = response.data[0].user.isadmin;
         let profileUrl;
-        if (isAdmin) {
+        if (isAdmin === 'true') {
           profileUrl = '../../pages/index.html';
-        } else {
+        } else if (isAdmin === 'false') {
           profileUrl = '../../pages/profile.html';
         }
         window.location.href = profileUrl;
