@@ -63,6 +63,7 @@ submitBtn.addEventListener('click', () => {
     .then((response) => {
       if (response.status === 201) {
         localStorage.setItem('userToken', response.data[0].token);
+        localStorage.removeItem('passportUrl');
         const profileUrl = '../../pages/profile.html';
         window.location.href = profileUrl;
       } else if (response.status === 409) {
@@ -76,5 +77,4 @@ submitBtn.addEventListener('click', () => {
       }
     })
     .catch(error => console.error(error));
-  localStorage.removeItem('passportUrl');
 });

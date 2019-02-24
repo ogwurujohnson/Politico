@@ -30,6 +30,12 @@ export default {
       });
     }
     return db.query('SELECT * FROM tblcandidates WHERE candidate=$1', [candidate], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount >= 1) {
         res.status(409).json({
           status: 409,
@@ -67,6 +73,12 @@ export default {
       });
     }
     return db.query('SELECT * FROM tblvotes WHERE office=$1 AND createdby=$2', [office, voter], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount >= 1) {
         res.status(409).json({
           status: 409,
@@ -93,6 +105,12 @@ export default {
   officeResults: (req, res) => {
     const { id } = req.params;
     db.query('SELECT office, candidate, COUNT(candidate) AS result FROM tblvotes WHERE office=$1 GROUP BY candidate, office', [id], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (result.rowCount < 1) {
         res.status(404).json({
           status: 404,
@@ -124,6 +142,12 @@ export default {
       }
       const { userId } = decoded;
       db.query('SELECT * FROM tblusers WHERE id = $1', [userId], (error, resp) => {
+        if (error) {
+          return res.status(500).json({
+            status: 500,
+            error: 'An unexpected error occurred',
+          });
+        }
         if (resp.rowCount < 1) {
           res.status(404).json({
             status: 404,
@@ -149,6 +173,12 @@ export default {
     const { id } = req.params;
     // eslint-disable-next-line quotes
     db.query(`SELECT tbloffice.name As office_name, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS "fullname", tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1`, [id], (error, resp) => {
+      if (error) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
       if (resp.rowCount < 1) {
         res.status(404).json({
           status: 404,
@@ -160,6 +190,6 @@ export default {
           data: resp.rows,
         });
       }
-    })
-  }
+    });
+  },
 };

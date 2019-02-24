@@ -389,6 +389,7 @@ div .container {
 .user-avatar {
   width: 50%;
   padding-bottom: 10px;
+  border-radius: 50%;
 }
 
 .activity-section {

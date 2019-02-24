@@ -1,4 +1,41 @@
 // handle logout
-// handle redirection of user to signin page if not authorized
-// chek for isadmin and display appropriate nav bar
-// we would send the request to fetch user details with authorization header too
+// handle redirection of user to signin page if not authorized ==
+// check for isadmin and display appropriate nav bar
+// we would send the request to fetch user details with authorization header too ==
+/* eslint-disable no-undef */
+const credentialUrl = 'https://better-politico.herokuapp.com/api/v1';
+
+const navigationMenu = document.querySelector('#menu');
+
+window.addEventListener('load', (e) => {
+  e.preventDefault();
+  const token = localStorage.getItem('userToken');
+
+  if (!token) {
+    window.location.href = '../pages/auth/sign-in.html';
+    localStorage.clear();
+  } else {
+    fetch(`${credentialUrl}/user/${token}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(res => res.json())
+      .then((response) => {
+        if (response.status === 200) {
+          const isAdmin = response.data[0].isadmin;
+          if (isAdmin === 'true') {
+  
+          } else if (isAdmin === 'false') {
+            navigationMenu.appendChild('<li><a href="election-result.html" class="nav-links">Results</a></li>');
+          }
+        } else {
+          const logoutUrl = '../pages/auth/sign-in.html';
+          window.location.href = logoutUrl;
+          localStorage.clear();
+        }
+      })
+      .catch(error => console.error(error));
+  }
+});
