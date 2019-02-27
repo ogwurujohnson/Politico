@@ -55,7 +55,7 @@ window.addEventListener('load', (e) => {
               .then((partyResponse) => {
                 if (partyResponse.status === 200) {
                   for (let i = 0; i < partyResponse.data.length; i += 1) {
-                    const partyId = 6;
+                    const partyId = partyResponse.data[i].id;
                     partyTable.innerHTML += `<tr>
                     <td><a href="view-party.html">${upperCase(partyResponse.data[i].name)}</a></td>
                     <td>${camelCase(partyResponse.data[i].hqaddress)}</td>
