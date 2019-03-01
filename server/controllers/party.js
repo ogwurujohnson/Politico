@@ -20,8 +20,8 @@ export default {
 
     db.query('SELECT * FROM tblparty WHERE name=$1', [partyname], (err, resp) => {
       if (err) {
-        return res.status(500).json({
-          status: 500,
+        return res.status(400).json({
+          status: 400,
           error: 'An unexpected error occurred',
         });
       }
