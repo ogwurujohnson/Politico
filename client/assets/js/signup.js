@@ -30,7 +30,6 @@ passport.addEventListener('change', (e) => {
       if (data.secure_url !== '') {
         const uploadedFileUrl = data.secure_url;
         localStorage.setItem('passportUrl', uploadedFileUrl);
-        console.log(uploadedFileUrl);
         submitBtn.value = 'Sign Up';
         submitBtn.disabled = false;
       }

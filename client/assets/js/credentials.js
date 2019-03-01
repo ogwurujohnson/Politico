@@ -3,6 +3,12 @@
 // check for isadmin and display appropriate nav bar
 // we would send the request to fetch user details with authorization header too ==
 /* eslint-disable no-undef */
+
+// alwways retrieve users information to make sure they dont visit pages not for them by using 
+// the isadmin status, add to
+// all pages javascript file
+
+// create another credential file to check for isadmin status
 const credentialUrl = 'https://better-politico.herokuapp.com/api/v1';
 
 const navigationMenu = document.querySelector('#menu');
@@ -28,7 +34,9 @@ window.addEventListener('load', (e) => {
           if (isAdmin === 'true') {
   
           } else if (isAdmin === 'false') {
-            navigationMenu.appendChild('<li><a href="election-result.html" class="nav-links">Results</a></li>');
+            const navItem = document.createElement('li');
+            navItem.innerHTML = '<li><a href="election-result.html" class="nav-links">Results</a></li>';
+            navigationMenu.appendChild(navItem);
           }
         } else {
           const logoutUrl = '../pages/auth/sign-in.html';
