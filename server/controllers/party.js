@@ -62,7 +62,7 @@ export default {
    * @returns [array] array of party objects
    */
   getAllParties: (req, res) => {
-    db.query('SELECT * FROM tblparty', (err, resp) => {
+    db.query("SELECT name, hqaddress, logourl, SPLIT_PART(createddate::TEXT,' ', 1) AS createddate FROM tblparty", (err, resp) => {
       if (err) {
         return res.status(500).json({
           status: 500,
