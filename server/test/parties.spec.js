@@ -24,7 +24,7 @@ describe('Parties', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
-          res.body.data[0].should.have.property('id');
+          res.body.data[0].should.have.property('createddate');
           res.body.data[0].should.have.property('name');
           res.body.data[0].should.have.property('hqaddress');
           res.body.data[0].should.have.property('logourl');
