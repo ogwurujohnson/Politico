@@ -210,7 +210,6 @@ describe('Parties', () => {
       const data = {
         partyname: 'pdp',
         hqaddress: 'lagos',
-        logourl: 'https://cloudinary.com/myalbum',
       };
       const partyId = 1;
       chai.request(app)
@@ -226,7 +225,6 @@ describe('Parties', () => {
           res.body.data[0].should.have.property('id');
           res.body.data[0].should.have.property('name');
           res.body.data[0].should.have.property('hqaddress');
-          res.body.data[0].should.have.property('logourl');
           done();
         });
     });

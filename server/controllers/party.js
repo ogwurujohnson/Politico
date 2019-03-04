@@ -62,7 +62,7 @@ export default {
    * @returns [array] array of party objects
    */
   getAllParties: (req, res) => {
-    db.query("SELECT name, hqaddress, logourl, SPLIT_PART(createddate::TEXT,' ', 1) AS createddate FROM tblparty", (err, resp) => {
+    db.query("SELECT id, name, hqaddress, logourl, SPLIT_PART(createddate::TEXT,' ', 1) AS createddate FROM tblparty", (err, resp) => {
       if (err) {
         return res.status(500).json({
           status: 500,
@@ -147,12 +147,12 @@ export default {
    * @returns [array] array of party object
    */
   editSpecificParty: (req, res) => {
-    const text = 'UPDATE tblparty SET name=$1, hqAddress=$2, logoUrl=$3, modifiedDate=$4 WHERE id=$5 RETURNING *';
-    const { partyname, hqaddress, logourl } = req.body;
+    const text = 'UPDATE tblparty SET name=$1, hqAddress=$2, modifiedDate=$3 WHERE id=$4 RETURNING *';
+    const { partyname, hqaddress } = req.body;
     const { id } = req.params;
     const date = moment(new Date());
 
-    db.query(text, [partyname, hqaddress, logourl, date, id], (err, resp) => {
+    db.query(text, [partyname, hqaddress, date, id], (err, resp) => {
       if (err) {
         return res.status(500).json({
           status: 500,
