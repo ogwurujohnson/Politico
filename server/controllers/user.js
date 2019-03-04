@@ -172,7 +172,7 @@ export default {
   userVotes: (req, res) => {
     const { id } = req.params;
     // eslint-disable-next-line quotes
-    db.query(`SELECT tbloffice.name As office_name, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS "fullname", tblvotes.createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1`, [id], (error, resp) => {
+    db.query(`SELECT tbloffice.name As office_name, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS "fullname", SPLIT_PART(tblvotes.createdon::TEXT,' ', 1) AS createdon FROM tblvotes, tbloffice, tblusers WHERE tblvotes.office = tbloffice.id AND tblvotes.candidate = tblusers.id AND createdby=$1`, [id], (error, resp) => {
       if (error) {
         return res.status(500).json({
           status: 500,
