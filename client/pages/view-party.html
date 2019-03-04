@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../assets/css/shared.css">
 </head>
 
-<body>
+<body onload="getSpecificParty()">
   <div class="container">
     <header>
       <nav class="navbar">
@@ -45,10 +45,10 @@
           <div class="candidate-manifesto">
             <div class="intro">
               <div class="party_name">
-                <h4>PDP</h4>
+                <h4 id="party_name">PDP</h4>
               </div>
               <div class="hq_address">
-                <h3>Abuja, Nigeria</h3>
+                <h3 id="party_address">Abuja, Nigeria</h3>
               </div>
               <div class="party_candidates">
                 <h3>30 running candidates</h3>
@@ -119,6 +119,7 @@
     </footer>
   </div>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/parties.js"></script>
 </body>
 
 </html>
