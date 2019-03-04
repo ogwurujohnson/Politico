@@ -16,7 +16,7 @@ const partyId = tokenPart[1];
 const token = localStorage.getItem('userToken');
 
 if (!token) {
-  window.location.href = '../../pages/auth/sign-in.html';
+  window.location.href = '../pages/auth/sign-in.html';
 } else {
   window.addEventListener('load', (e) => {
     e.preventDefault();
@@ -30,6 +30,8 @@ if (!token) {
           partyAddress.value = response.data[0].hqaddress;
           partyTitle.innerHTML = `Edit ${upperCase(response.data[0].name)}`;
           pageTitle.innerHTML = `Politico | Admin - Edit ${upperCase(response.data[0].name)}`;
+        } else if (response.status === 404) {
+          console.log('not found');
         }
       })
       .catch(error => console.error(error));
@@ -54,6 +56,10 @@ if (!token) {
       .then((response) => {
         if (response.status === 201) {
           window.location.href = '../pages/view-parties.html';
+        } else if (response.status === 404) {
+          console.log('party not found');
+        } else if (response.status === 400) {
+          console.log('some fields are required');
         }
       })
       .catch(error => console.error(error));

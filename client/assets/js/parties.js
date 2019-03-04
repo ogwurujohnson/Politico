@@ -20,13 +20,14 @@ window.addEventListener('load', (e) => {
       .then((partyResponse) => {
         if (partyResponse.status === 200) {
           for (let i = 0; i < partyResponse.data.length; i += 1) {
+            const partyId = partyResponse.data[i].id;
             partyTable.innerHTML += `<tr>
             <td><a href="view-party.html">${upperCase(partyResponse.data[i].name)}</a></td>
             <td>${camelCase(partyResponse.data[i].hqaddress)}</td>
             <td>${camelCase(partyResponse.data[i].createddate)}</td>
             <td><img src="${partyResponse.data[i].logourl}" style="width: 50px; height: 50px;"></img></td>
             <td>
-              <a href="view-party.html" class="small-default-button" title="View party">View</a>
+            <a href="view-party.html?id=${partyId}" class="small-default-button" title="View party">View</a>
             </td>
           </tr>`;
           }
@@ -83,13 +84,14 @@ window.addEventListener('load', (e) => {
               .then((partyResponse) => {
                 if (partyResponse.status === 200) {
                   for (let i = 0; i < partyResponse.data.length; i += 1) {
+                    const partyId = partyResponse.data[i].id;
                     partyTable.innerHTML += `<tr>
                     <td><a href="view-party.html">${upperCase(partyResponse.data[i].name)}</a></td>
                     <td>${camelCase(partyResponse.data[i].hqaddress)}</td>
                     <td>${camelCase(partyResponse.data[i].createddate)}</td>
                     <td><img src="${partyResponse.data[i].logourl}" style="width: 50px; height: 50px;"></img></td>
                     <td>
-                      <a href="view-party.html" class="small-default-button" title="View party">View</a>
+                    <a href="view-party.html?id=${partyId}" class="small-default-button" title="View party">View</a>
                     </td>
                   </tr>`;
                   }
@@ -109,13 +111,14 @@ window.addEventListener('load', (e) => {
             .then((partyResponse) => {
               if (partyResponse.status === 200) {
                 for (let i = 0; i < partyResponse.data.length; i += 1) {
+                  const partyId = partyResponse.data[i].id;
                   partyTable.innerHTML += `<tr>
                   <td><a href="view-party.html">${upperCase(partyResponse.data[i].name)}</a></td>
                   <td>${camelCase(partyResponse.data[i].hqaddress)}</td>
                   <td>${camelCase(partyResponse.data[i].createddate)}</td>
                   <td><img src="${partyResponse.data[i].logourl}" style="width: 50px; height: 50px;"></img></td>
                   <td>
-                    <a href="view-party.html" class="small-default-button" title="View party">View</a>
+                  <a href="view-party.html?id=${partyId}" class="small-default-button" title="View party">View</a>
                   </td>
                 </tr>`;
                 }
@@ -153,6 +156,32 @@ deleteParty = (partyId) => {
         console.log('party not found');
       } else if (response.status === 400) {
         console.log('NAN');
+      }
+    })
+    .catch(error => console.error(error));
+};
+
+getSpecificParty = () => {
+  const { search } = window.location;
+  const tokenPart = search.split('=');
+  const partyId = tokenPart[1];
+
+  
+  const partyName = document.querySelector('#party_name');
+  const partyAddress = document.querySelector('#party_address');
+  const partyLogo = document.querySelector('#candidate-avatar');
+
+  fetch(`${baseUrl}/parties/${partyId}`, {
+    method: 'GET',
+  })
+    .then(res => res.json())
+    .then((response) => {
+      if (response.status === 200) {
+        partyName.innerHTML = upperCase(response.data[0].name);
+        partyAddress.innerHTML = upperCase(response.data[0].hqaddress);
+        partyLogo.src = response.data[0].logourl;
+      } else if (response.status === 404) {
+        console.log('not found');
       }
     })
     .catch(error => console.error(error));
