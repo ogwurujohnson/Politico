@@ -44,17 +44,16 @@
 					</div>
 					<form>
 						<div class="form-class">
-							<select>
+							<select id="office_type">
 								<option>Select office type</option>
-								<option>Federal</option>
-								<option>legislative</option>
-								<option>state</option>
-								<option>local government</option>
+								<option value="federal">Federal</option>
+								<option value="legislative">Legislative</option>
+								<option value="state">State</option>
 							</select>
-							<input id="office-name" type="email" placeholder="Office Name*" autofocus required>
+							<input id="office-name" type="text" placeholder="Office Name*" autofocus required>
 						</div>
 						<div>
-							<input type="submit" value="Submit">
+							<input id="submitBtn" onclick="createOffice()" type="button" value="Submit">
 						</div>
 					</form>
 				</div>
@@ -120,6 +119,7 @@
 		</footer>
 	</div>
 	<script src="../assets/js/script.js"></script>
+	<script src="../assets/js/office.js"></script>
 </body>
 
 </html>
