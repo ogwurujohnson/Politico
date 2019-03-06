@@ -77,7 +77,7 @@ describe('Offices', () => {
           res.should.have.status(404);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
-          res.body.error.should.equal('Office not found');
+          res.body.error.should.equal('No office and candidate info found');
           done();
         });
     });
