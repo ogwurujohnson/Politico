@@ -43,7 +43,8 @@ const createTables = `
     id SERIAL PRIMARY KEY,
     office INT NOT NULL,
     party INT NOT NULL,
-    candidate INT NOT NULL
+    candidate INT NOT NULL,
+    status INT NOT NULL
   );
   CREATE TABLE IF NOT EXISTS
   tblvotes(

@@ -9,7 +9,7 @@
     "start:dev": "set NODE_ENV=development&& babel-watch ./server/app.js",
     "test": "set NODE_ENV=test&& npm run migration&& nyc mocha  --timeout 15000  --require babel-register --require babel-polyfill ./server/test/* --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "pg": "set NODE_ENV=development&& babel-node ./server/models/pushdb.js pushToDB"
+    "pg": "set NODE_ENV=development&& babel-node ./server/models/pushdb.js pushTable&& babel-node ./server/models/pushdb.js pushTableData"
   },
   "repository": {
     "type": "git",

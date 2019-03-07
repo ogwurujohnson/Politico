@@ -88,7 +88,7 @@ export default {
    * @returns [array] array of office object
    */
   getSpecificOffice: (req, res) => {
-    const text = 'SELECT * FROM tbloffice WHERE id=$1';
+    const text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 AND tblcandidates.status = 1 ";
     const { id } = req.params;
     db.query(text, [id], (err, resp) => {
       if (err) {
@@ -100,7 +100,7 @@ export default {
       if (resp.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          error: 'Office not found',
+          error: 'No office and candidate info found',
         });
       }
       return res.status(200).json({
