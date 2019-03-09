@@ -12,13 +12,13 @@ const { db } = dbHelper;
 export default {
   /**
    * @description indicate interest
-   * @function registerCandidate
+   * @function declareInterest
    * @param {object} req
    * @param {object} res
    * @returns {object} interest object
    */
-  registerCandidate: (req, res) => {
-    const text = 'INSERT INTO tblcandidates (office, party, candidate) VALUES ($1,$2,$3) RETURNING *';
+  declareInterest: (req, res) => {
+    const text = 'INSERT INTO tblcandidates (office, party, candidate, status) VALUES ($1,$2,$3,$4) RETURNING *';
     const {
       office, party,
     } = req.body;
@@ -42,7 +42,7 @@ export default {
           error: 'Cannot declare twice',
         });
       } else {
-        db.query(text, [office, party, candidate], (error, resp) => {
+        db.query(text, [office, party, candidate, '0'], (error, resp) => {
           res.status(201).json({
             status: 201,
             data: resp.rows,
