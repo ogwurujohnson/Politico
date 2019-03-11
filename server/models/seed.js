@@ -9,7 +9,7 @@ const seedTable = `
   INSERT INTO
     tblcandidates
       VALUES 
-      ( default, '1', '1', '1', '1');
+      ( default, '1', '1', '1','i will build road, buy house, fuel villages', '1');
   INSERT INTO
     tblparty
       VALUES
