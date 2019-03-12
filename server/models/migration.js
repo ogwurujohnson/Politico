@@ -44,7 +44,7 @@ const createTables = `
     office INT NOT NULL,
     party INT NOT NULL,
     candidate INT NOT NULL,
-    manifest VARCHAR(1500) NOT NULL,
+    manifesto VARCHAR(1500) NOT NULL,
     status INT NOT NULL
   );
   CREATE TABLE IF NOT EXISTS
