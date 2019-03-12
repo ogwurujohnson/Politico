@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -12,7 +13,7 @@ const { db } = dbHelper;
 export default {
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
    * @description indicate interest
    * @function declareInterest
    * @param {object} req
@@ -55,7 +56,7 @@ export default {
   },
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
    * @description register candidate as party flag bearer
    * @function registerCandidate
    * @param {object} req
@@ -86,7 +87,7 @@ export default {
         } else {
           toggleStatus = 0;
         }
-        
+
         db.query(text, [toggleStatus, candidate], (error, resp) => {
           res.status(201).json({
             status: 201,
@@ -103,7 +104,7 @@ export default {
   },
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
    * @description vote candidate
    * @function voteCandidate
    * @param {object} req
@@ -148,7 +149,7 @@ export default {
   },
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
    * @description check results per office
    * @function officeResults
    * @param {object} req
@@ -179,7 +180,7 @@ export default {
   },
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
    * @description fetch single user
    * @function singleUser
    * @param {object} req
@@ -219,7 +220,38 @@ export default {
   },
   /**
    * @author JOHNSON OGWURU
-   * 
+   *
+   * @description fetch single candidate
+   * @function singleCandidate
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} single candidate record
+   */
+  singleCandidate: (req, res) => {
+    const { candidateId } = req.params;
+    db.query('SELECT * FROM tblcandidates WHERE candidate = $1', [candidateId], (error, resp) => {
+      if (error) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          error: 'Candidate not found',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: resp.rows,
+        });
+      }
+    });
+  },
+  /**
+   * @author JOHNSON OGWURU
+   *
    * @description fetch user votes
    * @function userVotes
    * @param {object} req
