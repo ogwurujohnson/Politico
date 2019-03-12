@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../assets/css/shared.css">
 </head>
 
-<body>
+<body onload="getOffices()">
   <div class="container">
     <header>
       <nav class="navbar">
@@ -44,27 +44,8 @@
           <table id="table">
             <tr>
               <th>Office Name</th>
-              <th>Date created</th>
-              <th>Candidates</th>
+              <th>Office Type</th>
               <th>Action</th>
-            </tr>
-            <tr>
-              <td>President</td>
-              <td>21/03/1990</td>
-              <td>30</td>
-              <td>
-                <a href="office-candidates.html" class="small-default-button" title="view candidates">View Candidates</a>
-                <a href="declare-interest.html" class="small-success-button" title="declare interest">Declare Interest</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Governor</td>
-              <td>21/03/1990</td>
-              <td>20</td>
-              <td>
-                <a href="office-candidates.html" class="small-default-button" title="view candidates">View Candidates</a>
-                <a href="declare-interest.html" class="small-success-button" title="declare interest">Declare Interest</a>
-              </td>
             </tr>
           </table>
         </div>
@@ -130,6 +111,7 @@
     </footer>
   </div>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/office.js"></script>
 </body>
 
 </html>
