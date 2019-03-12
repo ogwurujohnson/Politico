@@ -7,6 +7,10 @@ const seedTable = `
       ( default, 'legislative', 'abuja central house of representatives'),
       ( default, 'local government', 'bwari area council chairman');
   INSERT INTO
+    tblcandidates
+      VALUES 
+      ( default, '1', '1', '1','i will build road, buy house, fuel villages', '1');
+  INSERT INTO
     tblparty
       VALUES
       ( default, 'peoples democratic party', 'abuja, nigeria', 'https://politicsngr.com/wp-content/uploads/2018/03/IMG-20171125-WA0040.jpg'),

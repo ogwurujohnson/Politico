@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -11,16 +12,18 @@ const { db } = dbHelper;
 
 export default {
   /**
+   * @author JOHNSON OGWURU
+   *
    * @description indicate interest
-   * @function registerCandidate
+   * @function declareInterest
    * @param {object} req
    * @param {object} res
    * @returns {object} interest object
    */
-  registerCandidate: (req, res) => {
-    const text = 'INSERT INTO tblcandidates (office, party, candidate) VALUES ($1,$2,$3) RETURNING *';
+  declareInterest: (req, res) => {
+    const text = 'INSERT INTO tblcandidates (office, party, candidate, manifesto, status) VALUES ($1,$2,$3,$4,$5) RETURNING *';
     const {
-      office, party,
+      office, party, manifesto,
     } = req.body;
     const candidate = req.params.uId;
     if (isNaN(office) || isNaN(party) || isNaN(candidate)) {
@@ -42,7 +45,7 @@ export default {
           error: 'Cannot declare twice',
         });
       } else {
-        db.query(text, [office, party, candidate], (error, resp) => {
+        db.query(text, [office, party, candidate, manifesto, '0'], (error, resp) => {
           res.status(201).json({
             status: 201,
             data: resp.rows,
@@ -52,6 +55,56 @@ export default {
     });
   },
   /**
+   * @author JOHNSON OGWURU
+   *
+   * @description register candidate as party flag bearer
+   * @function registerCandidate
+   * @param {object} req
+   * @param {object} res
+   * @returns {object}
+   */
+  registerCandidate: (req, res) => {
+    const text = 'UPDATE tblcandidates SET status = $1 WHERE candidate = $2';
+    const candidate = req.params.uId;
+    if (isNaN(candidate)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Non-Integer number found',
+      });
+    }
+    return db.query('SELECT * FROM tblcandidates WHERE candidate=$1', [candidate], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (result.rowCount >= 1) {
+        const { status } = result.rows[0];
+        let toggleStatus;
+        if (status === 0) {
+          toggleStatus = 1;
+        } else {
+          toggleStatus = 0;
+        }
+
+        db.query(text, [toggleStatus, candidate], (error, resp) => {
+          res.status(201).json({
+            status: 201,
+            message: 'flag bearer status changed',
+          });
+        });
+      } else {
+        return res.status(404).json({
+          status: 404,
+          error: 'No office and candidate info found',
+        });
+      }
+    });
+  },
+  /**
+   * @author JOHNSON OGWURU
+   *
    * @description vote candidate
    * @function voteCandidate
    * @param {object} req
@@ -85,7 +138,6 @@ export default {
           error: 'Cannot vote twice',
         });
       } else {
-        console.log(text);
         db.query(text, [date, voter, office, candidate], (error, resp) => {
           res.status(201).json({
             status: 201,
@@ -96,6 +148,8 @@ export default {
     });
   },
   /**
+   * @author JOHNSON OGWURU
+   *
    * @description check results per office
    * @function officeResults
    * @param {object} req
@@ -125,6 +179,8 @@ export default {
     });
   },
   /**
+   * @author JOHNSON OGWURU
+   *
    * @description fetch single user
    * @function singleUser
    * @param {object} req
@@ -163,6 +219,39 @@ export default {
     });
   },
   /**
+   * @author JOHNSON OGWURU
+   *
+   * @description fetch single candidate
+   * @function singleCandidate
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} single candidate record
+   */
+  singleCandidate: (req, res) => {
+    const { candidateId } = req.params;
+    db.query('SELECT * FROM tblcandidates WHERE candidate = $1', [candidateId], (error, resp) => {
+      if (error) {
+        return res.status(500).json({
+          status: 500,
+          error: 'An unexpected error occurred',
+        });
+      }
+      if (resp.rowCount < 1) {
+        res.status(404).json({
+          status: 404,
+          error: 'Candidate not found',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: resp.rows,
+        });
+      }
+    });
+  },
+  /**
+   * @author JOHNSON OGWURU
+   *
    * @description fetch user votes
    * @function userVotes
    * @param {object} req

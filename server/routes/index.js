@@ -29,17 +29,19 @@ router.post('/auth/validate', Auth.validateResetToken);
 router.post('/parties', Verification.isAdmin, Validation.partyValidation, Party.createParty);
 router.get('/parties', Party.getAllParties);
 router.get('/parties/:id', Validation.idQueryParameter, Party.getSpecificParty);
-router.patch('/parties/:id', Validation.idQueryParameter, Verification.isAdmin, Party.editSpecificParty);
-router.delete('/parties/:id', Validation.idQueryParameter, Verification.isAdmin, Party.deleteParty);
+router.patch('/parties/:id', Verification.isAdmin, Validation.idQueryParameter, Party.editSpecificParty);
+router.delete('/parties/:id', Verification.isAdmin, Validation.idQueryParameter, Party.deleteParty);
 
 
 router.post('/offices', Verification.isAdmin, Validation.officeValidation, Office.createOffice);
 router.get('/offices', Office.getAllOffices);
-router.get('/offices/:id', Validation.idQueryParameter, Verification.isLoggedIn, Office.getSpecificOffice);
+router.get('/offices/:id', Validation.idQueryParameter, Office.getSpecificOffice);
 
 router.get('/user/:token', Verification.isLoggedIn, User.singleUser);
-router.get('/user/:id/vote', Validation.idQueryParameter, Verification.isLoggedIn, User.userVotes);
-router.post('/office/:uId/register', Validation.uIdQueryParameter, Verification.isAdmin, User.registerCandidate);
+router.get('/candidate/:candidateId', Verification.isLoggedIn, User.singleCandidate);
+router.get('/user/:id/vote', Verification.isLoggedIn, Validation.idQueryParameter, User.userVotes);
+router.post('/office/:uId/declare', Verification.isLoggedIn, Validation.uIdQueryParameter, User.declareInterest);
+router.patch('/office/:uId/register', Verification.isAdmin, Validation.uIdQueryParameter, User.registerCandidate);
 router.get('/office/:id/result', Validation.idQueryParameter, User.officeResults);
 router.post('/vote', Verification.isLoggedIn, User.voteCandidate);
 
