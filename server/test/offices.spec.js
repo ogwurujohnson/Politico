@@ -53,7 +53,7 @@ describe('Offices', () => {
     it('should return 200 on getting a single office record', (done) => {
       const id = 1;
       chai.request(app)
-        .get(`/api/v1/offices/${id}`)
+        .get(`/api/v1/offices/${id}/user`)
         .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
           if (err) done(err);
@@ -70,7 +70,7 @@ describe('Offices', () => {
     it('should return 404 if office not found', (done) => {
       const id = 844944;
       chai.request(app)
-        .get(`/api/v1/offices/${id}`)
+        .get(`/api/v1/offices/${id}/user`)
         .set('Authorization', `Bearer ${userToken}`)
         .end((err, res) => {
           if (err) done(err);

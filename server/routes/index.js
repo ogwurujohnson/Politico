@@ -35,7 +35,7 @@ router.delete('/parties/:id', Verification.isAdmin, Validation.idQueryParameter,
 
 router.post('/offices', Verification.isAdmin, Validation.officeValidation, Office.createOffice);
 router.get('/offices', Office.getAllOffices);
-router.get('/offices/:id', Validation.idQueryParameter, Office.getSpecificOffice);
+router.get('/offices/:id/:userType', Validation.idQueryParameter, Office.getSpecificOffice);
 
 router.get('/user/:token', Verification.isLoggedIn, User.singleUser);
 router.get('/candidate/:candidateId', Verification.isLoggedIn, User.singleCandidate);
