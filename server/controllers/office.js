@@ -88,8 +88,13 @@ export default {
    * @returns [array] array of office object
    */
   getSpecificOffice: (req, res) => {
-    const text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 AND tblcandidates.status = 1 ";
-    const { id } = req.params;
+    const { id, userType } = req.params;
+    let text;
+    if (userType === 'admin') {
+      text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 ";
+    } else {
+      text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 AND tblcandidates.status = 1 ";
+    }
     db.query(text, [id], (err, resp) => {
       if (err) {
         return res.status(500).json({
