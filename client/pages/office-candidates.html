@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../assets/css/shared.css">
 </head>
 
-<body>
+<body onload="officeCandidates()">
   <div class="container">
     <header>
       <nav class="navbar">
@@ -37,7 +37,7 @@
     </header>
     <main>
       <div class="page-explainer">
-        <h5>Candidates running for office A</h5>
+        <h5 id="office_name">Candidates running for office A</h5>
       </div>
       <section id="table-section">
         <div>
@@ -46,22 +46,6 @@
               <th>Candidate Name</th>
               <th>Candidate Party</th>
               <th>Action</th>
-            </tr>
-            <tr>
-              <td>Johnson Ogwuru</td>
-              <td>PDP</td>
-              <td>
-                <a href="#" class="small-success-button" title="Vote Candidate">Vote</a>
-                <a href="view-candidate.html" class="small-default-button" title="View Candidate">View</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Mustapha Braimah</td>
-              <td>APC</td>
-              <td>
-                <a href="#" class="small-success-button" title="Vote Candidate">Vote</a>
-                <a href="view-candidate.html" class="small-default-button" title="View Candidate">View</a>
-              </td>
             </tr>
           </table>
         </div>
@@ -127,6 +111,7 @@
     </footer>
   </div>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/office.js"></script>
 </body>
 
 </html>
