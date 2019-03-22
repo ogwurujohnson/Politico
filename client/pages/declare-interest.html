@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="../assets/css/shared.css">
 </head>
 
-<body>
+<body onload="declareInterest()">
 	<div class="container">
 		<header>
 			<nav class="navbar">
@@ -43,19 +43,15 @@
 					<form>
 						<div class="form-class">
 							<textarea id="manifesto"></textarea>
-							<select>
+							<select id="party">
 								<option>Select Party</option>
-								<option>PDP</option>
-								<option>APC</option>
 							</select>
-							<select>
+							<select id="office">
 								<option>Select Office</option>
-								<option>President</option>
-								<option>Governor</option>
 							</select>
 						</div>
 						<div>
-							<input type="submit" value="Submit">
+							<input id="submitBtn" type="button" value="Submit">
 						</div>
 					</form>
 				</div>
@@ -120,6 +116,7 @@
 			</footer>
 	</div>
 	<script src="../assets/js/script.js"></script>
+	<script src="../assets/js/office.js"></script>
 </body>
 
 </html>
