@@ -91,9 +91,9 @@ export default {
     const { id, userType } = req.params;
     let text;
     if (userType === 'admin') {
-      text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 ";
+      text = "SELECT tblusers.id AS candidate_id, tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 ";
     } else {
-      text = "SELECT tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 AND tblcandidates.status = 1 ";
+      text = "SELECT tblusers.id AS candidate_id, tbloffice.name AS officename, CONCAT(tblusers.firstname,' ',  tblusers.lastname) AS candidatename, tblparty.name AS partyname  FROM tblusers, tblparty, tbloffice, tblcandidates WHERE tblcandidates.office = tbloffice.id AND tblparty.id = tblcandidates.party AND tblusers.id = tblcandidates.candidate AND tblcandidates.office = $1 AND tblcandidates.status = 1 ";
     }
     db.query(text, [id], (err, resp) => {
       if (err) {
